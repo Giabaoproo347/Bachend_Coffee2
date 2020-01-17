@@ -1,0 +1,36 @@
+<div class="col-6 offset-3">
+  <h3 class="text-center">Create a new categories</h3>
+  <div *ngIf="message">
+    <div class="alert alert-success">
+      <strong>Success!</strong> You have created a new categories
+    </div>
+    <div>
+      <div class="form-group">
+        <input class="btn btn-primary btn-block" value="Create new categories" (click)="message = !message">
+      </div>
+      <div class="form-group">
+        <input class="btn btn-primary btn-block" value="Back to categories list" routerLink="/categories-list">
+      </div>
+    </div>
+  </div>
+  <form
+    *ngIf="!message"
+    name="form"
+    [formGroup]="categoriesForm"
+    (ngSubmit)="categoriesForm.valid && onSubmit()"
+    novalidate>
+    <div class="form-group">
+      <label>Categories name</label>
+      <input type="text" class="form-control" formControlName="name"/>
+      <div class="alert-danger" *ngIf="categoriesForm.get('name').invalid && categoriesForm.get('name').touched" style="color: aqua">
+        Categories name must be ay least 1 characters
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary btn-block">Create</button>
+    </div>
+    <div class="form-group">
+      <input class="btn btn-primary btn-block" value="Cancel" routerLink="/categories-list">
+    </div>
+  </form>
+</div>

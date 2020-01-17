@@ -1,0 +1,18 @@
+<h2>Categories List</h2>
+<p><a routerLink="/categories-create">Create new categories</a></p>
+<table class="table table-hover border">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let categories of categoriesList">
+    <td><a [routerLink]="['/categories-detail',categories.id]">{{categories.id}}</a> </td>
+    <td><a [routerLink]="['/categories-detail',categories.id]">{{categories.name}}</a> </td>
+    <td><a [routerLink]="['/categories-edit',categories.id]">Edit</a> </td>
+    <td><a [routerLink]="['/categories-delete',categories.id]">Delete</a> </td>
+  </tr>
+</table>
