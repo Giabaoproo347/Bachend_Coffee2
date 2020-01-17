@@ -1,26 +1,26 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {CategoriesListComponent} from '../component/admin/categories/categories-list/categories-list.component';
-import {CategoriesCreateComponent} from '../component/admin/categories/categories-create/categories-create.component';
-import {CategoriesEditComponent} from '../component/admin/categories/categories-edit/categories-edit.component';
-import {CategoriesDeleteComponent} from '../component/admin/categories/categories-delete/categories-delete.component';
-import {CategoriesDetailComponent} from '../component/admin/categories/categories-detail/categories-detail.component';
 import {LoginComponent} from '../user/login/login.component';
 import {RegisterComponent} from '../user/register/register.component';
 import {ProfileComponent} from '../user/profile/profile.component';
 import {BoardAdminComponent} from '../user/board-admin/board-admin.component';
 import {BoardUserComponent} from '../user/board-user/board-user.component';
 import {BoardModeratorComponent} from '../user/board-moderator/board-moderator.component';
-import {OrderListComponent} from '../component/admin/order/order-list/order-list.component';
 import {OrderEditComponent} from '../component/admin/order/order-edit/order-edit.component';
-import {OrderDetailComponent} from '../component/admin/order/order-detail/order-detail.component';
-import {OrderCreateComponent} from '../component/admin/order/order-create/order-create.component';
-import {OrderDeleteComponent} from '../component/admin/order/order-delete/order-delete.component';
 import {OrderDetailCreateComponent} from '../component/admin/orderDetail/order-detail-create/order-detail-create.component';
 import {OrderDetailEditComponent} from '../component/admin/orderDetail/order-detail-edit/order-detail-edit.component';
+import {OrderDetailComponent} from '../component/admin/order/order-detail/order-detail.component';
+import {OrderCreateComponent} from '../component/admin/order/order-create/order-create.component';
 import {OrderDetailDetailComponent} from '../component/admin/orderDetail/order-detail-detail/order-detail-detail.component';
 import {OrderDetailDeleteComponent} from '../component/admin/orderDetail/order-detail-delete/order-detail-delete.component';
+import {OrderDeleteComponent} from '../component/admin/order/order-delete/order-delete.component';
 import {OrderDetailListComponent} from '../component/admin/orderDetail/order-detail-list/order-detail-list.component';
+import {CategoriesDetailComponent} from '../component/admin/categories/categories-detail/categories-detail.component';
+import {OrderListComponent} from '../component/admin/order/order-list/order-list.component';
+import {CategoriesListComponent} from '../component/admin/categories/categories-list/categories-list.component';
+import {CategoriesEditComponent} from '../component/admin/categories/categories-edit/categories-edit.component';
+import {CategoriesDeleteComponent} from '../component/admin/categories/categories-delete/categories-delete.component';
+import {CategoriesCreateComponent} from '../component/admin/categories/categories-create/categories-create.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},

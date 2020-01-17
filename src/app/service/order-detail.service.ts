@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class OrderDetailService {
-  private url = 'http://localhost:8080/api/order-detail';
+  private url = 'http://localhost:8080/api/orderDetail';
 
   constructor(private http: HttpClient) {
   }
