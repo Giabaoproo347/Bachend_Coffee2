@@ -1,0 +1,18 @@
+<h2>Promotion list</h2>
+<p><a routerLink="/promotion-create">Create new a promotion</a></p>
+<table class="table table-hover border">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let promotion of promotionList">
+    <td><a [routerLink]="['/promotion-detail', promotion.id]">{{ promotion.name }}</a></td>
+    <td>{{ promotion.price }}</td>
+    <td><a [routerLink]="['/promotion-edit',promotion.id]">Edit</a></td>
+    <td><a [routerLink]="['/promotion-delete',promotion.id]">Delete</a></td>
+  </tr>
+</table>

@@ -25,6 +25,16 @@ import {PaymentCreateComponent} from '../component/admin/payment/payment-create/
 import {PaymentEditComponent} from '../component/admin/payment/payment-edit/payment-edit.component';
 import {PaymentDetailComponent} from '../component/admin/payment/payment-detail/payment-detail.component';
 import {PaymentListComponent} from '../component/admin/payment/payment-list/payment-list.component';
+import {ProductDetailComponent} from '../component/admin/product/product-detail/product-detail.component';
+import {ProductCreateComponent} from '../component/admin/product/product-create/product-create.component';
+import {ProductListComponent} from '../component/admin/product/product-list/product-list.component';
+import {ProductEditComponent} from '../component/admin/product/product-edit/product-edit.component';
+import {ProductDeleteComponent} from '../component/admin/product/product-delete/product-delete.component';
+import {PromotionDetailComponent} from '../component/admin/promotion/promotion-detail/promotion-detail.component';
+import {PromotionDeleteComponent} from '../component/admin/promotion/promotion-delete/promotion-delete.component';
+import {PromotionEditComponent} from '../component/admin/promotion/promotion-edit/promotion-edit.component';
+import {PromotionListComponent} from '../component/admin/promotion/promotion-list/promotion-list.component';
+import {PromotionCreateComponent} from '../component/admin/promotion/promotion-create/promotion-create.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -53,6 +63,16 @@ const routes: Routes = [
   {path: 'payment-edit/:id', component: PaymentEditComponent},
   {path: 'payment-delete/:id', component: PaymentDetailComponent},
   {path: 'payment-detail/:id', component: PaymentDetailComponent},
+  {path: 'product-list', component: ProductListComponent},
+  {path: 'product-create', component: ProductCreateComponent},
+  {path: 'product-edit/:id', component: ProductEditComponent},
+  {path: 'product-delete/:id', component: ProductDeleteComponent},
+  {path: 'product-detail/:id', component: ProductDetailComponent},
+  {path: 'promotion-list', component: PromotionListComponent},
+  {path: 'promotion-create', component: PromotionCreateComponent},
+  {path: 'promotion-edit/:id', component: PromotionEditComponent},
+  {path: 'promotion-delete/:id', component: PromotionDeleteComponent},
+  {path: 'promotion-detail/:id', component: PromotionDetailComponent},
 ];
 
 @NgModule({

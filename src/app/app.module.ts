@@ -35,6 +35,21 @@ import {OrderDetailComponent} from './component/admin/order/order-detail/order-d
 import {OrderDetailDetailComponent} from './component/admin/orderDetail/order-detail-detail/order-detail-detail.component';
 import {CategoriesCreateComponent} from './component/admin/categories/categories-create/categories-create.component';
 import {OrderDetailListComponent} from './component/admin/orderDetail/order-detail-list/order-detail-list.component';
+import {ProductListComponent} from './component/admin/product/product-list/product-list.component';
+import {ProductCreateComponent} from './component/admin/product/product-create/product-create.component';
+import {ProductDeleteComponent} from './component/admin/product/product-delete/product-delete.component';
+import {ProductDetailComponent} from './component/admin/product/product-detail/product-detail.component';
+import {ProductEditComponent} from './component/admin/product/product-edit/product-edit.component';
+import {PromotionDetailComponent} from './component/admin/promotion/promotion-detail/promotion-detail.component';
+import {ProductPictureDetailComponent} from './component/admin/productPicture/product-picture-detail/product-picture-detail.component';
+import {PromotionDeleteComponent} from './component/admin/promotion/promotion-delete/promotion-delete.component';
+import {PromotionEditComponent} from './component/admin/promotion/promotion-edit/promotion-edit.component';
+import {ProductPictureCreateComponent} from './component/admin/productPicture/product-picture-create/product-picture-create.component';
+import {PromotionListComponent} from './component/admin/promotion/promotion-list/promotion-list.component';
+import {PromotionCreateComponent} from './component/admin/promotion/promotion-create/promotion-create.component';
+import {ProductPictureEditComponent} from './component/admin/productPicture/product-picture-edit/product-picture-edit.component';
+import {ProductPictureListComponent} from './component/admin/productPicture/product-picture-list/product-picture-list.component';
+import {ProductPictureDeleteComponent} from './component/admin/productPicture/product-picture-delete/product-picture-delete.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +79,22 @@ import {OrderDetailListComponent} from './component/admin/orderDetail/order-deta
     PaymentCreateComponent,
     PaymentDeleteComponent,
     PaymentDetailComponent,
-    PaymentEditComponent
+    PaymentEditComponent,
+    ProductListComponent,
+    ProductCreateComponent,
+    ProductDeleteComponent,
+    ProductDetailComponent,
+    ProductEditComponent,
+    ProductPictureCreateComponent,
+    ProductPictureEditComponent,
+    ProductPictureListComponent,
+    ProductPictureDeleteComponent,
+    ProductPictureDetailComponent,
+    PromotionCreateComponent,
+    PromotionEditComponent,
+    PromotionDeleteComponent,
+    PromotionDetailComponent,
+    PromotionListComponent,
   ],
   imports: [
     BrowserModule,

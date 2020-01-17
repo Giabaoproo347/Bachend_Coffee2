@@ -1,0 +1,36 @@
+<h2>Product detail</h2>
+<div class="col-6 offset-3" *ngIf="product">
+  <img [src]="[product.productPicture[0].src]" class="profile-img-card offset-3" style="width: 50%"/>
+  <table class="table">
+    <tr>
+      <td>Name:</td>
+      <td>{{product.name}}</td>
+    </tr>
+    <tr>
+      <td>Price:</td>
+      <td>{{product.price}}</td>
+    </tr>
+    <tr>
+      <td>Description:</td>
+      <td>{{product.description}}</td>
+    </tr>
+    <tr>
+      <td>Image:</td>
+      <td><a><img [src]="product.image"></a></td>
+    </tr>
+    <tr>
+      <td>Promotion:</td>
+      <td><div *ngFor="let promotion1 of product.promotion">{{promotion1.name}}</div></td>
+    </tr>
+    <tr>
+      <td>Category:</td>
+      <td>{{product.categories.name}}</td>
+    </tr>
+    <tr>
+      <td>Picture about product</td>
+      <td><div *ngFor="let picture of product.productPicture, index as i"><img *ngIf="i!=0" src="{{picture.src}}" width="200px"></div></td>
+    </tr>
+  </table>
+  <input class="btn btn-primary btn-block" value="Back to product list" routerLink="/product-list">
+</div>
+
