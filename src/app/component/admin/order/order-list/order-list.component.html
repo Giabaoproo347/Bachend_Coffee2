@@ -1,0 +1,21 @@
+<h2>Order List</h2>
+<table class="table table-hover border">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Purchase Date</th>
+    <th>Delivery Date</th>
+    <th>Description</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let order of orderList">
+    <td><a [routerLink]="['/order-detail',order.id]">{{order.id}}</a> </td>
+    <td>{{order.purchaseDate}}</td>
+    <td>{{order.deliveryDate}}</td>
+    <td>{{order.description}}</td>
+    <td><a [routerLink]="['/order-edit',order.id]">Edit</a></td>
+    <td><a [routerLink]="['/order-delete',order.id]">Delete</a></td>
+  </tr>
+</table>

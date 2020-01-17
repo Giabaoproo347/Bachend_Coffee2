@@ -1,0 +1,19 @@
+<h2>Order Detail</h2>
+<div class="col-6 offset-3" *ngIf="order">
+  <table class="table">
+    <tr>
+      <td>Purchase date:</td>
+      <td>{{order.purchaseDate}}</td>
+    </tr>
+    <tr>
+      <td>Delivery date:</td>
+      <td>{{order.deliveryDate}}</td>
+    </tr>
+
+    <tr>
+      <td>Description:</td>
+      <td>{{order.description}}</td>
+    </tr>
+  </table>
+  <input class="btn btn-primary btn-block" value="Back to order list" routerLink="/order-list">
+</div>
