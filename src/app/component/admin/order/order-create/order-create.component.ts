@@ -3,8 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Order} from '../../../../model/order.model';
 import {OrderService} from '../../../../service/order.service';
-import {OrderDetail} from '../../../../model/orderDetail.model';
-import {OrderDetailService} from '../../../../service/order-detail.service';
+
 
 @Component({
   selector: 'app-order-create',

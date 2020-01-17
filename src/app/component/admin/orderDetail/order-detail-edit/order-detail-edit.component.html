@@ -1,0 +1,33 @@
+<div class="col-6 offset-3">
+  <h3 class="text-center">Edit order detail</h3>
+  <div *ngIf="message">
+    <div class="alert alert-success">
+      <strong>Success!</strong> You have editted a order detail
+    </div>
+    <div class="form-group">
+      <input class="btn btn-primary btn-block" value="Back to order detail list" routerLink="/orderDetail-list">
+    </div>
+  </div>
+  <form
+    *ngIf="!message"
+    name="form"
+    [formGroup]="orderDetailForm"
+    (ngSubmit)="orderDetailForm.valid && onSubmit()">
+
+
+    <div class="form-group">
+      <label>Sale Price</label>
+      <input type="text" class="form-control" formControlName="salePrice">
+      <div class="alert-danger" *ngIf="orderDetailForm.get('salePrice').invalid && orderDetailForm.get('salePrice').touched"
+           style="color: red">
+        Sale price is required
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary btn-block">Save</button>
+    </div>
+    <div class="form-group">
+      <input class="btn btn-primary btn-block" value="Cancel" routerLink="/orderDetail-list">
+    </div>
+  </form>
+</div>

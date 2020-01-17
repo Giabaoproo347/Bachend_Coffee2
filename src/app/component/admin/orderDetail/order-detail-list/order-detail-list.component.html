@@ -1,0 +1,18 @@
+<h2>Order detail list</h2>
+<p><a routerLink="/orderDetail-create">Create new order detail</a></p>
+<table class="table table-hover border">
+  <thead>
+  <tr>
+    <th>Sale Price</th>
+    <th>Quantity</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let orderDetail of orderDetailList">
+    <td>{{ orderDetail.salePrice }}</td>
+    <td>{{ orderDetail.quantity }}</td>
+    <td><a [routerLink]="['/orderDetail-edit',orderDetail.id]">Edit</a></td>
+    <td><a [routerLink]="['/orderDetail-delete',orderDetail.id]">Delete</a></td>
+  </tr>
+</table>

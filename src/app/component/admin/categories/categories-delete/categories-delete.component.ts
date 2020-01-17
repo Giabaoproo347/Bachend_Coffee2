@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Categories} from '../../../model/categories.model';
-import {CategoriesService} from '../../../service/categories.service';
+import {Categories} from '../../../../model/categories.model';
+import {CategoriesService} from '../../../../service/categories.service';
 
 @Component({
   selector: 'app-categories-delete',
