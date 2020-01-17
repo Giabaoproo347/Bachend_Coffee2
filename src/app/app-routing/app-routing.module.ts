@@ -21,6 +21,10 @@ import {CategoriesListComponent} from '../component/admin/categories/categories-
 import {CategoriesEditComponent} from '../component/admin/categories/categories-edit/categories-edit.component';
 import {CategoriesDeleteComponent} from '../component/admin/categories/categories-delete/categories-delete.component';
 import {CategoriesCreateComponent} from '../component/admin/categories/categories-create/categories-create.component';
+import {PaymentCreateComponent} from '../component/admin/payment/payment-create/payment-create.component';
+import {PaymentEditComponent} from '../component/admin/payment/payment-edit/payment-edit.component';
+import {PaymentDetailComponent} from '../component/admin/payment/payment-detail/payment-detail.component';
+import {PaymentListComponent} from '../component/admin/payment/payment-list/payment-list.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -43,7 +47,12 @@ const routes: Routes = [
   {path: 'orderDetail-create', component: OrderDetailCreateComponent},
   {path: 'orderDetail-edit/:id', component: OrderDetailEditComponent},
   {path: 'orderDetail-delete/:id', component: OrderDetailDeleteComponent},
-  {path: 'orderDetail-detail/:id', component: OrderDetailDetailComponent}
+  {path: 'orderDetail-detail/:id', component: OrderDetailDetailComponent},
+  {path: 'payment-list', component: PaymentListComponent},
+  {path: 'payment-create', component: PaymentCreateComponent},
+  {path: 'payment-edit/:id', component: PaymentEditComponent},
+  {path: 'payment-delete/:id', component: PaymentDetailComponent},
+  {path: 'payment-detail/:id', component: PaymentDetailComponent},
 ];
 
 @NgModule({
