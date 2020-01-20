@@ -50,6 +50,8 @@ import {PromotionCreateComponent} from './component/admin/promotion/promotion-cr
 import {ProductPictureEditComponent} from './component/admin/productPicture/product-picture-edit/product-picture-edit.component';
 import {ProductPictureListComponent} from './component/admin/productPicture/product-picture-list/product-picture-list.component';
 import {ProductPictureDeleteComponent} from './component/admin/productPicture/product-picture-delete/product-picture-delete.component';
+import { FooterComponent } from './component/public/footer/footer.component';
+import {HeaderComponent} from './component/public/header/header.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +97,9 @@ import {ProductPictureDeleteComponent} from './component/admin/productPicture/pr
     PromotionDeleteComponent,
     PromotionDetailComponent,
     PromotionListComponent,
+    HeaderComponent,
+    FooterComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
