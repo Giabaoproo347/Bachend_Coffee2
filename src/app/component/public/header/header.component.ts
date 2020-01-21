@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Categories} from '../../../model/categories.model';
 import {Promotion} from '../../../model/promotion.model';
 import {TokenStorageService} from '../../../user/_services/token-storage.service';
@@ -15,7 +15,7 @@ import {ShoppingCart} from '../../../model/shopping-cart.model';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   private roles: string[];
   isLoggedIn = false;
@@ -61,6 +61,14 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.tokenStorageService.signOut();
     window.location.reload();
+    // this.itemCount = 0;
+    this.shoppingCartService.empty();
+  }
+
+  public ngOnDestroy(): void {
+    if (this.cartSubscription) {
+      this.cartSubscription.unsubscribe();
+    }
   }
 
 }
