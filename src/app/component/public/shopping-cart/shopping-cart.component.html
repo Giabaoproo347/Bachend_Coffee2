@@ -1,0 +1,23 @@
+<div class="row p-2">
+  <div class="align-content-center">
+    <h5>
+      Giỏ hàng
+      <mark>({{itemCount}} sản phẩm):</mark>
+      <span class="text-danger">{{(cart | async).grossTotal | currency:'VND':true}}</span>
+    </h5>
+  </div>
+</div>
+
+<div class="row p-2">
+  <div>
+    <a class="btn btn-success"
+       [attr.disabled]="itemCount === 0 ? true : null"
+       routerLink="/checkout">Giỏ hàng</a>
+  </div>
+  <button type="button"
+          class="btn btn-danger"
+          (click)="emptyCart()"
+          [attr.disabled]="itemCount === 0 ? true : null">
+    Xóa hết sản phẩm
+  </button>
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+  <h3 class="text-capitalize text-primary text-center p-1 mt-3" *ngIf="promotion">Danh mục combo:
+    <mark class="text-danger">{{promotion.name}}</mark>
+  </h3>
+  <h4 class="text-capitalize text-primary text-center p-3 mb-3" *ngIf="promotion">Giá combo:
+    <mark class="text-danger">{{promotion.price | currency: 'VND'}}</mark>
+  </h4>
+  <div class="row">
+    <div class="col-md-3 mb-5" *ngFor="let product of productListPromotion, index as i">
+      <div class="card" *ngIf="i<48">
+        <img class="card-img-top" routerLink="/product-detail/{{product.id}}"
+             [src]="product.image"
+             alt="Card image cap" style="height: 360px">
+        <div class="card-body">
+          <h4 class="card-title text-center text-danger">{{product.name}}</h4>
+          <!--          <p class="card-text text-center text-info">{{product.price | currency: 'VND': true}}</p>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

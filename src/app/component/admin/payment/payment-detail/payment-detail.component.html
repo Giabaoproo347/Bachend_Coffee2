@@ -1,0 +1,14 @@
+<h2>Payment detail</h2>
+<div class="col-6 offset-3" *ngIf="payment">
+  <table class="table">
+    <tr>
+      <td>Name:</td>
+      <td>{{ payment.name }}</td>
+    </tr>
+    <tr>
+      <td>Date:</td>
+      <td>{{ payment.date }}</td>
+    </tr>
+  </table>
+  <input class="btn btn-primary btn-block" value="Back to payment list" routerLink="/payment-list">
+</div>

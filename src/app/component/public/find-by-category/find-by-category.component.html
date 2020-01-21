@@ -1,0 +1,29 @@
+<div class="container">
+  <h3 class="text-capitalize text-primary text-center p-3 m-3" *ngIf="categories">Danh mục sản phẩm: <mark class="text-danger">{{categories.name}}</mark> </h3>
+  <div class="row">
+    <div class="col-md-3 mb-5" *ngFor="let product of productListByCategory, index as i">
+      <div class="card" *ngIf="i<48">
+        <img class="card-img-top" routerLink="/product-detail/{{product.id}}"
+             [src]="product.image"
+             alt="Card image cap" style="height: 360px">
+        <div class="card-body">
+          <h4 class="card-title text-center text-danger">{{product.name}}</h4>
+          <p class="card-text text-center text-info">{{product.price | currency: 'VND': true}}</p>
+          <p>
+            <button type="button"
+                    class="btn btn-outline-primary"
+                    (click)="addProductToCart(product, 1)">Thêm vào giỏ
+            </button>
+            <button type="button"
+                    class="btn btn-outline-danger ml-3" style="width: 70px"
+                    *ngIf="productInCart(product) | async"
+                    (click)="removeProductFromCart(product, 1)">Xóa
+            </button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
