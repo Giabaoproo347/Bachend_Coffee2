@@ -98,7 +98,7 @@
         <li class="nav-item">
           <!--            <a routerLink="checkout" class="nav-link ml-2"><i class="fa fa-shopping-cart fa-2x"></i></a>-->
           <i routerLink="/checkout" class="fa ml-4 mt-1" style="font-size:36px" ma>&#xf07a;</i>
-          <span class='badge badge-warning ' id='lblCartCount'> 5 </span>
+          <span class='badge badge-warning ' id='lblCartCount'> {{itemCount}} </span>
         </li>
       </ul>
       <ul class="navbar-nav" style="margin-left: 246px" *ngIf="!isLoggedIn">
