@@ -39,6 +39,7 @@ import {CheckoutComponent} from '../component/public/checkout/checkout.component
 import {ConfirmComponent} from '../component/public/confirm/confirm.component';
 import {StoreComponent} from '../component/public/store/store.component';
 import {ShoppingCartComponent} from '../component/public/shopping-cart/shopping-cart.component';
+import {HomepageComponent} from '../component/public/homepage/homepage.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -77,6 +78,7 @@ const routes: Routes = [
   {path: 'promotion-edit/:id', component: PromotionEditComponent},
   {path: 'promotion-delete/:id', component: PromotionDeleteComponent},
   {path: 'promotion-detail/:id', component: PromotionDetailComponent},
+  {path: 'home', component: HomepageComponent},
   {
     path: 'checkout',
     component: CheckoutComponent
