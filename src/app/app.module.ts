@@ -63,6 +63,7 @@ import {ProductService} from './service/product.service';
 import {OrderDetailService} from './service/order-detail.service';
 import {StorageService} from './service/storage.service';
 import {ShoppingCartService} from './service/shopping-cart.service';
+import { PageNotFoundComponent } from './component/public/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -118,6 +119,7 @@ import {ShoppingCartService} from './service/shopping-cart.service';
     FindByPromotionComponent,
     ShoppingCartComponent,
     StoreComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
