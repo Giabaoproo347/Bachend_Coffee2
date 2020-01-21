@@ -22,8 +22,6 @@ export class HeaderComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username: string;
-  isShow = false;
-  increaseCart = 0;
   categoryList: Categories[];
   promotionList: Promotion[];
   public products: Observable<Product[]>;
@@ -34,7 +32,6 @@ export class HeaderComponent implements OnInit {
   constructor(private tokenStorageService: TokenStorageService,
               private categoriesService: CategoriesService,
               private promotionService: PromotionService,
-              private productsService: ProductService,
               private shoppingCartService: ShoppingCartService) {
   }
 
@@ -64,16 +61,6 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.tokenStorageService.signOut();
     window.location.reload();
-  }
-
-  public addProductToCart(product: Product): void {
-    this.shoppingCartService.addItem(product, 1);
-    this.increaseCart += this.increaseCart;
-  }
-
-  public removeProductFromCart(product: Product): void {
-    this.shoppingCartService.addItem(product, -1);
-    this.increaseCart -= this.increaseCart;
   }
 
 }
