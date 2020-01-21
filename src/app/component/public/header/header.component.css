@@ -25,6 +25,7 @@
 .megamenu {
   padding: 20px 20px;
   width: 100%;
+  background-color: #fff2e5;
 }
 
 .megamenu > div > li > ul {
@@ -109,4 +110,8 @@
 
 .stick{
   margin-top: 7px;
+}
+.dropdown-header{
+  font-size: 25px;
+  color: deeppink;
 }
