@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         this.roles = this.tokenStorage.getUser().roles;
         this.reloadPage();
         setTimeout(() => {
-        this.router.navigate(['book-public']);
+        this.router.navigate(['home']);
         this.app.setIsShow(false);
         }, 500);
       },
