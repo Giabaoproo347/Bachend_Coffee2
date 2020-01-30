@@ -1,11 +1,11 @@
 <div class="container border">
   <div class="row">
     <div class="col-md-7 p-2">
-      <h6>Bạn đã có tài khoản? Bấm
+      <h6 *ngIf="!isLoggedIn">Bạn đã có tài khoản? Bấm
         <mark><a routerLink="/login">vào đây</a></mark>
         để đăng nhập
       </h6>
-      <h6>Nếu bạn chưa có tài khoản? Bấm
+      <h6 *ngIf="!isLoggedIn">Nếu bạn chưa có tài khoản? Bấm
         <mark><a routerLink="/register">vào đây</a></mark>
         để tạo tài khoản mới
       </h6>
@@ -99,11 +99,22 @@
       <br/>
       <span>Bạn có thể thanh toán qua các dịch vụ sau:</span>
       <div>
-        <a href="https://business.momo.vn/login" target="_blank"><img class="ml-4 mt-1" src="https://static.mservice.io/img/momo-upload-api-logo-momo-181015105508.png" style="height: 50px"></a>
-        <a href="https://www.vietcombank.com.vn/IBanking2015/55c3c0a782b739e063efa9d5985e2ab4/Account/Login" target="_blank"><img class="ml-4 mt-1" src="https://brasol.vn/public/uploads/1521190030-brasol.vn-logo-vietcombank-logo-vietcombank.jpg" style="height: 60px"></a>
-        <a href="https://zalopay.vn/" target="_blank"><img class="ml-4 mt-1" src="https://lh3.googleusercontent.com/F8cUV5oOLjCTMSvSRymK1154MwKalnvkepN4xGrfWBC_tcXvNTq_sEStiwCYV61lRdI" style="height: 50px"></a>
-        <a href="https://vietteltelecom.vn/dang-nhap" target="_blank"><img class="ml-4 mt-1" src="https://dl.memuplay.com/new_market/img/com.bplus.vtpay.icon.2019-02-03-11-35-24.png" style="height: 50px"></a>
-        <a href="https://vnqrpay.vn/MMSMCSITE/login.htm" target="_blank"><img class="ml-4 mt-1" src="https://lh3.googleusercontent.com/-cDPZJf4s94BC9uXVKx97Q902i2hBdXMTm0ygqnczEBSrVP-YF97zAChMrndcs3IlaQ" style="height: 50px"></a>
+        <a href="https://business.momo.vn/login" target="_blank"><img class="ml-4 mt-1"
+                                                                      src="https://static.mservice.io/img/momo-upload-api-logo-momo-181015105508.png"
+                                                                      style="height: 50px"></a>
+        <a href="https://www.vietcombank.com.vn/IBanking2015/55c3c0a782b739e063efa9d5985e2ab4/Account/Login"
+           target="_blank"><img class="ml-4 mt-1"
+                                src="https://brasol.vn/public/uploads/1521190030-brasol.vn-logo-vietcombank-logo-vietcombank.jpg"
+                                style="height: 60px"></a>
+        <a href="https://zalopay.vn/" target="_blank"><img class="ml-4 mt-1"
+                                                           src="https://lh3.googleusercontent.com/F8cUV5oOLjCTMSvSRymK1154MwKalnvkepN4xGrfWBC_tcXvNTq_sEStiwCYV61lRdI"
+                                                           style="height: 50px"></a>
+        <a href="https://vietteltelecom.vn/dang-nhap" target="_blank"><img class="ml-4 mt-1"
+                                                                           src="https://dl.memuplay.com/new_market/img/com.bplus.vtpay.icon.2019-02-03-11-35-24.png"
+                                                                           style="height: 50px"></a>
+        <a href="https://vnqrpay.vn/MMSMCSITE/login.htm" target="_blank"><img class="ml-4 mt-1"
+                                                                              src="https://lh3.googleusercontent.com/-cDPZJf4s94BC9uXVKx97Q902i2hBdXMTm0ygqnczEBSrVP-YF97zAChMrndcs3IlaQ"
+                                                                              style="height: 50px"></a>
       </div>
       <div>
         <h6 class="mt-2">Hoặc thanh toán qua QR code này</h6>

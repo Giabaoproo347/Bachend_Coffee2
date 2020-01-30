@@ -63,7 +63,6 @@ import {ProductService} from './service/product.service';
 import {OrderDetailService} from './service/order-detail.service';
 import {StorageService} from './service/storage.service';
 import {ShoppingCartService} from './service/shopping-cart.service';
-import { AboutUsComponent } from './component/public/about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -119,7 +118,6 @@ import { AboutUsComponent } from './component/public/about-us/about-us.component
     FindByPromotionComponent,
     ShoppingCartComponent,
     StoreComponent,
-    AboutUsComponent,
   ],
   imports: [
     BrowserModule,

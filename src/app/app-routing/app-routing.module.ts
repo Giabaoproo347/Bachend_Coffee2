@@ -40,6 +40,9 @@ import {ConfirmComponent} from '../component/public/confirm/confirm.component';
 import {StoreComponent} from '../component/public/store/store.component';
 import {ShoppingCartComponent} from '../component/public/shopping-cart/shopping-cart.component';
 import {HomepageComponent} from '../component/public/homepage/homepage.component';
+import {FindByCategoryComponent} from '../component/public/find-by-category/find-by-category.component';
+import {FindByPromotionComponent} from '../component/public/find-by-promotion/find-by-promotion.component';
+import {PageNotFoundComponent} from '../component/public/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -78,6 +81,8 @@ const routes: Routes = [
   {path: 'promotion-edit/:id', component: PromotionEditComponent},
   {path: 'promotion-delete/:id', component: PromotionDeleteComponent},
   {path: 'promotion-detail/:id', component: PromotionDetailComponent},
+  {path: 'product-category/:id', component: FindByCategoryComponent},
+  {path: 'product-promotion/:id', component: FindByPromotionComponent},
   {path: 'home', component: HomepageComponent},
   {
     path: 'checkout',
@@ -86,7 +91,7 @@ const routes: Routes = [
     path: 'confirmed',
     component: ConfirmComponent
   }, {
-    path: '**',
+    path: 'store',
     component: StoreComponent
   },
   {
@@ -96,7 +101,8 @@ const routes: Routes = [
   {
     path: 'cart',
     component: ShoppingCartComponent
-  }
+  },
+  {path: '**', component: PageNotFoundComponent}
 
 ];
 
