@@ -14,3 +14,9 @@ img{
   margin-top: 20px;
   margin-bottom: 20px;
 }
+.morecontent span {
+  display: none;
+}
+.morelink {
+  display: block;
+}
