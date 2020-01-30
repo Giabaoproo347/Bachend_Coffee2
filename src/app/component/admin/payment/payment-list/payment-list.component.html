@@ -4,6 +4,12 @@
   <thead>
   <tr>
     <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Address</th>
+    <th>Total</th>
+    <th>Description</th>
+    <th>Status</th>
     <th>Date</th>
     <th>Edit</th>
     <th>Delete</th>
@@ -11,6 +17,12 @@
   </thead>
   <tr *ngFor="let payment of paymentList">
     <td><a [routerLink]="['/payment-detail', payment.id]">{{ payment.name }}</a></td>
+    <td>{{ payment.email }}</td>
+    <td>{{ payment.phone }}</td>
+    <td>{{ payment.address }}</td>
+    <td>{{ payment.total }}</td>
+    <td>{{ payment.description }}</td>
+    <td>{{ payment.status }}</td>
     <td>{{ payment.date }}</td>
     <td><a [routerLink]="['/payment-edit',payment.id]">Edit</a></td>
     <td><a [routerLink]="['/payment-delete',payment.id]">Delete</a></td>

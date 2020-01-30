@@ -8,6 +8,7 @@ import {CartItem} from '../../../model/cart-item.model';
 import {ProductService} from '../../../service/product.service';
 import {OrderDetailService} from '../../../service/order-detail.service';
 import {FormGroup} from '@angular/forms';
+import {TokenStorageService} from '../../../user/_services/token-storage.service';
 
 interface ICartItemWithProduct extends CartItem {
   product: Product;
@@ -25,6 +26,7 @@ export class ConfirmComponent implements OnInit {
   public itemCount: number;
   public isSuccess = false;
   confirmForm: FormGroup;
+  isLoggedIn = false;
 
   private products: Product[];
   private cartSubscription: Subscription;
@@ -32,10 +34,13 @@ export class ConfirmComponent implements OnInit {
 
   public constructor(private shoppingCartService: ShoppingCartService,
                      private productsService: ProductService,
-                     private orderDetailService: OrderDetailService) {
+                     private orderDetailService: OrderDetailService,
+                     private tokenStorageService: TokenStorageService
+  ) {
   }
 
   public ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
     this.orderDetail = this.orderDetailService.getOrderDetailList();
     this.cart = this.shoppingCartService.get();
     this.cartSubscription = this.cart.subscribe((cart) => {
