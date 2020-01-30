@@ -25,6 +25,12 @@ export class PaymentEditComponent implements OnInit {
   ngOnInit() {
     this.paymentForm = this.fb.group({
       name: ['', [ Validators.required, Validators.minLength(1) ]],
+      address: ['', [ Validators.required, Validators.minLength(1) ]],
+      phone: ['', [ Validators.required, Validators.minLength(1) ]],
+      email: ['', [ Validators.required, Validators.minLength(1) ]],
+      description: ['', [ Validators.required, Validators.minLength(1) ]],
+      total: ['', [ Validators.required, Validators.minLength(1) ]],
+      status: ['', [ Validators.required, Validators.minLength(1) ]],
       date: ['', Validators.required],
     });
     const id = +this.route.snapshot.paramMap.get('id');
