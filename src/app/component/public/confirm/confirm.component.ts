@@ -25,6 +25,7 @@ export class ConfirmComponent implements OnInit {
   public cartItems: ICartItemWithProduct[];
   public itemCount: number;
   public isSuccess = false;
+  public totalPrice: number;
   confirmForm: FormGroup;
   isLoggedIn = false;
 
@@ -40,24 +41,28 @@ export class ConfirmComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
-    this.orderDetail = this.orderDetailService.getOrderDetailList();
-    this.cart = this.shoppingCartService.get();
-    this.cartSubscription = this.cart.subscribe((cart) => {
-      this.itemCount = cart.items.map((x) => x.quantity).reduce((p, n) => p + n, 0);
-      this.productsService.getProductList().subscribe((products) => {
-        this.products = products;
-        this.cartItems = cart.items
-          .map((item) => {
-            const product = this.products.find((p) => p.id === item.productId);
-            return {
-              ...item,
-              product,
-              totalCost: product.price * item.quantity
-            };
-          });
+    if (!this.tokenStorageService.getToken()) {
+      // this.isLoggedIn = !!this.tokenStorageService.getToken();
+      // this.orderDetail = this.orderDetailService.getOrderDetailList();
+      this.cart = this.shoppingCartService.get();
+      this.cartSubscription = this.cart.subscribe((cart) => {
+        this.itemCount = cart.items.map((x) => x.quantity).reduce((p, n) => p + n, 0);
+        this.productsService.getProductList().subscribe((products) => {
+          this.products = products;
+          this.cartItems = cart.items
+            .map((item) => {
+              const product = this.products.find((p) => p.id === item.productId);
+              return {
+                ...item,
+                product,
+                totalCost: product.price * item.quantity
+              };
+            });
+        });
       });
-    });
+    }
+
+
   }
 
   clickToPay() {
