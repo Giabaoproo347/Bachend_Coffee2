@@ -43,6 +43,8 @@ import {HomepageComponent} from '../component/public/homepage/homepage.component
 import {FindByCategoryComponent} from '../component/public/find-by-category/find-by-category.component';
 import {FindByPromotionComponent} from '../component/public/find-by-promotion/find-by-promotion.component';
 import {PageNotFoundComponent} from '../component/public/page-not-found/page-not-found.component';
+import {AboutUsComponent} from '../component/public/about-us/about-us.component';
+import {BlogComponent} from '../component/public/blog/blog.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -102,7 +104,9 @@ const routes: Routes = [
     path: 'cart',
     component: ShoppingCartComponent
   },
-  {path: '**', component: PageNotFoundComponent}
+  {path: 'aboutUs', component: AboutUsComponent},
+  {path: 'blog', component: BlogComponent},
+  {path: '**', component: PageNotFoundComponent},
 
 ];
 
