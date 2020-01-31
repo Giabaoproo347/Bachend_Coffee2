@@ -12,54 +12,79 @@
       <hr width="100%" size="5px" align="center" color="red"/>
       <div><h3 class="text-primary">THÔNG TIN THANH TOÁN</h3></div>
 
-      <div class="form-group">
-        <div class="form-row">
-          <div class="col">
-            <label class="text-info">Tên (*)</label>
-            <input type="text" class="form-control" placeholder="Tên của bạn" required name="">
-          </div>
-          <div class="col">
-            <label class="text-info">Họ</label>
-            <input type="text" class="form-control" placeholder="Họ của bạn" required name="">
-          </div>
-        </div>
-      </div>
+      <form name="form" [formGroup]="paymentForm" (ngSubmit)="paymentForm.valid && clickToPay()">
 
-      <div class="form-group">
-        <div class="form-row">
-          <div class="col">
-            <label class="text-info">Địa chỉ giao hàng (*)</label>
-            <input type="text" class="form-control" placeholder="Địa chỉ nhận hàng" required name="">
+        <div class="form-group">
+          <div class="form-row">
+            <div class="col">
+              <label class="text-info">Tên (*)</label>
+              <input type="text" class="form-control" placeholder="Tên" formControlName="name">
+              <div class="alert-danger" *ngIf="paymentForm.get('name').invalid && paymentForm.get('name').touched"
+                   style="color: red">
+                Name must be at least 1 characters
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <div class="form-row">
-          <div class="col">
-            <label class="text-info">Số điện thoại (*)</label>
-            <input type="text" class="form-control" placeholder="Số điện thoại" required name="">
-          </div>
-          <div class="col">
-            <label class="text-info">Email</label>
-            <input type="text" class="form-control" placeholder="Email" required name="">
+        <div class="form-group">
+          <div class="form-row">
+            <div class="col">
+              <label class="text-info">Địa chỉ giao hàng (*)</label>
+              <input type="text" class="form-control" placeholder="Địa chỉ nhận hàng" formControlName="address">
+              <div class="alert-danger" *ngIf="paymentForm.get('address').invalid && paymentForm.get('address').touched"
+                   style="color: red">
+                Address must be at least 1 characters
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <br/>
-      <hr width="100%" size="5px" align="center" color="red"/>
-      <div><h3 class="text-primary">THÔNG TIN BỔ SUNG</h3></div>
-      <div class="form-group">
-        <div class="form-row">
-          <div class="col">
-            <label class="text-info">Chi tiết thông tin</label>
-            <textarea class="form-control"
-                      placeholder="Ghi chú về địa chỉ giao hàng, ví dụ: thời gian hãy chỉ dẫn địa điểm giao hàng chi tiết hơn"
-                      required name="" style="height: 200px"></textarea>
+        <div class="form-group">
+          <div class="form-row">
+            <div class="col">
+              <label class="text-info">Số điện thoại (*)</label>
+              <input type="text" class="form-control" placeholder="Số điện thoại" formControlName="phone">
+              <div class="alert-danger" *ngIf="paymentForm.get('phone').invalid && paymentForm.get('phone').touched"
+                   style="color: red">
+                Phone must be at least 1 characters
+              </div>
+            </div>
+            <div class="col">
+              <label class="text-info">Email</label>
+              <input type="text" class="form-control" placeholder="Email" formControlName="email">
+              <div class="alert-danger" *ngIf="paymentForm.get('email').invalid && paymentForm.get('email').touched"
+                   style="color: red">
+                Email must be at least 1 characters
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col">
+                <label class="text-info">Số tiền thanh toán</label>
+                <input class="form-control" formControlName="total" [ngModel]="(cart| async).grossTotal" disabled>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <br/>
+        <hr width="100%" size="5px" align="center" color="red"/>
+        <div><h3 class="text-primary">THÔNG TIN BỔ SUNG</h3></div>
+        <div class="form-group">
+          <div class="form-row">
+            <div class="col">
+              <label class="text-info">Chi tiết thông tin</label>
+              <textarea class="form-control"
+                        placeholder="Ghi chú về địa chỉ giao hàng, ví dụ: thời gian hãy chỉ dẫn địa điểm giao hàng chi tiết hơn"
+                        formControlName="description" style="height: 200px"></textarea>
+            </div>
           </div>
         </div>
-      </div>
+        <button class="btn btn-primary btn-block">Đăng ký</button>
+      </form>
     </div>
 
     <div class="col-md-5 p-2" style="margin-top: 60px">
@@ -89,13 +114,14 @@
         </table>
       </div>
 
+
       <span class="text-secondary m-1 p-1 float-right">Đơn hàng của bạn sẽ được gửi đi trong 15 phút</span>
       <br/>
-      <button class="btn btn-success m-1 p-1 float-right" (click)="clickToPay()" style="width: 100px">Đặt hàng</button>
-      <div *ngIf="isSuccess" class="text-success float-left" style="width: 400px">Cảm ơn bạn đã thanh toán! Vui lòng đợi
-        cuộc gọi từ nhân viên giao hàng
-      </div>
-      <button class="btn btn-warning mb-2" routerLink="/home">Tiếp tục mua hàng</button>
+      <!--      <button class="btn btn-success m-1 p-1 float-right" (click)="clickToPay()" style="width: 100px">Đặt hàng</button>-->
+<!--      <div *ngIf="isSuccess" class="text-success float-left" style="width: 400px">Cảm ơn bạn đã thanh toán! Vui lòng đợi-->
+<!--        cuộc gọi từ nhân viên giao hàng-->
+<!--      </div>-->
+<!--      <button class="btn btn-warning mb-2" routerLink="/home">Tiếp tục mua hàng</button>-->
       <br/>
       <span>Bạn có thể thanh toán qua các dịch vụ sau:</span>
       <div>
