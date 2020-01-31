@@ -4,8 +4,9 @@ export class Payment {
   phone: string;
   address: string;
   email: string;
-  // total: number;
+  total: number;
   description: string;
-  // date: string;
+  date: string;
+  method: string;
   status: string;
 }

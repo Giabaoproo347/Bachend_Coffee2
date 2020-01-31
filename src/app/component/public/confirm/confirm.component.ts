@@ -1,12 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ShoppingCartService} from '../../../service/shopping-cart.service';
 import {Observable, Subscription} from 'rxjs';
-import {OrderDetail} from '../../../model/orderDetail.model';
 import {ShoppingCart} from '../../../model/shopping-cart.model';
 import {Product} from '../../../model/product.model';
 import {CartItem} from '../../../model/cart-item.model';
 import {ProductService} from '../../../service/product.service';
-import {OrderDetailService} from '../../../service/order-detail.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TokenStorageService} from '../../../user/_services/token-storage.service';
 import {PaymentService} from '../../../service/payment.service';
@@ -29,6 +27,7 @@ export class ConfirmComponent implements OnInit {
   paymentForm: FormGroup;
   isLoggedIn = false;
   payment: Payment;
+  method = ['Ship cod', 'Ví Momo', 'Vietcombank', 'Zalo Pay', 'Viettel Pay', 'VNQR pay'];
   currentDate = new Date();
 
   private products: Product[];
@@ -69,6 +68,7 @@ export class ConfirmComponent implements OnInit {
         email: [''],
         total: [''],
         description: [''],
+        method: ['Ship cod'],
         date: this.currentDate,
         status: ['Đang chờ xử lý']
       });
