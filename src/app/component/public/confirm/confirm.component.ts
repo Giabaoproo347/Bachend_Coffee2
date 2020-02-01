@@ -33,6 +33,7 @@ export class ConfirmComponent implements OnInit {
   method = ['Ship cod', 'Ví Momo', 'Vietcombank', 'Zalo Pay', 'Viettel Pay', 'VNQR pay'];
   currentDate = new Date();
   currentUser: User | any;
+  address: any[] = ['Vĩnh Phúc', 'Hà Nội', 'Bắc Ninh', 'Tuyên Quang', 'Bắc Ninh', 'Cao Bằng'];
 
   private products: Product[];
   private cartSubscription: Subscription;
@@ -64,7 +65,24 @@ export class ConfirmComponent implements OnInit {
           });
       });
     });
-    if (!this.tokenStorageService.getToken()) {
+    if (this.tokenStorageService.getToken()) {
+      this.isLoggedIn = true;
+      this.currentUser = this.tokenStorageService.getUser();
+      this.paymentForm = this.fb.group({
+        id: [''],
+        name: this.currentUser.username,
+        address: this.currentUser.address,
+        phone: this.currentUser.phone,
+        email: this.currentUser.email,
+        total: [''],
+        description: [''],
+        method: ['Ship cod'],
+        date: this.currentDate,
+        status: ['Đang chờ xử lý']
+      });
+
+
+    } else {
       this.paymentForm = this.fb.group({
         id: '',
         name: ['', [Validators.required, Validators.minLength(1)]],
@@ -77,23 +95,6 @@ export class ConfirmComponent implements OnInit {
         date: this.currentDate,
         status: ['Đang chờ xử lý']
       });
-    } else {
-      this.isLoggedIn = true;
-      this.currentUser = this.tokenStorageService.getUser();
-      this.paymentForm = this.fb.group({
-        id: [''],
-        name: ['', [Validators.required, Validators.minLength(1)]],
-        address: this.currentUser.address,
-        phone: this.currentUser.phone,
-        email: this.currentUser.email,
-        total: [''],
-        description: [''],
-        method: ['Ship cod'],
-        date: this.currentDate,
-        status: ['Đang chờ xử lý']
-      });
-
-
     }
   }
 
