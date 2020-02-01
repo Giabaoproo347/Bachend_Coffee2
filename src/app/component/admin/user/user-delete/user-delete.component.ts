@@ -3,6 +3,7 @@ import {Categories} from '../../../../model/categories.model';
 import {CategoriesService} from '../../../../service/categories.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../../../model/user.model';
+import {UserService} from '../../../../user/_services/user.service';
 
 @Component({
   selector: 'app-user-delete',
@@ -14,7 +15,7 @@ export class UserDeleteComponent implements OnInit {
   user: User;
 
   constructor(
-    private userService: CategoriesService,
+    private userService: UserService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -23,19 +24,19 @@ export class UserDeleteComponent implements OnInit {
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);
-    this.categoriesService.getCategories(id).subscribe(next => {
-        this.categories = next;
+    this.userService.getUserById(id).subscribe(next => {
+        this.user = next;
       }, error => {
-        this.categories = null;
+        this.user = null;
         console.log(error);
       }
     );
   }
 
-  deleteCategories(id) {
+  deleteUser(id) {
     console.log(id);
-    this.categoriesService.deleteCategories(id).subscribe(next => {
-      this.router.navigate(['categories-list']);
+    this.userService.deleteUser(id).subscribe(next => {
+      this.router.navigate(['user-list']);
     });
   }
 
