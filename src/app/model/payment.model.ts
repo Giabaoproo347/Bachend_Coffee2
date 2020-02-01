@@ -7,5 +7,6 @@ export class Payment {
   total: number;
   description: string;
   date: string;
+  method: string;
   status: string;
 }
