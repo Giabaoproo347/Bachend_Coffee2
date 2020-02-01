@@ -72,7 +72,7 @@ export class ConfirmComponent implements OnInit {
         id: [''],
         name: this.currentUser.username,
         address: ['Hà Nội'],
-        phone: ['0964907976'],
+        phone: ['0964908688'],
         email: this.currentUser.email,
         total: [''],
         description: [''],
