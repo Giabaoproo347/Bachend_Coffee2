@@ -50,6 +50,7 @@ import {UserCreateComponent} from '../component/admin/user/user-create/user-crea
 import {UserEditComponent} from '../component/admin/user/user-edit/user-edit.component';
 import {UserDeleteComponent} from '../component/admin/user/user-delete/user-delete.component';
 import {UserDetailComponent} from '../component/admin/user/user-detail/user-detail.component';
+import {DiscountComponent} from '../component/public/discount/discount.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -116,6 +117,7 @@ const routes: Routes = [
   },
   {path: 'aboutUs', component: AboutUsComponent},
   {path: 'blog', component: BlogComponent},
+  {path: 'discount', component: DiscountComponent},
   {path: '**', component: PageNotFoundComponent},
 
 ];
