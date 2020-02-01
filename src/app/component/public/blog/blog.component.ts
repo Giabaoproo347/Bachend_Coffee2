@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as $ from 'jquery';
 
 @Component({
@@ -8,38 +8,41 @@ import * as $ from 'jquery';
 })
 export class BlogComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+    // tslint:disable-next-line:only-arrow-functions
     $(document).ready(function() {
       // Configure/customize these variables.
-      var showChar = 147;  // How many characters are shown by default
-      var ellipsestext = "";
-      var moretext = "Read More";
-      var lesstext = "Read Less";
+      const showChar = 147;  // How many characters are shown by default
+      const ellipsestext = '';
+      const moretext = 'Read More';
+      const lesstext = 'Read Less';
 
 
       $('.more').each(function() {
-        var content = $(this).html();
+        const content = $(this).html();
 
-        if(content.length > showChar) {
+        if (content.length > showChar) {
 
-          var c = content.substr(0, showChar);
-          var h = content.substr(showChar, content.length - showChar);
+          const c = content.substr(0, showChar);
+          const h = content.substr(showChar, content.length - showChar);
 
-          var html = c + '<span class="moreellipses">' + ellipsestext  + '</span><span class="morecontent"><span>' + h + '</span><a href="" class="morelink">' + moretext + '</a></span>';
+          // tslint:disable-next-line:max-line-length
+          const html = c + '<span class="moreellipses">' + ellipsestext + '</span><span class="morecontent"><span>' + h + '</span><a href="" class="morelink">' + moretext + '</a></span>';
 
           $(this).html(html);
         }
 
       });
 
-      $(".morelink").click(function(){
-        if($(this).hasClass("less")) {
-          $(this).removeClass("less");
+      $('.morelink').click(function() {
+        if ($(this).hasClass('less')) {
+          $(this).removeClass('less');
           $(this).html(moretext);
         } else {
-          $(this).addClass("less");
+          $(this).addClass('less');
           $(this).html(lesstext);
         }
         $(this).parent().prev().toggle();

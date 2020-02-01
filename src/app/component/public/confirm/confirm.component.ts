@@ -12,6 +12,7 @@ import {Payment} from '../../../model/payment.model';
 import {AppComponent} from '../../../app.component';
 import {User} from '../../../model/user.model';
 import {UserService} from '../../../user/_services/user.service';
+import {ActivatedRoute} from '@angular/router';
 
 interface ICartItemWithProduct extends CartItem {
   product: Product;
@@ -43,7 +44,7 @@ export class ConfirmComponent implements OnInit {
                      private tokenStorageService: TokenStorageService,
                      private paymentService: PaymentService,
                      private fb: FormBuilder,
-                     private app: AppComponent,
+                     private route: ActivatedRoute,
                      private userService: UserService
   ) {
   }
@@ -65,6 +66,17 @@ export class ConfirmComponent implements OnInit {
           });
       });
     });
+    const id = +this.route.snapshot.paramMap.get('id');
+    console.log(id);
+    this.paymentService.getPayment(id).subscribe(
+      next => {
+        this.payment = next ;
+      },
+      error => {
+        console.log(error);
+        this.payment = null;
+      }
+    );
     if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
       this.currentUser = this.tokenStorageService.getUser();

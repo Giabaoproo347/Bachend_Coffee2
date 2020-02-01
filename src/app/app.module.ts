@@ -72,6 +72,7 @@ import { UserDeleteComponent } from './component/admin/user/user-delete/user-del
 import { UserDetailComponent } from './component/admin/user/user-detail/user-detail.component';
 import { UserListComponent } from './component/admin/user/user-list/user-list.component';
 import { DiscountComponent } from './component/public/discount/discount.component';
+import { BillPaymentComponent } from './component/public/bill-payment/bill-payment.component';
 
 @NgModule({
   declarations: [
@@ -135,7 +136,8 @@ import { DiscountComponent } from './component/public/discount/discount.componen
     UserDeleteComponent,
     UserDetailComponent,
     UserListComponent,
-    DiscountComponent
+    DiscountComponent,
+    BillPaymentComponent
   ],
   imports: [
     BrowserModule,
