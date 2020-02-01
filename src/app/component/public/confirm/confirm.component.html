@@ -96,19 +96,45 @@
               </div>
             </div>
           </div>
-          <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal">Đặt hàng</button>
+          <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal1">Đặt hàng</button>
           <input class="btn btn-primary btn-block" value="Quay lại" routerLink="/home">
         </form>
 
-        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+             aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel1">Little Bean </h5>
+                <h5 class="modal-title" id="exampleModalLabel1">Đặt hàng thành công </h5>
               </div>
               <div class="modal-body">
                 Đặt hàng thành công
+                <div class="modal-body">
+                  <label>Mã đơn hàng: </label>
+                  <h5>{{' ' + payment.id}}</h5>
+                </div>
+                <div class="modal-body">
+                  <label>Điện thoại: </label>
+                  <h5>{{' ' + payment.phone}}</h5>
+                </div>
+                <div class="modal-body">
+                  <label>Địa chỉ: </label>
+                  <h5>{{' ' + payment.address}}</h5>
+                </div>
+                <div class="modal-body">
+                  <label>Email: </label>
+                  <h5>{{' ' + payment.email}}</h5>
+                </div>
+                <div class="modal-body">
+                  <label>Thanh toán: </label>
+                  <h5>{{' ' + payment.total | currency: 'VND'}}</h5>
+                </div>
+                <div class="modal-body">
+                  <label> Phương thức thanh toán: </label>
+                  <h5>{{' ' + payment.method}}</h5>
+                </div>
               </div>
+
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" routerLink="/home">Đóng</button>
               </div>
@@ -240,19 +266,45 @@
               </div>
             </div>
           </div>
-          <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal">Đặt hàng</button>
+          <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModalLogin">Đặt hàng</button>
           <input class="btn btn-primary btn-block" value="Quay lại" routerLink="/home">
         </form>
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogin"
+             aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Little Bean </h5>
+                <h5 class="modal-title" id="exampleModalLabelLogin">Đặt hàng thành công </h5>
               </div>
               <div class="modal-body">
                 Đặt hàng thành công
+                <div class="modal-body">
+                  <label>Mã đơn hàng: </label>
+                  <h5>{{ ' ' + payment.id}}</h5>
+                </div>
+                <div class="modal-body">
+                  <label>Điện thoại: </label>
+                  <h5>{{' ' + payment.phone}}</h5>
+                </div>
+                <div class="modal-body">
+                  <label>Địa chỉ: </label>
+                  <h5>{{' ' + payment.address}}</h5>
+                </div>
+                <div class="modal-body">
+                  <label>Email: </label>
+                  <h5>{{' ' + payment.email}}</h5>
+                </div>
+                <div class="modal-body">
+                  <label>Thanh toán: </label>
+                  <h5>{{' ' + payment.total | currency: 'VND'}}</h5>
+                </div>
+                <div class="modal-body">
+                  <label> Phương thức thanh toán: </label>
+                  <h5>{{' ' + payment.method}}</h5>
+                </div>
               </div>
+
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" routerLink="/home">Đóng</button>
               </div>
@@ -260,38 +312,39 @@
           </div>
         </div>
 
-
       </div>
 
-      <div class="col-md-5" style="margin-top: 60px; margin-bottom: 100px">
-        <div class="border border-danger ">
-          <div><h3 CLASS="text-success text-center m-2">ĐƠN HÀNG CỦA BẠN</h3></div>
-          <table class="table border-bottom">
-            <tr>
-              <td class="text-primary font-weight-bold text-center">Sản phẩm</td>
-              <td class="text-primary font-weight-bold text-center">Giá</td>
-              <td class="text-primary font-weight-bold text-center">Số lượng</td>
-              <td class="text-primary font-weight-bold text-center">Tổng cộng</td>
-            </tr>
 
-            <tr *ngFor="let item of cartItems">
-              <td class="text-primary ">{{item.product.name}}</td>
-              <td class="text-center">{{item.product.price | currency: 'VND'}}</td>
-              <td class="text-center">{{item.quantity}}</td>
-              <td class="text-center">{{item.totalCost | currency: 'VND'}}</td>
-            </tr>
+    </div>
 
-            <tr class="col-md-12">
-              <td class="text-danger font-weight-bold">Tổng hóa đơn</td>
-              <td class="text-danger font-weight-bold"></td>
-              <td class="text-danger font-weight-bold"></td>
-              <td class="text-success font-weight-bold">{{(cart | async).grossTotal | currency:'VND':true}}</td>
-            </tr>
-          </table>
-        </div>
+    <div class="col-md-5" style="margin-top: 60px; margin-bottom: 100px">
+      <div class="border border-danger ">
+        <div><h3 CLASS="text-success text-center m-2">ĐƠN HÀNG CỦA BẠN</h3></div>
+        <table class="table border-bottom">
+          <tr>
+            <td class="text-primary font-weight-bold text-center">Sản phẩm</td>
+            <td class="text-primary font-weight-bold text-center">Giá</td>
+            <td class="text-primary font-weight-bold text-center">Số lượng</td>
+            <td class="text-primary font-weight-bold text-center">Tổng cộng</td>
+          </tr>
 
-        <span class="text-secondary m-1 p-1 float-right">Đơn hàng của bạn sẽ được gửi đi trong 15 phút</span>
+          <tr *ngFor="let item of cartItems">
+            <td class="text-primary ">{{item.product.name}}</td>
+            <td class="text-center">{{item.product.price | currency: 'VND'}}</td>
+            <td class="text-center">{{item.quantity}}</td>
+            <td class="text-center">{{item.totalCost | currency: 'VND'}}</td>
+          </tr>
+
+          <tr class="col-md-12">
+            <td class="text-danger font-weight-bold">Tổng hóa đơn</td>
+            <td class="text-danger font-weight-bold"></td>
+            <td class="text-danger font-weight-bold"></td>
+            <td class="text-success font-weight-bold">{{(cart | async).grossTotal | currency:'VND':true}}</td>
+          </tr>
+        </table>
       </div>
+
+      <span class="text-secondary m-1 p-1 float-right">Đơn hàng của bạn sẽ được gửi đi trong 15 phút</span>
     </div>
   </div>
 </div>

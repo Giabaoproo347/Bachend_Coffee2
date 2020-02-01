@@ -33,7 +33,8 @@ export class ConfirmComponent implements OnInit {
   payment: Payment;
   method = ['Ship cod', 'Ví Momo', 'Vietcombank', 'Zalo Pay', 'Viettel Pay', 'VNQR pay'];
   currentDate = new Date();
-  currentUser: User | any;
+  currentUser = this.tokenStorageService.getUser();
+
 
   private products: Product[];
   private cartSubscription: Subscription;
@@ -70,7 +71,10 @@ export class ConfirmComponent implements OnInit {
     console.log(id);
     this.paymentService.getPayment(id).subscribe(
       next => {
-        this.payment = next ;
+        this.payment = next;
+        console.log(this.payment);
+        // this.paymentForm.patchValue(this.payment);
+        // console.log(this.paymentForm);
       },
       error => {
         console.log(error);
@@ -79,9 +83,8 @@ export class ConfirmComponent implements OnInit {
     );
     if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
-      this.currentUser = this.tokenStorageService.getUser();
       this.paymentForm = this.fb.group({
-        id: [''],
+        id: this.currentUser.id,
         name: this.currentUser.username,
         address: ['Hà Nội'],
         phone: ['0964908688'],
