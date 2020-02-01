@@ -5,6 +5,8 @@ import {CategoriesService} from '../../../../service/categories.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../../../model/user.model';
 import {UserService} from '../../../../user/_services/user.service';
+import {Order} from '../../../../model/order.model';
+import {OrderService} from '../../../../service/order.service';
 
 @Component({
   selector: 'app-user-edit',
@@ -15,29 +17,24 @@ export class UserEditComponent implements OnInit {
 
   user: User;
   userForm: FormGroup;
-  file: File;
   message = false;
-
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private router: Router
-  ) {
-  }
+  ) { }
 
   ngOnInit() {
     this.userForm = this.fb.group({
-      id: '',
-      username: ['', [Validators.required, Validators.minLength(1)]],
-      email: ['', [Validators.required, Validators.minLength(1)]],
-      phone: ['', [Validators.required, Validators.minLength(1)]],
-      address: ['', [Validators.required, Validators.minLength(1)]],
+      username: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      address: ['', [Validators.required]]
     });
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);
-    this.userService.getUserById(id).subscribe(
-      next => {
+    this.userService.getUserById(id).subscribe(next => {
         this.user = next;
         console.log(this.user);
         this.userForm.patchValue(this.user);
@@ -46,8 +43,7 @@ export class UserEditComponent implements OnInit {
       error => {
         console.log(error);
         this.user = null;
-      }
-    );
+      });
   }
 
   onSubmit() {
@@ -57,14 +53,12 @@ export class UserEditComponent implements OnInit {
         ...this.user,
         ...value
       };
-      console.log(data);
       this.userService.editUser(data).subscribe(next => {
-          console.log(next);
           this.message = true;
           this.ngOnInit();
         },
-        error => console.log(error)
-      );
+        error => console.log(error));
     }
   }
+
 }

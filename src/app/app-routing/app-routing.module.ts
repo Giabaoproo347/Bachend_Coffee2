@@ -96,6 +96,8 @@ const routes: Routes = [
   {path: 'user-edit/:id', component: UserEditComponent},
   {path: 'user-delete/:id', component: UserDeleteComponent},
   {path: 'user-detail/:id', component: UserDetailComponent},
+  {path: 'contact', component: AboutUsComponent},
+  {path: 'discount', component: DiscountComponent},
   {path: 'home', component: HomepageComponent},
   {
     path: 'checkout',
