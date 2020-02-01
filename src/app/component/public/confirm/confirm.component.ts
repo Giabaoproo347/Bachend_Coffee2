@@ -11,6 +11,7 @@ import {PaymentService} from '../../../service/payment.service';
 import {Payment} from '../../../model/payment.model';
 import {AppComponent} from '../../../app.component';
 import {User} from '../../../model/user.model';
+import {UserService} from '../../../user/_services/user.service';
 
 interface ICartItemWithProduct extends CartItem {
   product: Product;
@@ -27,13 +28,11 @@ export class ConfirmComponent implements OnInit {
   public itemCount: number;
   public isSuccess = false;
   paymentForm: FormGroup;
-  userForm: FormGroup;
   isLoggedIn = false;
   payment: Payment;
   method = ['Ship cod', 'Ví Momo', 'Vietcombank', 'Zalo Pay', 'Viettel Pay', 'VNQR pay'];
   currentDate = new Date();
   currentUser: User | any;
-  address: any[] = ['Vĩnh Phúc', 'Hà Nội', 'Bắc Ninh', 'Tuyên Quang', 'Bắc Ninh', 'Cao Bằng'];
 
   private products: Product[];
   private cartSubscription: Subscription;
@@ -44,7 +43,8 @@ export class ConfirmComponent implements OnInit {
                      private tokenStorageService: TokenStorageService,
                      private paymentService: PaymentService,
                      private fb: FormBuilder,
-                     private app: AppComponent
+                     private app: AppComponent,
+                     private userService: UserService
   ) {
   }
 
@@ -71,8 +71,8 @@ export class ConfirmComponent implements OnInit {
       this.paymentForm = this.fb.group({
         id: [''],
         name: this.currentUser.username,
-        address: this.currentUser.address,
-        phone: this.currentUser.phone,
+        address: ['Hà Nội'],
+        phone: ['0964907976'],
         email: this.currentUser.email,
         total: [''],
         description: [''],
