@@ -45,6 +45,11 @@ import {FindByPromotionComponent} from '../component/public/find-by-promotion/fi
 import {PageNotFoundComponent} from '../component/public/page-not-found/page-not-found.component';
 import {AboutUsComponent} from '../component/public/about-us/about-us.component';
 import {BlogComponent} from '../component/public/blog/blog.component';
+import {UserListComponent} from '../component/admin/user/user-list/user-list.component';
+import {UserCreateComponent} from '../component/admin/user/user-create/user-create.component';
+import {UserEditComponent} from '../component/admin/user/user-edit/user-edit.component';
+import {UserDeleteComponent} from '../component/admin/user/user-delete/user-delete.component';
+import {UserDetailComponent} from '../component/admin/user/user-detail/user-detail.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -85,6 +90,11 @@ const routes: Routes = [
   {path: 'promotion-detail/:id', component: PromotionDetailComponent},
   {path: 'product-category/:id', component: FindByCategoryComponent},
   {path: 'product-promotion/:id', component: FindByPromotionComponent},
+  {path: 'user-list', component: UserListComponent},
+  {path: 'user-create', component: UserCreateComponent},
+  {path: 'user-edit/:id', component: UserEditComponent},
+  {path: 'user-delete/:id', component: UserDeleteComponent},
+  {path: 'user-detail/:id', component: UserDetailComponent},
   {path: 'home', component: HomepageComponent},
   {
     path: 'checkout',

@@ -1,0 +1,25 @@
+<h2>User detail</h2>
+<div class="col-6 offset-3" *ngIf="user">
+
+  <table class="table">
+    <tr>
+      <td>Name:</td>
+      <td>{{user.username}}</td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td>{{user.email}}</td>
+    </tr>
+
+    <tr>
+      <td>Phone:</td>
+      <td>{{user.phone}}</td>
+    </tr>
+
+    <tr>
+      <td>Address:</td>
+      <td>{{user.address}}</td>
+    </tr>
+  </table>
+  <input class="btn btn-primary btn-block" value="Back to user list" routerLink="/user-list">
+</div>
