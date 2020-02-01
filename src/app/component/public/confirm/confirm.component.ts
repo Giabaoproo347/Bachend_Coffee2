@@ -84,7 +84,8 @@ export class ConfirmComponent implements OnInit {
     if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
       this.paymentForm = this.fb.group({
-        id: this.currentUser.id,
+        id: [''] ,
+        code: Math.floor(Math.random() * 1000000) + 1000 ,
         name: this.currentUser.username,
         address: ['Hà Nội'],
         phone: ['0964908688'],
@@ -99,7 +100,8 @@ export class ConfirmComponent implements OnInit {
 
     } else {
       this.paymentForm = this.fb.group({
-        id: '',
+        id: [''] ,
+        code: Math.floor(Math.random() * 1000000) + 1000 ,
         name: ['', [Validators.required, Validators.minLength(1)]],
         address: ['', [Validators.required, Validators.minLength(1)]],
         phone: ['', [Validators.required, Validators.minLength(1)]],
