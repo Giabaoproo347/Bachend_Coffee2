@@ -9,6 +9,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TokenStorageService} from '../../../user/_services/token-storage.service';
 import {PaymentService} from '../../../service/payment.service';
 import {Payment} from '../../../model/payment.model';
+import {AppComponent} from '../../../app.component';
+import {User} from '../../../model/user.model';
 
 interface ICartItemWithProduct extends CartItem {
   product: Product;
@@ -25,10 +27,13 @@ export class ConfirmComponent implements OnInit {
   public itemCount: number;
   public isSuccess = false;
   paymentForm: FormGroup;
+  userForm: FormGroup;
   isLoggedIn = false;
   payment: Payment;
   method = ['Ship cod', 'Ví Momo', 'Vietcombank', 'Zalo Pay', 'Viettel Pay', 'VNQR pay'];
   currentDate = new Date();
+  currentUser: User | any;
+  address: any[] = ['Vĩnh Phúc', 'Hà Nội', 'Bắc Ninh', 'Tuyên Quang', 'Bắc Ninh', 'Cao Bằng'];
 
   private products: Product[];
   private cartSubscription: Subscription;
@@ -38,28 +43,46 @@ export class ConfirmComponent implements OnInit {
                      private productsService: ProductService,
                      private tokenStorageService: TokenStorageService,
                      private paymentService: PaymentService,
-                     private fb: FormBuilder
+                     private fb: FormBuilder,
+                     private app: AppComponent
   ) {
   }
 
   public ngOnInit(): void {
-    if (!this.tokenStorageService.getToken()) {
-      this.cart = this.shoppingCartService.get();
-      this.cartSubscription = this.cart.subscribe((cart) => {
-        this.itemCount = cart.items.map((x) => x.quantity).reduce((p, n) => p + n, 0);
-        this.productsService.getProductList().subscribe((products) => {
-          this.products = products;
-          this.cartItems = cart.items
-            .map((item) => {
-              const product = this.products.find((p) => p.id === item.productId);
-              return {
-                ...item,
-                product,
-                totalCost: product.price * item.quantity
-              };
-            });
-        });
+    this.cart = this.shoppingCartService.get();
+    this.cartSubscription = this.cart.subscribe((cart) => {
+      this.itemCount = cart.items.map((x) => x.quantity).reduce((p, n) => p + n, 0);
+      this.productsService.getProductList().subscribe((products) => {
+        this.products = products;
+        this.cartItems = cart.items
+          .map((item) => {
+            const product = this.products.find((p) => p.id === item.productId);
+            return {
+              ...item,
+              product,
+              totalCost: product.price * item.quantity
+            };
+          });
       });
+    });
+    if (this.tokenStorageService.getToken()) {
+      this.isLoggedIn = true;
+      this.currentUser = this.tokenStorageService.getUser();
+      this.paymentForm = this.fb.group({
+        id: [''],
+        name: this.currentUser.username,
+        address: this.currentUser.address,
+        phone: this.currentUser.phone,
+        email: this.currentUser.email,
+        total: [''],
+        description: [''],
+        method: ['Ship cod'],
+        date: this.currentDate,
+        status: ['Đang chờ xử lý']
+      });
+
+
+    } else {
       this.paymentForm = this.fb.group({
         id: '',
         name: ['', [Validators.required, Validators.minLength(1)]],

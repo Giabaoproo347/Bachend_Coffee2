@@ -1,3 +1,5 @@
+import {User} from './user.model';
+
 export class Payment {
   id: number;
   name: string;
@@ -9,4 +11,5 @@ export class Payment {
   date: string;
   method: string;
   status: string;
+  user: User;
 }

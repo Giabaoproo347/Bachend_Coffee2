@@ -66,6 +66,12 @@ import {ShoppingCartService} from './service/shopping-cart.service';
 import {AboutUsComponent} from './component/public/about-us/about-us.component';
 import {BlogComponent} from './component/public/blog/blog.component';
 import {PageNotFoundComponent} from './component/public/page-not-found/page-not-found.component';
+import { UserCreateComponent } from './component/admin/user/user-create/user-create.component';
+import { UserEditComponent } from './component/admin/user/user-edit/user-edit.component';
+import { UserDeleteComponent } from './component/admin/user/user-delete/user-delete.component';
+import { UserDetailComponent } from './component/admin/user/user-detail/user-detail.component';
+import { UserListComponent } from './component/admin/user/user-list/user-list.component';
+import { DiscountComponent } from './component/public/discount/discount.component';
 
 @NgModule({
   declarations: [
@@ -123,7 +129,13 @@ import {PageNotFoundComponent} from './component/public/page-not-found/page-not-
     StoreComponent,
     AboutUsComponent,
     BlogComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    UserCreateComponent,
+    UserEditComponent,
+    UserDeleteComponent,
+    UserDetailComponent,
+    UserListComponent,
+    DiscountComponent
   ],
   imports: [
     BrowserModule,

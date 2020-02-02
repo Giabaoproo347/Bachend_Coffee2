@@ -1,131 +1,263 @@
-<div class="container border">
-  <div class="row">
-    <div class="col-md-7 p-2">
-      <h6 *ngIf="!isLoggedIn">Bạn đã có tài khoản? Bấm
-        <mark><a routerLink="/login">vào đây</a></mark>
-        để đăng nhập
-      </h6>
-      <h6 *ngIf="!isLoggedIn">Nếu bạn chưa có tài khoản? Bấm
-        <mark><a routerLink="/register">vào đây</a></mark>
-        để tạo tài khoản mới
-      </h6>
-      <hr width="100%" size="5px" align="center" color="red"/>
-      <div><h3 class="text-primary">THÔNG TIN THANH TOÁN</h3></div>
-
-      <form name="form" [formGroup]="paymentForm" (ngSubmit)="paymentForm.valid && clickToPay()">
-
-        <div class="form-group">
-          <div class="form-row">
-            <div class="col">
-              <label class="text-info">Tên (*)</label>
-              <input type="text" class="form-control" placeholder="Tên" formControlName="name">
-              <div class="alert-danger" *ngIf="paymentForm.get('name').invalid && paymentForm.get('name').touched"
-                   style="color: red">
-                Name must be at least 1 characters
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="form-row">
-            <div class="col">
-              <label class="text-info">Địa chỉ giao hàng (*)</label>
-              <input type="text" class="form-control" placeholder="Địa chỉ nhận hàng" formControlName="address">
-              <div class="alert-danger" *ngIf="paymentForm.get('address').invalid && paymentForm.get('address').touched"
-                   style="color: red">
-                Address must be at least 1 characters
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="form-row">
-            <div class="col">
-              <label class="text-info">Số điện thoại (*)</label>
-              <input type="text" class="form-control" placeholder="Số điện thoại" formControlName="phone">
-              <div class="alert-danger" *ngIf="paymentForm.get('phone').invalid && paymentForm.get('phone').touched"
-                   style="color: red">
-                Phone must be at least 1 characters
-              </div>
-            </div>
-            <div class="col">
-              <label class="text-info">Email</label>
-              <input type="text" class="form-control" placeholder="Email" formControlName="email">
-              <div class="alert-danger" *ngIf="paymentForm.get('email').invalid && paymentForm.get('email').touched"
-                   style="color: red">
-                Email must be at least 1 characters
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="form-row">
-              <div class="col">
-                <label class="text-info">Số tiền thanh toán</label>
-                <input class="form-control" formControlName="total" [ngModel]="(cart| async).grossTotal" disabled>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="form-row">
-              <div class="col">
-                <label class="text-info">Chọn phương thức thanh toán</label>
-                <select formControlName="method">
-                  <option *ngFor="let methods of method">{{methods}}</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <br/>
+<div *ngIf="!isLoggedIn">
+  <div class="container border">
+    <div class="row">
+      <div class="col-md-7 p-2">
+        <h6>Bạn đã có tài khoản? Bấm
+          <mark><a routerLink="/login">vào đây</a></mark>
+          để đăng nhập
+        </h6>
+        <h6>Nếu bạn chưa có tài khoản? Bấm
+          <mark><a routerLink="/register">vào đây</a></mark>
+          để tạo tài khoản mới
+        </h6>
         <hr width="100%" size="5px" align="center" color="red"/>
-        <div><h3 class="text-primary">THÔNG TIN BỔ SUNG</h3></div>
-        <div class="form-group">
-          <div class="form-row">
-            <div class="col">
-              <label class="text-info">Chi tiết thông tin</label>
-              <textarea class="form-control"
-                        placeholder="Ghi chú về địa chỉ giao hàng, ví dụ: thời gian hãy chỉ dẫn địa điểm giao hàng chi tiết hơn"
-                        formControlName="description" style="height: 200px"></textarea>
+        <div><h3 class="text-primary">THÔNG TIN THANH TOÁN</h3></div>
+
+        <form name="form" [formGroup]="paymentForm" (ngSubmit)="paymentForm.valid && clickToPay()">
+
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col">
+                <label class="text-info">Tên (*)</label>
+                <input type="text" class="form-control" placeholder="Tên" formControlName="name">
+                <div class="alert-danger" *ngIf="paymentForm.get('name').invalid && paymentForm.get('name').touched"
+                     style="color: red">
+                  Name must be at least 1 characters
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <button class="btn btn-primary btn-block">Đăng ký</button>
-      </form>
-    </div>
 
-    <div class="col-md-5 p-2" style="margin-top: 60px">
-      <div class="border border-danger ">
-        <div><h3 CLASS="text-success text-center m-2">ĐƠN HÀNG CỦA BẠN</h3></div>
-        <table class="table border-bottom">
-          <tr>
-            <td class="text-primary font-weight-bold text-center">Sản phẩm</td>
-            <td class="text-primary font-weight-bold text-center">Giá</td>
-            <td class="text-primary font-weight-bold text-center">Số lượng</td>
-            <td class="text-primary font-weight-bold text-center">Tổng cộng</td>
-          </tr>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col">
+                <label class="text-info">Địa chỉ giao hàng (*)</label>
+                <input type="text" class="form-control" placeholder="Địa chỉ nhận hàng" formControlName="address">
+                <div class="alert-danger"
+                     *ngIf="paymentForm.get('address').invalid && paymentForm.get('address').touched"
+                     style="color: red">
+                  Address must be at least 1 characters
+                </div>
+              </div>
+            </div>
+          </div>
 
-          <tr *ngFor="let item of cartItems">
-            <td class="text-primary ">{{item.product.name}}</td>
-            <td class="text-center">{{item.product.price | currency: 'VND'}}</td>
-            <td class="text-center">{{item.quantity}}</td>
-            <td class="text-center">{{item.totalCost | currency: 'VND'}}</td>
-          </tr>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col">
+                <label class="text-info">Số điện thoại (*)</label>
+                <input type="text" class="form-control" placeholder="Số điện thoại" formControlName="phone">
+                <div class="alert-danger" *ngIf="paymentForm.get('phone').invalid && paymentForm.get('phone').touched"
+                     style="color: red">
+                  Phone must be at least 1 characters
+                </div>
+              </div>
+              <div class="col">
+                <label class="text-info">Email</label>
+                <input type="text" class="form-control" placeholder="Email" formControlName="email">
+                <div class="alert-danger" *ngIf="paymentForm.get('email').invalid && paymentForm.get('email').touched"
+                     style="color: red">
+                  Email must be at least 1 characters
+                </div>
+              </div>
+            </div>
 
-          <tr class="col-md-12">
-            <td class="text-danger font-weight-bold">Tổng hóa đơn</td>
-            <td class="text-danger font-weight-bold"></td>
-            <td class="text-danger font-weight-bold"></td>
-            <td class="text-success font-weight-bold">{{(cart | async).grossTotal | currency:'VND':true}}</td>
-          </tr>
-        </table>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col">
+                  <input type="hidden" class="form-control" formControlName="total" [ngModel]="(cart| async).grossTotal"
+                         disabled>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col">
+                  <label class="text-info">Chọn phương thức thanh toán</label>
+                  <select formControlName="method">
+                    <option *ngFor="let methods of method">{{methods}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <br/>
+          <hr width="100%" size="5px" align="center" color="red"/>
+          <div><h3 class="text-primary">THÔNG TIN BỔ SUNG</h3></div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col">
+                <label class="text-info">Chi tiết thông tin</label>
+                <textarea class="form-control"
+                          placeholder="Ghi chú về địa chỉ giao hàng, ví dụ: thời gian hãy chỉ dẫn địa điểm giao hàng chi tiết hơn"
+                          formControlName="description" style="height: 200px"></textarea>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-block">Đặt hàng</button>
+        </form>
       </div>
 
-      <span class="text-secondary m-1 p-1 float-right">Đơn hàng của bạn sẽ được gửi đi trong 15 phút</span>
+
+      <div class="col-md-5 p-2" style="margin-top: 60px">
+        <div class="border border-danger ">
+          <div><h3 CLASS="text-success text-center m-2">ĐƠN HÀNG CỦA BẠN</h3></div>
+          <table class="table border-bottom">
+            <tr>
+              <td class="text-primary font-weight-bold text-center">Sản phẩm</td>
+              <td class="text-primary font-weight-bold text-center">Giá</td>
+              <td class="text-primary font-weight-bold text-center">Số lượng</td>
+              <td class="text-primary font-weight-bold text-center">Tổng cộng</td>
+            </tr>
+
+            <tr *ngFor="let item of cartItems">
+              <td class="text-primary ">{{item.product.name}}</td>
+              <td class="text-center">{{item.product.price | currency: 'VND'}}</td>
+              <td class="text-center">{{item.quantity}}</td>
+              <td class="text-center">{{item.totalCost | currency: 'VND'}}</td>
+            </tr>
+
+            <tr class="col-md-12">
+              <td class="text-danger font-weight-bold">Tổng hóa đơn</td>
+              <td class="text-danger font-weight-bold"></td>
+              <td class="text-danger font-weight-bold"></td>
+              <td class="text-success font-weight-bold">{{(cart | async).grossTotal | currency:'VND':true}}</td>
+            </tr>
+          </table>
+        </div>
+
+        <span class="text-secondary m-1 p-1 float-right">Đơn hàng của bạn sẽ được gửi đi trong 15 phút</span>
+      </div>
     </div>
   </div>
 </div>
+
+<div *ngIf="isLoggedIn">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6" style="margin-top: 60px">
+
+
+        <form name="form" [formGroup]="paymentForm" (ngSubmit)="paymentForm.valid && clickToPay()">
+
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col">
+                <label class="text-info">Tên (*)</label>
+                <input type="text" class="form-control" placeholder="Tên" formControlName="name">
+                <div class="alert-danger" *ngIf="paymentForm.get('name').invalid && paymentForm.get('name').touched"
+                     style="color: red">
+                  Name must be at least 1 characters
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col">
+                <label class="text-info">Địa chỉ giao hàng (*)</label>
+                <input type="text" class="form-control" placeholder="Địa chỉ nhận hàng" formControlName="address">
+                <div class="alert-danger"
+                     *ngIf="paymentForm.get('address').invalid && paymentForm.get('address').touched"
+                     style="color: red">
+                  Address must be at least 1 characters
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col">
+                <label class="text-info">Số điện thoại (*)</label>
+                <input type="text" class="form-control" placeholder="Số điện thoại" formControlName="phone">
+                <div class="alert-danger" *ngIf="paymentForm.get('phone').invalid && paymentForm.get('phone').touched"
+                     style="color: red">
+                  Phone must be at least 1 characters
+                </div>
+              </div>
+              <div class="col">
+                <label class="text-info">Email</label>
+                <input type="text" class="form-control" placeholder="Email" formControlName="email">
+                <div class="alert-danger" *ngIf="paymentForm.get('email').invalid && paymentForm.get('email').touched"
+                     style="color: red">
+                  Email must be at least 1 characters
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col">
+                  <input type="hidden" class="form-control" formControlName="total" [ngModel]="(cart| async).grossTotal"
+                         disabled>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col">
+                  <label class="text-info">Chọn phương thức thanh toán</label>
+                  <select formControlName="method">
+                    <option *ngFor="let methods of method">{{methods}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <br/>
+          <hr width="100%" size="5px" align="center" color="red"/>
+          <div><h3 class="text-primary">THÔNG TIN BỔ SUNG</h3></div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col">
+                <label class="text-info">Chi tiết thông tin</label>
+                <textarea class="form-control"
+                          placeholder="Ghi chú về địa chỉ giao hàng, ví dụ: thời gian hãy chỉ dẫn địa điểm giao hàng chi tiết hơn"
+                          formControlName="description" style="height: 200px"></textarea>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-block">Đặt hàng</button>
+        </form>
+
+      </div>
+
+      <div class="col-md-5" style="margin-top: 60px; margin-bottom: 100px">
+        <div class="border border-danger ">
+          <div><h3 CLASS="text-success text-center m-2">ĐƠN HÀNG CỦA BẠN</h3></div>
+          <table class="table border-bottom">
+            <tr>
+              <td class="text-primary font-weight-bold text-center">Sản phẩm</td>
+              <td class="text-primary font-weight-bold text-center">Giá</td>
+              <td class="text-primary font-weight-bold text-center">Số lượng</td>
+              <td class="text-primary font-weight-bold text-center">Tổng cộng</td>
+            </tr>
+
+            <tr *ngFor="let item of cartItems">
+              <td class="text-primary ">{{item.product.name}}</td>
+              <td class="text-center">{{item.product.price | currency: 'VND'}}</td>
+              <td class="text-center">{{item.quantity}}</td>
+              <td class="text-center">{{item.totalCost | currency: 'VND'}}</td>
+            </tr>
+
+            <tr class="col-md-12">
+              <td class="text-danger font-weight-bold">Tổng hóa đơn</td>
+              <td class="text-danger font-weight-bold"></td>
+              <td class="text-danger font-weight-bold"></td>
+              <td class="text-success font-weight-bold">{{(cart | async).grossTotal | currency:'VND':true}}</td>
+            </tr>
+          </table>
+        </div>
+
+        <span class="text-secondary m-1 p-1 float-right">Đơn hàng của bạn sẽ được gửi đi trong 15 phút</span>
+      </div>
+    </div>
+  </div>
+</div>
+
