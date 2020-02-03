@@ -2,9 +2,23 @@
 <p><a routerLink="/payment-create">Create new a payment</a></p>
 
 
-<div class="container">
-  <input type="text" [formControl]="search" placeholder="search">
-</div>
+<form>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon">
+        <i class="glyphicon glyphicon-search"></i>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        name="searchString"
+        placeholder="Tìm kiếm theo trạng thái đơn hàng..."
+        [(ngModel)]="searchString"
+      />
+    </div>
+  </div>
+</form>
+
 
 <table class="table table-hover border">
   <thead>
@@ -19,16 +33,18 @@
     <th>Delete</th>
   </tr>
   </thead>
-  <tr *ngFor="let payment of paymentList">
+  <tr *ngFor="let payment of paymentList | filter: 'status' : searchString">
     <td><a [routerLink]="['/payment-detail', payment.id]">{{ payment.name }}</a></td>
     <td>{{ payment.code }}</td>
     <td>{{ payment.phone }}</td>
     <td>{{ payment.total | currency:'VND'}}</td>
     <td>{{ payment.description }}</td>
-    <!--    <td *ngFor="let stt of status | filterByStatus: search.value" >{{ payment.status }}</td>-->
-    <td><span>{{ payment.status }}</span></td>
+    <td>{{ payment.status }}</td>
     <td><a [routerLink]="['/payment-edit',payment.id]">Edit</a></td>
     <td><a [routerLink]="['/payment-delete',payment.id]">Delete</a></td>
   </tr>
 </table>
+
+
+
 
