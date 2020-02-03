@@ -1,13 +1,15 @@
 import {Pipe, PipeTransform} from '@angular/core';
 
-@Pipe({name: 'filterByStatus'})
+@Pipe({name: 'filter'})
 export class FilterByStatusPipe implements PipeTransform {
-  transform(arr: string[], searchValue: string): any {
-    if (!searchValue) {
-      return arr;
+  transform(items: any[], field: string, value: string): any[] {
+    if (!items) {
+      return [];
     }
-    return arr.filter(value => {
-      return value.toLowerCase().indexOf(searchValue.toLowerCase()) > -1;
-    });
+    if (!field || !value) {
+      return items;
+    }
+    return items.filter(singleItem =>
+      singleItem[field].toLowerCase().includes(value.toLowerCase()));
   }
 }

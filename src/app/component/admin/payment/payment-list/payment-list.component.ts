@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Payment} from '../../../../model/payment.model';
 import {PaymentService} from '../../../../service/payment.service';
 import {FormControl} from '@angular/forms';
@@ -13,8 +13,9 @@ export class PaymentListComponent implements OnInit {
   paymentList: Payment[] = [];
   payment: Payment;
   content: string;
-  search = new FormControl();
-  status = ['Đang chờ xử lý', 'Đang giao hàng', 'Giao hàng thành công', 'Hủy đơn hàng'];
+  searchString: string;
+  // status = ['Đang chờ xử lý', 'Đang giao hàng', 'Giao hàng thành công', 'Hủy đơn hàng'];
+  // status: any[];
 
   constructor(private paymentService: PaymentService) {
   }
@@ -27,10 +28,4 @@ export class PaymentListComponent implements OnInit {
         (this.content = this.content = JSON.parse(err.error).message)
     );
   }
-
-  getPaymentList(id: number) {
-    this.paymentService.getPayment(id).subscribe(next => this.paymentList = next);
-
-  }
-
 }
