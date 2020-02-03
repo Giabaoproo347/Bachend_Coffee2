@@ -1,3 +1,11 @@
+<div class="container">
+  <div class="center">
+    <form [formGroup]="productForm" class="form-inline ml-auto">
+      <input type="text" [(ngModel)]="nameProduct" (keydown)="searchProductByName()" class="form-control mr-sm-2" formControlName="name" name="name" placeholder="Search">
+      <button (click)="searchProductByName()" type="submit" class="btn btn-dark">Search</button>
+    </form>
+  </div>
+</div>
 <h2>Product list</h2>
 <p><a routerLink="/product-create">Create new product</a></p>
 <table class="table table-hover border">
