@@ -14,8 +14,6 @@ export class PaymentListComponent implements OnInit {
   payment: Payment;
   content: string;
   searchString: string;
-  // status = ['Đang chờ xử lý', 'Đang giao hàng', 'Giao hàng thành công', 'Hủy đơn hàng'];
-  // status: any[];
 
   constructor(private paymentService: PaymentService) {
   }
