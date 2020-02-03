@@ -51,6 +51,7 @@ import {UserEditComponent} from '../component/admin/user/user-edit/user-edit.com
 import {UserDeleteComponent} from '../component/admin/user/user-delete/user-delete.component';
 import {UserDetailComponent} from '../component/admin/user/user-detail/user-detail.component';
 import {DiscountComponent} from '../component/public/discount/discount.component';
+import {PaymentDeleteComponent} from '../component/admin/payment/payment-delete/payment-delete.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -77,7 +78,7 @@ const routes: Routes = [
   {path: 'payment-list', component: PaymentListComponent},
   {path: 'payment-create', component: PaymentCreateComponent},
   {path: 'payment-edit/:id', component: PaymentEditComponent},
-  {path: 'payment-delete/:id', component: PaymentDetailComponent},
+  {path: 'payment-delete/:id', component: PaymentDeleteComponent},
   {path: 'payment-detail/:id', component: PaymentDetailComponent},
   {path: 'product-list', component: ProductListComponent},
   {path: 'product-create', component: ProductCreateComponent},
@@ -119,6 +120,7 @@ const routes: Routes = [
   },
   {path: 'aboutUs', component: AboutUsComponent},
   {path: 'blog', component: BlogComponent},
+  {path: 'discount', component: DiscountComponent},
   {path: '**', component: PageNotFoundComponent},
 
 ];

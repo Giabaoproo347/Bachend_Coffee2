@@ -2,13 +2,46 @@
 <div class="col-6 offset-3" *ngIf="payment">
   <table class="table">
     <tr>
+      <td>Mã đơn hàng:</td>
+      <td>{{ payment.code }}</td>
+    </tr>
+    <tr>
       <td>Name:</td>
       <td>{{ payment.name }}</td>
     </tr>
     <tr>
-      <td>Date:</td>
+      <td>Email:</td>
+      <td>{{ payment.email }}</td>
+    </tr>
+    <tr>
+      <td>Số điện thoại:</td>
+      <td>{{ payment.phone }}</td>
+    </tr>
+    <tr>
+      <td>Địa chỉ:</td>
+      <td>{{ payment.address }}</td>
+    </tr>
+    <tr>
+      <td>Thành tiền:</td>
+      <td>{{ payment.total }}</td>
+    </tr>
+    <tr>
+      <td>Phương thức thanh toán:</td>
+      <td>{{ payment.method }}</td>
+    </tr>
+    <tr>
+      <td>Ngày:</td>
       <td>{{ payment.date }}</td>
     </tr>
+    <tr>
+      <td>Mô tả:</td>
+      <td>{{ payment.description }}</td>
+    </tr>
+    <tr>
+      <td>Tình trạng đơn hàng:</td>
+      <td>{{ payment.status }}</td>
+    </tr>
+
   </table>
   <input class="btn btn-primary btn-block" value="Back to payment list" routerLink="/payment-list">
 </div>
