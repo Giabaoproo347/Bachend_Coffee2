@@ -14,7 +14,7 @@ export class PaymentEditComponent implements OnInit {
   payment: Payment;
   paymentForm: FormGroup;
   message: boolean;
-  status = ['Đang chờ xử lý', 'Đang vận chuyển', 'Giao hàng thành công'];
+  status = ['Đang chờ xử lý', 'Đang vận chuyển', 'Giao hàng thành công', 'Hủy đơn hàng'];
 
 
   constructor(
