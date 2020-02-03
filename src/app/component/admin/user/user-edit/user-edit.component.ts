@@ -5,6 +5,11 @@ import {CategoriesService} from '../../../../service/categories.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../../../model/user.model';
 import {UserService} from '../../../../user/_services/user.service';
+<<<<<<< HEAD
+=======
+import {Order} from '../../../../model/order.model';
+import {OrderService} from '../../../../service/order.service';
+>>>>>>> master
 
 @Component({
   selector: 'app-user-edit',
@@ -15,14 +20,19 @@ export class UserEditComponent implements OnInit {
 
   user: User;
   userForm: FormGroup;
+<<<<<<< HEAD
   file: File;
   message = false;
 
+=======
+  message = false;
+>>>>>>> master
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private router: Router
+<<<<<<< HEAD
   ) {
   }
 
@@ -38,6 +48,20 @@ export class UserEditComponent implements OnInit {
     console.log(id);
     this.userService.getUserById(id).subscribe(
       next => {
+=======
+  ) { }
+
+  ngOnInit() {
+    this.userForm = this.fb.group({
+      username: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      address: ['', [Validators.required]]
+    });
+    const id = +this.route.snapshot.paramMap.get('id');
+    console.log(id);
+    this.userService.getUserById(id).subscribe(next => {
+>>>>>>> master
         this.user = next;
         console.log(this.user);
         this.userForm.patchValue(this.user);
@@ -46,8 +70,12 @@ export class UserEditComponent implements OnInit {
       error => {
         console.log(error);
         this.user = null;
+<<<<<<< HEAD
       }
     );
+=======
+      });
+>>>>>>> master
   }
 
   onSubmit() {
@@ -57,6 +85,7 @@ export class UserEditComponent implements OnInit {
         ...this.user,
         ...value
       };
+<<<<<<< HEAD
       console.log(data);
       this.userService.editUser(data).subscribe(next => {
           console.log(next);
@@ -67,4 +96,14 @@ export class UserEditComponent implements OnInit {
       );
     }
   }
+=======
+      this.userService.editUser(data).subscribe(next => {
+          this.message = true;
+          this.ngOnInit();
+        },
+        error => console.log(error));
+    }
+  }
+
+>>>>>>> master
 }

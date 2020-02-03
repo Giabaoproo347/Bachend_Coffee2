@@ -33,7 +33,11 @@ export class UserService {
   }
 
   getUserById(id: number): Observable<any> {
+<<<<<<< HEAD
     return this.http.get<any>(API_URL + 'auth' + id);
+=======
+    return this.http.get<any>(API_URL + 'auth/' + id);
+>>>>>>> master
   }
 
   createUser(user): Observable<any> {
@@ -41,7 +45,11 @@ export class UserService {
   }
 
   editUser(user): Observable<any> {
+<<<<<<< HEAD
     return this.http.put(API_URL + 'auth' + user.id, user);
+=======
+    return this.http.put(API_URL + 'auth/' + user.id, user);
+>>>>>>> master
   }
 
   deleteUser(id: number): Observable<any> {

@@ -50,6 +50,10 @@ import {UserCreateComponent} from '../component/admin/user/user-create/user-crea
 import {UserEditComponent} from '../component/admin/user/user-edit/user-edit.component';
 import {UserDeleteComponent} from '../component/admin/user/user-delete/user-delete.component';
 import {UserDetailComponent} from '../component/admin/user/user-detail/user-detail.component';
+<<<<<<< HEAD
+=======
+import {DiscountComponent} from '../component/public/discount/discount.component';
+>>>>>>> master
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -95,6 +99,11 @@ const routes: Routes = [
   {path: 'user-edit/:id', component: UserEditComponent},
   {path: 'user-delete/:id', component: UserDeleteComponent},
   {path: 'user-detail/:id', component: UserDetailComponent},
+<<<<<<< HEAD
+=======
+  {path: 'contact', component: AboutUsComponent},
+  {path: 'discount', component: DiscountComponent},
+>>>>>>> master
   {path: 'home', component: HomepageComponent},
   {
     path: 'checkout',
