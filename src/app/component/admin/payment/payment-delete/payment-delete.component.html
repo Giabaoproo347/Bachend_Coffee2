@@ -34,7 +34,7 @@
       <td>{{ payment.description }}</td>
     </tr>
   </table>
-  <input class="btn btn-primary btn-block" value="Delete payment" data-toggle="modal" data-target="#exampleModal">
+  <input class="btn btn-primary btn-block" value="Delete payment" data-toggle="modal" data-target="#exampleModal" (click)="deletePayment(payment.id)">
   <input class="btn btn-primary btn-block" value="Cancel" routerLink="/payment-list">
 
 
