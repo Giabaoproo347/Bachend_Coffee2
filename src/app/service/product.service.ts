@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Product} from '../model/product.model';
+import {SearchProductByName} from '../model/SearchProductByName';
 
 @Injectable({
   providedIn: 'root'
@@ -70,6 +71,8 @@ export class ProductService {
   public deleteProduct1(id: number): Observable<any> {
     return this.http.delete(`${this.url}/${id}`);
   }
-
+  searchProductByName(nameProduct: SearchProductByName): Observable<Product[]> {
+    return this.http.post<Product[]>(this.url + '/search-product-by-name', nameProduct);
+  }
 
 }
