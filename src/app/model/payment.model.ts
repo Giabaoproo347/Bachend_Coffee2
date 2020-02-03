@@ -2,6 +2,7 @@ import {User} from './user.model';
 
 export class Payment {
   id: number;
+  code: number;
   name: string;
   phone: string;
   address: string;

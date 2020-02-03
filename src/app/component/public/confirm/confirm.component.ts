@@ -12,6 +12,7 @@ import {Payment} from '../../../model/payment.model';
 import {AppComponent} from '../../../app.component';
 import {User} from '../../../model/user.model';
 import {UserService} from '../../../user/_services/user.service';
+import {ActivatedRoute} from '@angular/router';
 
 interface ICartItemWithProduct extends CartItem {
   product: Product;
@@ -32,7 +33,8 @@ export class ConfirmComponent implements OnInit {
   payment: Payment;
   method = ['Ship cod', 'Ví Momo', 'Vietcombank', 'Zalo Pay', 'Viettel Pay', 'VNQR pay'];
   currentDate = new Date();
-  currentUser: User | any;
+  currentUser = this.tokenStorageService.getUser();
+
 
   private products: Product[];
   private cartSubscription: Subscription;
@@ -43,7 +45,7 @@ export class ConfirmComponent implements OnInit {
                      private tokenStorageService: TokenStorageService,
                      private paymentService: PaymentService,
                      private fb: FormBuilder,
-                     private app: AppComponent,
+                     private route: ActivatedRoute,
                      private userService: UserService
   ) {
   }
@@ -65,14 +67,28 @@ export class ConfirmComponent implements OnInit {
           });
       });
     });
+    const id = +this.route.snapshot.paramMap.get('id');
+    console.log(id);
+    this.paymentService.getPayment(id).subscribe(
+      next => {
+        this.payment = next;
+        console.log(this.payment);
+        // this.paymentForm.patchValue(this.payment);
+        // console.log(this.paymentForm);
+      },
+      error => {
+        console.log(error);
+        this.payment = null;
+      }
+    );
     if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
-      this.currentUser = this.tokenStorageService.getUser();
       this.paymentForm = this.fb.group({
-        id: [''],
+        id: [''] ,
+        code: Math.floor(Math.random() * 1000000) + 1000 ,
         name: this.currentUser.username,
         address: ['Hà Nội'],
-        phone: ['0964907976'],
+        phone: ['0964908688'],
         email: this.currentUser.email,
         total: [''],
         description: [''],
@@ -84,7 +100,8 @@ export class ConfirmComponent implements OnInit {
 
     } else {
       this.paymentForm = this.fb.group({
-        id: '',
+        id: [''] ,
+        code: Math.floor(Math.random() * 1000000) + 1000 ,
         name: ['', [Validators.required, Validators.minLength(1)]],
         address: ['', [Validators.required, Validators.minLength(1)]],
         phone: ['', [Validators.required, Validators.minLength(1)]],

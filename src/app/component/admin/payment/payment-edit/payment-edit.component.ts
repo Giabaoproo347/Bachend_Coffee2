@@ -14,6 +14,8 @@ export class PaymentEditComponent implements OnInit {
   payment: Payment;
   paymentForm: FormGroup;
   message: boolean;
+  status = ['Đang chờ xử lý', 'Đang vận chuyển', 'Giao hàng thành công', 'Hủy đơn hàng'];
+
 
   constructor(
     private paymentService: PaymentService,
@@ -24,14 +26,7 @@ export class PaymentEditComponent implements OnInit {
 
   ngOnInit() {
     this.paymentForm = this.fb.group({
-      name: ['', [ Validators.required, Validators.minLength(1) ]],
-      address: ['', [ Validators.required, Validators.minLength(1) ]],
-      phone: ['', [ Validators.required, Validators.minLength(1) ]],
-      email: ['', [ Validators.required, Validators.minLength(1) ]],
-      description: ['', [ Validators.required, Validators.minLength(1) ]],
-      total: ['', [ Validators.required, Validators.minLength(1) ]],
-      status: ['', [ Validators.required, Validators.minLength(1) ]],
-      date: ['', Validators.required],
+      status: ['Đang chờ xử lý']
     });
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);
