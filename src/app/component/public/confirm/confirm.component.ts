@@ -11,8 +11,11 @@ import {PaymentService} from '../../../service/payment.service';
 import {Payment} from '../../../model/payment.model';
 import {AppComponent} from '../../../app.component';
 import {User} from '../../../model/user.model';
+<<<<<<< HEAD
+=======
 import {UserService} from '../../../user/_services/user.service';
 import {ActivatedRoute} from '@angular/router';
+>>>>>>> master
 
 interface ICartItemWithProduct extends CartItem {
   product: Product;
@@ -29,12 +32,18 @@ export class ConfirmComponent implements OnInit {
   public itemCount: number;
   public isSuccess = false;
   paymentForm: FormGroup;
+  userForm: FormGroup;
   isLoggedIn = false;
   payment: Payment;
   method = ['Ship cod', 'Ví Momo', 'Vietcombank', 'Zalo Pay', 'Viettel Pay', 'VNQR pay'];
   currentDate = new Date();
+<<<<<<< HEAD
+  currentUser: User | any;
+  address: any[] = ['Vĩnh Phúc', 'Hà Nội', 'Bắc Ninh', 'Tuyên Quang', 'Bắc Ninh', 'Cao Bằng'];
+=======
   currentUser = this.tokenStorageService.getUser();
 
+>>>>>>> master
 
   private products: Product[];
   private cartSubscription: Subscription;
@@ -45,8 +54,12 @@ export class ConfirmComponent implements OnInit {
                      private tokenStorageService: TokenStorageService,
                      private paymentService: PaymentService,
                      private fb: FormBuilder,
+<<<<<<< HEAD
+                     private app: AppComponent
+=======
                      private route: ActivatedRoute,
                      private userService: UserService
+>>>>>>> master
   ) {
   }
 
@@ -67,6 +80,16 @@ export class ConfirmComponent implements OnInit {
           });
       });
     });
+<<<<<<< HEAD
+    if (this.tokenStorageService.getToken()) {
+      this.isLoggedIn = true;
+      this.currentUser = this.tokenStorageService.getUser();
+      this.paymentForm = this.fb.group({
+        id: [''],
+        name: this.currentUser.username,
+        address: this.currentUser.address,
+        phone: this.currentUser.phone,
+=======
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);
     this.paymentService.getPayment(id).subscribe(
@@ -89,6 +112,7 @@ export class ConfirmComponent implements OnInit {
         name: this.currentUser.username,
         address: ['Hà Nội'],
         phone: ['0964908688'],
+>>>>>>> master
         email: this.currentUser.email,
         total: [''],
         description: [''],
