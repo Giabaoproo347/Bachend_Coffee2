@@ -56,9 +56,9 @@ import { HomepageComponent } from './component/public/homepage/homepage.componen
 import { CheckoutComponent } from './component/public/checkout/checkout.component';
 import { ConfirmComponent } from './component/public/confirm/confirm.component';
 import { FindByCategoryComponent } from './component/public/find-by-category/find-by-category.component';
-import { FindByPromotionComponent } from './component/public/find-by-promotion/find-by-promotion.component';
-import { ShoppingCartComponent } from './component/public/shopping-cart/shopping-cart.component';
-import { StoreComponent } from './component/public/store/store.component';
+import {FindByPromotionComponent} from './component/public/find-by-promotion/find-by-promotion.component';
+import {ShoppingCartComponent} from './component/public/shopping-cart/shopping-cart.component';
+import {StoreComponent} from './component/public/store/store.component';
 import {ProductService} from './service/product.service';
 import {OrderDetailService} from './service/order-detail.service';
 import {StorageService} from './service/storage.service';
@@ -66,13 +66,14 @@ import {ShoppingCartService} from './service/shopping-cart.service';
 import {AboutUsComponent} from './component/public/about-us/about-us.component';
 import {BlogComponent} from './component/public/blog/blog.component';
 import {PageNotFoundComponent} from './component/public/page-not-found/page-not-found.component';
-import { UserCreateComponent } from './component/admin/user/user-create/user-create.component';
-import { UserEditComponent } from './component/admin/user/user-edit/user-edit.component';
-import { UserDeleteComponent } from './component/admin/user/user-delete/user-delete.component';
-import { UserDetailComponent } from './component/admin/user/user-detail/user-detail.component';
-import { UserListComponent } from './component/admin/user/user-list/user-list.component';
-import { DiscountComponent } from './component/public/discount/discount.component';
-import { BillPaymentComponent } from './component/public/bill-payment/bill-payment.component';
+import {UserCreateComponent} from './component/admin/user/user-create/user-create.component';
+import {UserEditComponent} from './component/admin/user/user-edit/user-edit.component';
+import {UserDeleteComponent} from './component/admin/user/user-delete/user-delete.component';
+import {UserDetailComponent} from './component/admin/user/user-detail/user-detail.component';
+import {UserListComponent} from './component/admin/user/user-list/user-list.component';
+import {DiscountComponent} from './component/public/discount/discount.component';
+import {BillPaymentComponent} from './component/public/bill-payment/bill-payment.component';
+import {FilterByStatusPipe} from './model/filter';
 
 @NgModule({
   declarations: [
@@ -137,7 +138,8 @@ import { BillPaymentComponent } from './component/public/bill-payment/bill-payme
     UserDetailComponent,
     UserListComponent,
     DiscountComponent,
-    BillPaymentComponent
+    BillPaymentComponent,
+    FilterByStatusPipe
   ],
   imports: [
     BrowserModule,

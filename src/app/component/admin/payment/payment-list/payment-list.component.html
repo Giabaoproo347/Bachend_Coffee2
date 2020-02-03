@@ -1,5 +1,11 @@
 <h2>Payment list</h2>
 <p><a routerLink="/payment-create">Create new a payment</a></p>
+
+
+<div class="container">
+  <input type="text" [formControl]="search" placeholder="search">
+</div>
+
 <table class="table table-hover border">
   <thead>
   <tr>
@@ -19,7 +25,8 @@
     <td>{{ payment.phone }}</td>
     <td>{{ payment.total | currency:'VND'}}</td>
     <td>{{ payment.description }}</td>
-    <td>{{ payment.status }}</td>
+    <!--    <td *ngFor="let stt of status | filterByStatus: search.value" >{{ payment.status }}</td>-->
+    <td><span>{{ payment.status }}</span></td>
     <td><a [routerLink]="['/payment-edit',payment.id]">Edit</a></td>
     <td><a [routerLink]="['/payment-delete',payment.id]">Delete</a></td>
   </tr>
