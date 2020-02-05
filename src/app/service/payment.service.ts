@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Payment} from '../model/payment.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,10 @@ export class PaymentService {
 
   getPayment(id: number): Observable<any> {
     return this.http.get<any>(this.url + '/' + id);
+  }
+
+  getPaymentByStatus(): Observable<any> {
+    return this.http.get<Payment[]>(this.url + '/list-by-status');
   }
 
   createPayment(payment): Observable<any> {

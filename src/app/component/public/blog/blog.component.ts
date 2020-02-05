@@ -17,8 +17,8 @@ export class BlogComponent implements OnInit {
       // Configure/customize these variables.
       const showChar = 147;  // How many characters are shown by default
       const ellipsestext = '';
-      const moretext = 'Read More';
-      const lesstext = 'Read Less';
+      const moretext = 'Read Less';
+      const lesstext = 'Read More';
 
 
       $('.more').each(function() {

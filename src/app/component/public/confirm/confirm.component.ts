@@ -13,6 +13,7 @@ import {AppComponent} from '../../../app.component';
 import {User} from '../../../model/user.model';
 import {UserService} from '../../../user/_services/user.service';
 import {ActivatedRoute} from '@angular/router';
+import {ExcelService} from '../../../service/excel.service';
 
 interface ICartItemWithProduct extends CartItem {
   product: Product;
@@ -24,6 +25,18 @@ interface ICartItemWithProduct extends CartItem {
   templateUrl: './confirm.component.html'
 })
 export class ConfirmComponent implements OnInit {
+
+
+  public constructor(private shoppingCartService: ShoppingCartService,
+                     private productsService: ProductService,
+                     private tokenStorageService: TokenStorageService,
+                     private paymentService: PaymentService,
+                     private fb: FormBuilder,
+                     private route: ActivatedRoute,
+                     private userService: UserService,
+                     private excelService: ExcelService
+  ) {
+  }
   public cart: Observable<ShoppingCart>;
   public cartItems: ICartItemWithProduct[];
   public itemCount: number;
@@ -39,16 +52,14 @@ export class ConfirmComponent implements OnInit {
   private products: Product[];
   private cartSubscription: Subscription;
 
-
-  public constructor(private shoppingCartService: ShoppingCartService,
-                     private productsService: ProductService,
-                     private tokenStorageService: TokenStorageService,
-                     private paymentService: PaymentService,
-                     private fb: FormBuilder,
-                     private route: ActivatedRoute,
-                     private userService: UserService
-  ) {
-  }
+  data: any = [{
+    Code: '954346',
+    Phone: '0946098688',
+    Address: 'Hà Nội',
+    Email: 'tabach123@gmail.com',
+    Total: 145000,
+    Method: 'Ví Momo'
+  }];
 
   public ngOnInit(): void {
     this.cart = this.shoppingCartService.get();
@@ -84,8 +95,8 @@ export class ConfirmComponent implements OnInit {
     if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
       this.paymentForm = this.fb.group({
-        id: [''] ,
-        code: Math.floor(Math.random() * 1000000) + 1000 ,
+        id: [''],
+        code: Math.floor(Math.random() * 1000000) + 1000,
         name: this.currentUser.username,
         address: ['Hà Nội'],
         phone: ['0964908688'],
@@ -100,8 +111,8 @@ export class ConfirmComponent implements OnInit {
 
     } else {
       this.paymentForm = this.fb.group({
-        id: [''] ,
-        code: Math.floor(Math.random() * 1000000) + 1000 ,
+        id: [''],
+        code: Math.floor(Math.random() * 1000000) + 1000,
         name: ['', [Validators.required, Validators.minLength(1)]],
         address: ['', [Validators.required, Validators.minLength(1)]],
         phone: ['', [Validators.required, Validators.minLength(1)]],
@@ -131,4 +142,9 @@ export class ConfirmComponent implements OnInit {
     this.shoppingCartService.empty();
     this.isSuccess = true;
   }
+
+  exportAsXLSX(): void {
+    this.excelService.exportAsExcelFile(this.data, 'Đơn hàng');
+  }
+
 }
