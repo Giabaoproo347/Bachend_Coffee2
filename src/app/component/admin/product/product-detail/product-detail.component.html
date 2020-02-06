@@ -44,6 +44,9 @@
                 class="btn btn-outline-primary "
                 (click)="addProductToCart(product, 1)">Thêm sản phẩm này
         </button>
+        <!--        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
+                  Comment
+                </button>-->
         <button type="button"
                 class="btn btn-outline-danger ml-2"
                 *ngIf="productInCart(product) | async"
@@ -65,25 +68,168 @@
         class="fa fa-google-plus-square fa-3x"></i></a></span>
     </div>
 
-    <div class="col-md-3 m-2 p-2">
-      <div class="text-body align-text-bottom">
-        <h4 align="center" class="text-primary mb-2">SẢN PHẨM LIÊN QUAN</h4>
-        <div *ngFor="let p of products | async">
-          <div class="row mb-3 mt-3">
-            <div class="col-md-3 ">
-              <img [src]="p.image" style="height: 125px" routerLink="/product-detail/{{p.id}}">
-            </div>
-
-            <div class="col-md-7 ml-3">
-              <h5 class="text-info" routerLink="/product-detail/{{p.id}}">{{p.name}}</h5>
-              <h6 class="text-danger">{{p.price | currency: 'VND'}}</h6>
-            </div>
-
+    <div class="container mt-3">
+      <h4>Bình luận</h4>
+      <div *ngFor="let comment of listCommenter , index as i" class="media mb-4">
+        <div class="media-body">
+          <div *ngIf="iEdit ; else other4">
+            <label class="text-success text font-weight-bold">{{username}}<h6 class="text-secondary">{{comment.date}}
+              (edited)</h6></label>
           </div>
+          <ng-template #other4>
+            <label class="text-success font-weight-bold font">{{username}}<h6
+              class="text-secondary">{{comment.date}}</h6></label>
+          </ng-template>
+          <p>
+            <b>{{comment.content}}</b>
+          </p>
+          <div class="text-left">
+            <!--              edit/delete-->
+            <a #closeModalRef *ngIf="tokenJWT" [attr.data-target]="'#collapseExample' + i" aria-expanded="false"
+               class="btn btn-info a-btn-slide-text mr-2" data-toggle="collapse">
+              <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>
+              <span><strong>Cập nhật</strong></span>
+            </a>
+            <a (click)="getIdComment1(comment.id)" *ngIf="tokenJWT" class="btn btn-danger a-btn-slide-text"
+               data-target="#exampleModalCenter"
+               data-toggle="modal">
+              <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>
+              <span><strong>Xóa</strong></span>
+            </a>
+            <div [id]="'collapseExample'+i" class="collapse">
+              <form>
+                <div class="card card-body">
+                  <textarea [formControl]="contentUpdate" [value]="comment.content" contenteditable="true"
+                            rows="3"></textarea>
+                  <br/>
+                  <div class="text-right">
+                    <button (click)="closeForm1(closeModalRef)" class="btn btn-outline-secondary">Close</button>&nbsp;&nbsp;
+                    <button (click)="updateCommenter1(comment.id,closeModalRef)" class="btn btn-outline-primary">
+                      Cập nhật
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <hr>
         </div>
       </div>
+    </div>
 
 
+    <div class="col-md-9 mt-3 mb-3">
+      <div>
+        <h5 class="ml-2 text-info"><strong><label for="comment">Bình luận về sản phẩm này !</label></strong></h5>
+        <div class="card-body">
+          <form [formGroup]="formCommenterCreate">
+            <div class="form-group">
+              <textarea class="form-control border-primary" formControlName="contentInput" id="comment"
+                        placeholder="Nhập bình luận của bạn..." rows="3"></textarea>
+            </div>
+            <div>
+              <div *ngIf="this.tokenJWT ; else other" class="text-center text-justify">
+                <button (click)="createCommenter()" class="btn btn-outline-success col-md-2 offset-10" type="submit">
+                  Bình luận
+                </button>
+              </div>
+              <ng-template #other>
+                <div class="text-center text-secondary">
+                  <h6>You need login before can be comment. <a [routerLink]="'/login'">Login!</a></h6>
+                </div>
+              </ng-template>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <!--    <div class="col-md-3 m-2 p-2">-->
+    <!--      <div class="text-body align-text-bottom">-->
+    <!--        <h4 align="center" class="text-primary mb-2">SẢN PHẨM LIÊN QUAN</h4>-->
+    <!--        <div *ngFor="let p of products | async">-->
+    <!--          <div class="row mb-3 mt-3">-->
+    <!--            <div class="col-md-3 ">-->
+    <!--              <img [src]="p.image" style="height: 125px" routerLink="/product-detail/{{p.id}}">-->
+    <!--            </div>-->
+
+    <!--            <div class="col-md-7 ml-3">-->
+    <!--              <h5 class="text-info" routerLink="/product-detail/{{p.id}}">{{p.name}}</h5>-->
+    <!--              <h6 class="text-danger">{{p.price | currency: 'VND'}}</h6>-->
+    <!--            </div>-->
+
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
+  </div>
+</div>
+<!------------ Single Comment ------------->
+
+<!-- /.row -->
+
+<!-----------Comment modal-------------->
+
+<!-- Modal -->
+<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" role="dialog"
+     tabindex="-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Comment in here</h5>
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formCommenterCreate">
+          <div *ngIf="this.tokenJWT" class="form-group">
+            <textarea class="form-control" formControlName="contentInput" rows="3"></textarea>
+          </div>
+          <div>
+            <ng-template #other>
+              <div class="text-center text-secondary">
+                <h6>Bạn cần đăng nhập để có thể bình luận sản phẩm này! <a [routerLink]="'/login'" data-dismiss="modal">Đăng
+                  nhập!</a>
+                </h6>
+              </div>
+            </ng-template>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button #closeModalRef2 class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+        <div *ngIf="this.tokenJWT ; else other" class="text-center text-justify">
+          <button (click)="createCommenter()" class="btn btn-outline-success" data-dismiss="modal" type="submit">
+            Submit
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<!------------Modal------------>
+<div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="exampleModalCenter"
+     role="dialog"
+     tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger" id="exampleModalCenterTitle">Delete Comment!</h5>
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-dark text-center">
+        <h5>Are you sure ?</h5>
+      </div>
+      <div class="modal-footer">
+        <button #closeModalRef2 class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+        <button (click)="deleteComment1(closeModalRef2)" class="btn btn-danger" type="button">Accept</button>
+      </div>
+    </div>
+  </div>
+</div>
+
