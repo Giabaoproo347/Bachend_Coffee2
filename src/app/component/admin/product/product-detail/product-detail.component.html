@@ -95,11 +95,11 @@
   <h4>Comment</h4>
   <div class="media mb-4" *ngFor="let comment of listCommenter , index as i" >
     <div class="media-body">
-      <div *ngIf="iEdit ; else other4">
-        <label class="text-success">{{username}}<h6 class="text-secondary">{{comment.date}} (edited)</h6></label>
+      <div >
+        <label class="text-success"><h6 class="text-secondary">{{comment.date}} (edited)</h6></label>
       </div>
       <ng-template #other4>
-        <label class="text-success">{{username}}<h6 class="text-secondary">{{comment.date}}</h6></label>
+        <label class="text-success"><h6 class="text-secondary">{{comment.date}}</h6></label>
       </ng-template>
       <p>
         {{comment.content}}
