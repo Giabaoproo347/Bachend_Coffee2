@@ -15,10 +15,10 @@
   </div>
   <form *ngIf="!message" name="form" [formGroup]="categoriesForm" (ngSubmit)="categoriesForm.valid && onSubmit()" novalidate>
     <div class="form-group">
-      <label>Categories name</label>
+      <label>Danh mục sản phẩm</label>
       <input type="text" class="form-control" formControlName="name"/>
       <div class="alert-danger" *ngIf="categoriesForm.get('name').invalid && categoriesForm.get('name').touched" style="color: aqua">
-        Categories name must be at least 1 characters
+        Danh mục sản phẩm tối thiểu 3 ký tự
       </div>
     </div>
     <div class="form-group">

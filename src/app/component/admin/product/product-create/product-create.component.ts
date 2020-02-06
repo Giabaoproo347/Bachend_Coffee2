@@ -46,7 +46,7 @@ export class ProductCreateComponent implements OnInit {
     this.app.setIsShow(true);
     this.productForm = this.fb.group({
       id: '',
-      name: ['', [Validators.required]],
+      name: ['', [Validators.required, Validators.minLength(3)]],
       price: ['', [Validators.required]],
       description: ['', [Validators.required]],
       image: ['', [Validators.required]],

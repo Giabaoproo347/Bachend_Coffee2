@@ -2,7 +2,7 @@
   <h3 class="text-center">Create a new categories</h3>
   <div *ngIf="message">
     <div class="alert alert-success">
-      <strong>Success!</strong> You have created a new categories
+      <strong>Thành công!</strong> You have created a new categories
     </div>
     <div>
       <div class="form-group">
@@ -20,14 +20,14 @@
     (ngSubmit)="categoriesForm.valid && onSubmit()"
     novalidate>
     <div class="form-group">
-      <label>Categories name</label>
+      <label>Danh mục sản phẩm</label>
       <input type="text" class="form-control" formControlName="name"/>
       <div class="alert-danger" *ngIf="categoriesForm.get('name').invalid && categoriesForm.get('name').touched" style="color: aqua">
-        Categories name must be ay least 1 characters
+        Danh mục sản phẩm tối thiểu 3 ký tự
       </div>
     </div>
     <div class="form-group">
-      <button class="btn btn-primary btn-block">Create</button>
+      <button class="btn btn-primary btn-block">Tạo</button>
     </div>
     <div class="form-group">
       <input class="btn btn-primary btn-block" value="Cancel" routerLink="/categories-list">

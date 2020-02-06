@@ -27,7 +27,7 @@ export class CategoriesEditComponent implements OnInit {
   ngOnInit() {
     this.categoriesForm = this.fb.group({
       id: '',
-      name: ['', [Validators.required, Validators.minLength(1)]],
+      name: ['', [Validators.required, Validators.minLength(3)]],
     });
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);
