@@ -44,9 +44,9 @@
                 class="btn btn-outline-primary "
                 (click)="addProductToCart(product, 1)">Thêm sản phẩm này
         </button>
-        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
+<!--        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
           Comment
-        </button>
+        </button>-->
         <button type="button"
                 class="btn btn-outline-danger ml-2"
                 *ngIf="productInCart(product) | async"
@@ -95,14 +95,14 @@
   <h4>Comment</h4>
   <div class="media mb-4" *ngFor="let comment of listCommenter , index as i" >
     <div class="media-body">
-      <div >
-        <label class="text-success"><h6 class="text-secondary">{{comment.date}} (edited)</h6></label>
+      <div *ngIf="iEdit ; else other4">
+        <label class="text-success text font-weight-bold">{{username}}<h6 class="text-secondary">{{comment.date}} (edited)</h6></label>
       </div>
       <ng-template #other4>
-        <label class="text-success"><h6 class="text-secondary">{{comment.date}}</h6></label>
+        <label class="text-success font-weight-bold font">{{username}}<h6 class="text-secondary">{{comment.date}}</h6></label>
       </ng-template>
       <p>
-        {{comment.content}}
+        <b>{{comment.content}}</b>
       </p>
       <div class="text-left" >
         <!--              edit/delete-->
@@ -134,7 +134,28 @@
 <!-- /.row -->
 
 <!-----------Comment modal-------------->
-
+<div class="col-md-9 mt-3 mb-3">
+  <div>
+    <h4 class="ml-2 text-info"><strong><label for="comment">Comment something in here !</label></strong></h4>
+    <div class="card-body">
+      <form [formGroup]="formCommenterCreate">
+        <div class="form-group">
+          <textarea class="form-control border-primary" id="comment" formControlName="contentInput" rows="3"></textarea>
+        </div>
+        <div>
+          <div *ngIf="this.tokenJWT ; else other" class="text-center text-justify">
+            <button type="submit" (click)="createCommenter()" class="btn btn-outline-success col-md-2 offset-10">Comment</button>
+          </div>
+          <ng-template #other>
+            <div class="text-center text-secondary">
+              <h6>You need login before can be comment. <a  [routerLink]="'/login'">Login!</a></h6>
+            </div>
+          </ng-template>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
