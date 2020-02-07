@@ -79,6 +79,7 @@ import { ChangeProfileComponent } from './user/change-profile/change-profile.com
 import { PaymentListByUserComponent } from './component/public/payment-list-by-user/payment-list-by-user.component';
 import { UserPaymentListComponent } from './user/user-payment-list/user-payment-list.component';
 import { PaymentListsComponent } from './user/payment-lists/payment-lists.component';
+import { PaymentEditByUserComponent } from './component/admin/payment-edit-by-user/payment-edit-by-user.component';
 
 @NgModule({
   declarations: [
@@ -149,7 +150,8 @@ import { PaymentListsComponent } from './user/payment-lists/payment-lists.compon
     ChangeProfileComponent,
     PaymentListByUserComponent,
     UserPaymentListComponent,
-    PaymentListsComponent
+    PaymentListsComponent,
+    PaymentEditByUserComponent
   ],
   imports: [
     BrowserModule,

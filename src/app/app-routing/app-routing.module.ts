@@ -57,6 +57,7 @@ import {ChangeProfileComponent} from '../user/change-profile/change-profile.comp
 import {UserPaymentListComponent} from '../user/user-payment-list/user-payment-list.component';
 import {PaymentListByUserComponent} from '../component/public/payment-list-by-user/payment-list-by-user.component';
 import {PaymentListsComponent} from '../user/payment-lists/payment-lists.component';
+import {PaymentEditByUserComponent} from '../component/admin/payment-edit-by-user/payment-edit-by-user.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -83,6 +84,7 @@ const routes: Routes = [
   {path: 'payment-list', component: PaymentListComponent},
   {path: 'payment-create', component: PaymentCreateComponent},
   {path: 'payment-edit/:id', component: PaymentEditComponent},
+  {path: 'payment-edit-by-user/:id', component: PaymentEditByUserComponent},
   {path: 'payment-delete/:id', component: PaymentDeleteComponent},
   {path: 'payment-detail/:id', component: PaymentDetailComponent},
   {path: 'product-list', component: ProductListComponent},
