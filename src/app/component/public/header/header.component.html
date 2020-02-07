@@ -104,17 +104,17 @@
       </ul>
       <ul class="navbar-nav" style="margin-left: 200px" *ngIf="!isLoggedIn">
         <li class="nav-item">
-          <a href="/register" class="nav-link">Đăng ký</a>
+          <a routerLink="/register" class="nav-link">Đăng ký</a>
         </li>
         <li class="nav-item">
-          <a href="/login" class="nav-link">Đăng nhập</a>
+          <a routerLink="/login" class="nav-link">Đăng nhập</a>
         </li>
       </ul>
 
       <form action="" class="ml-auto">
         <ul class="nav navbar-nav" *ngIf="isLoggedIn">
-          <li class="nav-item ml-2"><a href="/profile" class="nav-link">{{username}}</a></li>
-          <li class="nav-item ml-2"><a href class="nav-link" (click)="logout()">Logout</a></li>
+          <li class="nav-item ml-2"><a routerLink="/profile" class="nav-link">{{username}}</a></li>
+          <li class="nav-item ml-2"><a class="nav-link" (click)="logout()">Logout</a></li>
         </ul>
       </form>
 
