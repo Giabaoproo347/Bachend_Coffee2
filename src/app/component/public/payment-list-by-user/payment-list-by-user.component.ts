@@ -25,7 +25,7 @@ export class PaymentListByUserComponent implements OnInit {
   }
 
   updateList() {
-    this.paymentService.findAllOrderByUser_Id(this.token.getUser().id).pipe(
+    this.paymentService.findAllByUserId(this.token.getUser().id).pipe(
       map(res => res.filter((book, i) => book.status === 'Đang chờ xử lý'))
     )
       .subscribe(orderListOrder => {
@@ -34,7 +34,7 @@ export class PaymentListByUserComponent implements OnInit {
         console.log(error);
       });
 
-    this.paymentService.findAllOrderByUser_Id(this.token.getUser().id).pipe(
+    this.paymentService.findAllByUserId(this.token.getUser().id).pipe(
       map(res => res.filter((book, i) => book.status === 'Đang giao hàng'))
     )
       .subscribe(paymentListProcessing => {
@@ -43,7 +43,7 @@ export class PaymentListByUserComponent implements OnInit {
         console.log(error);
       });
 
-    this.paymentService.findAllOrderByUser_Id(this.token.getUser().id).pipe(
+    this.paymentService.findAllByUserId(this.token.getUser().id).pipe(
       map(res => res.filter((book, i) => book.status === 'Đã giao hàng'))
     )
       .subscribe(paymentListDone => {
@@ -51,7 +51,7 @@ export class PaymentListByUserComponent implements OnInit {
       }, error => {
         console.log(error);
       });
-    this.paymentService.findAllOrderByUser_Id(this.token.getUser().id).pipe(
+    this.paymentService.findAllByUserId(this.token.getUser().id).pipe(
       map(res => res.filter((book, i) => book.status === 'Hủy đơn hàng'))
     )
       .subscribe(paymentListCancel => {

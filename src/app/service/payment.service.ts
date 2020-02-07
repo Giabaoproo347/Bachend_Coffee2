@@ -13,7 +13,7 @@ export class PaymentService {
   constructor(private http: HttpClient) {
   }
 
-  findAllOrderByUser_Id(idUser): Observable<any[]> {
+  findAllByUserId(idUser): Observable<any[]> {
     return this.http.get<any[]>(this.url + '/user/' + idUser);
   }
 

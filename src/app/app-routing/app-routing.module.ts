@@ -130,7 +130,7 @@ const routes: Routes = [
   {path: 'aboutUs', component: AboutUsComponent},
   {path: 'blog', component: BlogComponent},
   {path: 'discount', component: DiscountComponent},
-  {path: '**', component: PageNotFoundComponent},
+  {path: '**', component: HomepageComponent},
 
 ];
 
