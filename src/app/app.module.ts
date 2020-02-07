@@ -74,6 +74,8 @@ import {UserListComponent} from './component/admin/user/user-list/user-list.comp
 import {DiscountComponent} from './component/public/discount/discount.component';
 import {BillPaymentComponent} from './component/public/bill-payment/bill-payment.component';
 import {FilterByStatusPipe} from './model/filter';
+import { ChangePasswordComponent } from './user/change-password/change-password.component';
+import { ChangeProfileComponent } from './user/change-profile/change-profile.component';
 
 @NgModule({
   declarations: [
@@ -139,7 +141,9 @@ import {FilterByStatusPipe} from './model/filter';
     UserListComponent,
     DiscountComponent,
     BillPaymentComponent,
-    FilterByStatusPipe
+    FilterByStatusPipe,
+    ChangePasswordComponent,
+    ChangeProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -52,6 +52,8 @@ import {UserDeleteComponent} from '../component/admin/user/user-delete/user-dele
 import {UserDetailComponent} from '../component/admin/user/user-detail/user-detail.component';
 import {DiscountComponent} from '../component/public/discount/discount.component';
 import {PaymentDeleteComponent} from '../component/admin/payment/payment-delete/payment-delete.component';
+import {ChangePasswordComponent} from '../user/change-password/change-password.component';
+import {ChangeProfileComponent} from '../user/change-profile/change-profile.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -100,6 +102,9 @@ const routes: Routes = [
   {path: 'contact', component: AboutUsComponent},
   {path: 'discount', component: DiscountComponent},
   {path: 'home', component: HomepageComponent},
+  {path: 'change-password', component: ChangePasswordComponent},
+  {path: 'change-profile', component: ChangeProfileComponent},
+
   {
     path: 'checkout',
     component: CheckoutComponent
