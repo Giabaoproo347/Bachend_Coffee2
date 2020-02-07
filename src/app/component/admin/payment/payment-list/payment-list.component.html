@@ -40,7 +40,8 @@
     <td>{{ payment.total | currency:'VND'}}</td>
     <td>{{ payment.description }}</td>
     <td>{{ payment.status }}</td>
-    <td><a [routerLink]="['/payment-edit',payment.id]">Edit</a></td>
+    <td *ngIf="payment.status !== 'Giao hàng thành công'"><a [routerLink]="['/payment-edit',payment.id]">Edit</a></td>
+    <td *ngIf="payment.status == 'Giao hàng thành công'"><a class="text-success">Đơn hàng đã được giao</a></td>
     <td><a [routerLink]="['/payment-delete',payment.id]">Delete</a></td>
   </tr>
 </table>

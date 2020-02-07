@@ -35,7 +35,7 @@
     <td>{{ payment.description }}</td>
     <td>{{ payment.status }}</td>
     <td *ngIf="payment.status == 'Đang chờ xử lý'"><a class="btn btn-danger" [routerLink]="['/payment-edit-by-user',payment.id]">Hủy đơn hàng</a></td>
-    <td *ngIf="payment.status == 'Hủy đơn hàng'">Đã hủy đơn hàng</td>
+    <td *ngIf="payment.status == 'Hủy đơn hàng'" class="text-danger">Đơn hàng đã bị hủy</td>
     <td *ngIf="payment.status == 'Giao hàng thành công'" class="text-success">Đơn hàng đã được giao</td>
   </tr>
 </table>
