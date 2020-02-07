@@ -15,28 +15,15 @@ import {FormBuilder} from '@angular/forms';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user: User;
   currentUser: any;
 
   constructor(
-    private userService: UserService,
-    private route: ActivatedRoute,
-    private fb: FormBuilder,
-    private router: Router,
-    private token: TokenStorageService
+    private token: TokenStorageService,
+    private app: AppComponent
   ) {
   }
 
   ngOnInit() {
     this.currentUser = this.token.getUser();
-    const id = +this.route.snapshot.paramMap.get('id');
-    console.log(id);
-    this.userService.getUser(id).subscribe(next => {
-        this.user = next;
-      },
-      error => {
-        console.log(error);
-        this.user = null;
-      });
   }
 }

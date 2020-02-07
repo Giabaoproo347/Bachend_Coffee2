@@ -25,7 +25,7 @@ export class CategoriesCreateComponent implements OnInit {
   ngOnInit() {
     this.categoriesForm = this.fb.group({
       id: '',
-      name: ['', [Validators.required, Validators.minLength(1)]],
+      name: ['', [Validators.required, Validators.minLength(3)]],
     });
     this.useFile = null;
     this.previewUrl = null;

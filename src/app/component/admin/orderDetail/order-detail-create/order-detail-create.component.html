@@ -5,10 +5,10 @@
       <strong>Success!</strong> You have created a new order detail
     </div>
     <div class="form-group">
-      <input class="btn btn-primary btn-block" value="Create new order detail" (click)="message = !message">
+      <input class="btn btn-primary btn-block" value="Tạo mới" (click)="message = !message">
     </div>
     <div class="form-group">
-      <input class="btn btn-primary btn-block" value="Back to order detail list" routerLink="/orderDetail-list">
+      <input class="btn btn-primary btn-block" value="Quay lại" routerLink="/orderDetail-list">
     </div>
   </div>
   <form
@@ -18,51 +18,51 @@
     (ngSubmit)="orderDetailForm.valid && onSubmit()">
 
     <div class="form-group">
-      <label>Name</label>
+      <label>Tên</label>
       <input type="text" class="form-control" formControlName="name">
       <div class="alert-danger" *ngIf="orderDetailForm.get('name').invalid && orderDetailForm.get('name').touched"
            style="color: red">
-        Name is required
+        Không được để trống
       </div>
     </div>
 
 
     <div class="form-group">
-      <label>Sale Price</label>
+      <label>Phí</label>
       <input type="text" class="form-control" formControlName="salePrice">
       <div class="alert-danger"
            *ngIf="orderDetailForm.get('salePrice').invalid && orderDetailForm.get('salePrice').touched"
            style="color: red">
-        Sale price is required
+        Không được để trống
       </div>
     </div>
 
     <div class="form-group">
-      <label>Quantity</label>
+      <label>Số lượng</label>
       <input type="text" class="form-control" formControlName="quantity">
       <div class="alert-danger"
            *ngIf="orderDetailForm.get('quantity').invalid && orderDetailForm.get('quantity').touched"
            style="color: red">
-        Quantity is required
+        Không được để trống
       </div>
     </div>
 
     <div class="form-group">
-      <label>Description</label>
+      <label>Mô tả</label>
       <input type="text" class="form-control" formControlName="description">
       <div class="alert-danger"
            *ngIf="orderDetailForm.get('description').invalid && orderDetailForm.get('description').touched"
            style="color: red">
-        Quantity is required
+        Không được để trống
       </div>
     </div>
 
 
     <div class="form-group">
-      <button class="btn btn-primary btn-block">Create</button>
+      <button class="btn btn-primary btn-block">Tạo mới</button>
     </div>
     <div class="form-group">
-      <input class="btn btn-primary btn-block" value="Cancel" routerLink="/orderDetail-list">
+      <input class="btn btn-primary btn-block" value="Quay lại" routerLink="/orderDetail-list">
     </div>
   </form>
 </div>

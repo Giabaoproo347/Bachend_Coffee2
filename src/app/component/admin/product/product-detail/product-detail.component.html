@@ -70,7 +70,7 @@
 
     <div class="container mt-3">
       <h4>Bình luận</h4>
-      <div class="media mb-4" *ngFor="let comment of listCommenter , index as i">
+      <div *ngFor="let comment of listCommenter , index as i" class="media mb-4">
         <div class="media-body">
           <div *ngIf="iEdit ; else other4">
             <label class="text-success text font-weight-bold">{{username}}<h6 class="text-secondary">{{comment.date}}
@@ -85,25 +85,26 @@
           </p>
           <div class="text-left">
             <!--              edit/delete-->
-            <a *ngIf="tokenJWT" #closeModalRef class="btn btn-info a-btn-slide-text mr-2" data-toggle="collapse"
-               [attr.data-target]="'#collapseExample' + i" aria-expanded="false">
-              <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-              <span ><strong >Cập nhật</strong></span>
+            <a #closeModalRef *ngIf="tokenJWT" [attr.data-target]="'#collapseExample' + i" aria-expanded="false"
+               class="btn btn-info a-btn-slide-text mr-2" data-toggle="collapse">
+              <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>
+              <span><strong>Cập nhật</strong></span>
             </a>
-            <a *ngIf="tokenJWT" (click)="getIdComment1(comment.id)" class="btn btn-danger a-btn-slide-text" data-toggle="modal"
-               data-target="#exampleModalCenter">
-              <span  class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-              <span ><strong >Xóa</strong></span>
+            <a (click)="getIdComment1(comment.id)" *ngIf="tokenJWT" class="btn btn-danger a-btn-slide-text"
+               data-target="#exampleModalCenter"
+               data-toggle="modal">
+              <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>
+              <span><strong>Xóa</strong></span>
             </a>
-            <div class="collapse" [id]="'collapseExample'+i">
+            <div [id]="'collapseExample'+i" class="collapse">
               <form>
                 <div class="card card-body">
-                  <textarea contenteditable="true" [formControl]="contentUpdate" [value]="comment.content"
+                  <textarea [formControl]="contentUpdate" [value]="comment.content" contenteditable="true"
                             rows="3"></textarea>
                   <br/>
                   <div class="text-right">
-                    <button class="btn btn-outline-secondary" (click)="closeForm1(closeModalRef)">Close</button>&nbsp;&nbsp;
-                    <button class="btn btn-outline-primary" (click)="updateCommenter1(comment.id,closeModalRef)">
+                    <button (click)="closeForm1(closeModalRef)" class="btn btn-outline-secondary">Close</button>&nbsp;&nbsp;
+                    <button (click)="updateCommenter1(comment.id,closeModalRef)" class="btn btn-outline-primary">
                       Cập nhật
                     </button>
                   </div>
@@ -123,12 +124,12 @@
         <div class="card-body">
           <form [formGroup]="formCommenterCreate">
             <div class="form-group">
-              <textarea class="form-control border-primary" id="comment" formControlName="contentInput"
-                        rows="3" placeholder="Nhập bình luận của bạn..."></textarea>
+              <textarea class="form-control border-primary" formControlName="contentInput" id="comment"
+                        placeholder="Nhập bình luận của bạn..." rows="3"></textarea>
             </div>
             <div>
               <div *ngIf="this.tokenJWT ; else other" class="text-center text-justify">
-                <button type="submit" (click)="createCommenter()" class="btn btn-outline-success col-md-2 offset-10">
+                <button (click)="createCommenter()" class="btn btn-outline-success col-md-2 offset-10" type="submit">
                   Bình luận
                 </button>
               </div>
@@ -171,13 +172,13 @@
 <!-----------Comment modal-------------->
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
+<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" role="dialog"
+     tabindex="-1">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Comment in here</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -189,7 +190,8 @@
           <div>
             <ng-template #other>
               <div class="text-center text-secondary">
-                <h6>Bạn cần đăng nhập để có thể bình luận sản phẩm này! <a [routerLink]="'/login'" data-dismiss="modal">Đăng nhập!</a>
+                <h6>Bạn cần đăng nhập để có thể bình luận sản phẩm này! <a [routerLink]="'/login'" data-dismiss="modal">Đăng
+                  nhập!</a>
                 </h6>
               </div>
             </ng-template>
@@ -197,9 +199,9 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button #closeModalRef2 type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button #closeModalRef2 class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
         <div *ngIf="this.tokenJWT ; else other" class="text-center text-justify">
-          <button type="submit" (click)="createCommenter()" class="btn btn-outline-success" data-dismiss="modal">
+          <button (click)="createCommenter()" class="btn btn-outline-success" data-dismiss="modal" type="submit">
             Submit
           </button>
         </div>
@@ -209,13 +211,14 @@
 </div>
 
 <!------------Modal------------>
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-     aria-hidden="true">
+<div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="exampleModalCenter"
+     role="dialog"
+     tabindex="-1">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title text-danger" id="exampleModalCenterTitle">Delete Comment!</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -223,8 +226,8 @@
         <h5>Are you sure ?</h5>
       </div>
       <div class="modal-footer">
-        <button #closeModalRef2 type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger" (click)="deleteComment1(closeModalRef2)">Accept</button>
+        <button #closeModalRef2 class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+        <button (click)="deleteComment1(closeModalRef2)" class="btn btn-danger" type="button">Accept</button>
       </div>
     </div>
   </div>

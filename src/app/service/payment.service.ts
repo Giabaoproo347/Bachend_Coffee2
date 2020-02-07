@@ -13,6 +13,10 @@ export class PaymentService {
   constructor(private http: HttpClient) {
   }
 
+  findAllByUserId(idUser): Observable<any[]> {
+    return this.http.get<any[]>(this.url + '/user/' + idUser);
+  }
+
   getPaymentList(): Observable<any[]> {
     return this.http.get<any[]>(this.url);
   }
@@ -35,5 +39,9 @@ export class PaymentService {
 
   deletePayment(id: number): Observable<any> {
     return this.http.delete(this.url + '/' + id);
+  }
+
+  changeOrderStatus(id, status): Observable<any> {
+    return this.http.put(this.url + '/change-status/' + id, status);
   }
 }

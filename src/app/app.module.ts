@@ -74,6 +74,12 @@ import {UserListComponent} from './component/admin/user/user-list/user-list.comp
 import {DiscountComponent} from './component/public/discount/discount.component';
 import {BillPaymentComponent} from './component/public/bill-payment/bill-payment.component';
 import {FilterByStatusPipe} from './model/filter';
+import { ChangePasswordComponent } from './user/change-password/change-password.component';
+import { ChangeProfileComponent } from './user/change-profile/change-profile.component';
+import { PaymentListByUserComponent } from './component/public/payment-list-by-user/payment-list-by-user.component';
+import { UserPaymentListComponent } from './user/user-payment-list/user-payment-list.component';
+import { PaymentListsComponent } from './user/payment-lists/payment-lists.component';
+import { PaymentEditByUserComponent } from './component/admin/payment-edit-by-user/payment-edit-by-user.component';
 
 @NgModule({
   declarations: [
@@ -139,7 +145,13 @@ import {FilterByStatusPipe} from './model/filter';
     UserListComponent,
     DiscountComponent,
     BillPaymentComponent,
-    FilterByStatusPipe
+    FilterByStatusPipe,
+    ChangePasswordComponent,
+    ChangeProfileComponent,
+    PaymentListByUserComponent,
+    UserPaymentListComponent,
+    PaymentListsComponent,
+    PaymentEditByUserComponent
   ],
   imports: [
     BrowserModule,

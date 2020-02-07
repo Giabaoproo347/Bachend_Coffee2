@@ -2,7 +2,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({name: 'filter'})
 export class FilterByStatusPipe implements PipeTransform {
-  transform(items: any[], field: string, value: string): any[] {
+  transform(items: any[], field: any, value: string): any[] {
     if (!items) {
       return [];
     }

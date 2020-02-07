@@ -1,0 +1,34 @@
+<div class="col-6 offset-3">
+  <div *ngIf="message">
+    <div class="alert alert-success">
+      <strong>Success!</strong> You have editted a payment
+    </div>
+    <div class="form-group">
+      <input class="btn btn-primary btn-block" value="Back to payment list" routerLink="/payment-list-by-user">
+    </div>
+  </div>
+  <form
+    *ngIf="!message"
+    name="form"
+    [formGroup]="paymentForm"
+    (ngSubmit)="paymentForm.valid && onSubmit()"
+  >
+    <div class="form-group">
+      <div class="form-row">
+        <div class="col">
+          <label class="text-info">Tình trạng đơn hàng</label>
+          <select formControlName="status">
+            <option *ngFor="let stt of status">{{stt}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-primary btn-block">Save</button>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary btn-block">Cancel</button>
+    </div>
+  </form>
+</div>

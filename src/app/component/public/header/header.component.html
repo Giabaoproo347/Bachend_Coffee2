@@ -6,7 +6,7 @@
     </a>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="nav-item"><a href="home" class="nav-link">Trang chủ</a>
+        <li class="nav-item"><a routerLink="/home" class="nav-link">Trang chủ</a>
         </li>
 
         <li class="dropdown menu-large nav-item"><a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Sản
@@ -90,9 +90,9 @@
             </div>
           </ul>
         </li>
-        <li class="nav-item"><a href="http://localhost:4200/aboutUs" class="nav-link">Giới thiệu</a></li>
-        <li class="nav-item"><a href="http://localhost:4200/discount" class="nav-link">Khuyến mãi</a></li>
-        <li class="nav-item"><a href="http://localhost:4200/blog" class="nav-link">Tin tức</a></li>
+        <li class="nav-item"><a routerLink="/aboutUs" class="nav-link">Giới thiệu</a></li>
+        <li class="nav-item"><a routerLink="/discount" class="nav-link">Khuyến mãi</a></li>
+        <li class="nav-item"><a routerLink="/blog" class="nav-link">Tin tức</a></li>
 <!--        <li class="nav-item"><a href="http://localhost:4200/discount" class="nav-link">Khuyến mãi</a></li>-->
         <li class="nav-item row">
           <input type="text" class="search ml-3 " id="search" style="height: 30px">
@@ -104,17 +104,17 @@
       </ul>
       <ul class="navbar-nav" style="margin-left: 200px" *ngIf="!isLoggedIn">
         <li class="nav-item">
-          <a href="/register" class="nav-link">Đăng ký</a>
+          <a routerLink="/register" class="nav-link">Đăng ký</a>
         </li>
         <li class="nav-item">
-          <a href="/login" class="nav-link">Đăng nhập</a>
+          <a routerLink="/login" class="nav-link">Đăng nhập</a>
         </li>
       </ul>
 
       <form action="" class="ml-auto">
         <ul class="nav navbar-nav" *ngIf="isLoggedIn">
-          <li class="nav-item ml-2"><a href="/profile" class="nav-link">{{username}}</a></li>
-          <li class="nav-item ml-2"><a href class="nav-link" (click)="logout()">Logout</a></li>
+          <li class="nav-item ml-2"><a routerLink="/profile" class="nav-link">{{username}}</a></li>
+          <li class="nav-item ml-2"><a class="nav-link" (click)="logout()">Logout</a></li>
         </ul>
       </form>
 

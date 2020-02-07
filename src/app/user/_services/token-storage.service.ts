@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
@@ -8,12 +8,14 @@ const EMAIL_KEY = 'Email';
 const PHONE_KEY = 'Phone';
 const ADDRESS_KEY = 'Address';
 const PASSWORD_KEY = 'Password';
+
 @Injectable({
   providedIn: 'root'
 })
 export class TokenStorageService {
 
-  constructor() { }
+  constructor() {
+  }
 
   signOut() {
     window.sessionStorage.clear();
@@ -57,6 +59,7 @@ export class TokenStorageService {
   public getEmail(): string {
     return sessionStorage.getItem(EMAIL_KEY);
   }
+
   public saveUsername(username: string) {
     window.sessionStorage.removeItem(USERNAME_KEY);
     window.sessionStorage.setItem(USERNAME_KEY, username);
@@ -65,6 +68,7 @@ export class TokenStorageService {
   public getUsername(): string {
     return sessionStorage.getItem(USERNAME_KEY);
   }
+
   public getUserId(): string {
     return sessionStorage.getItem(ID_KEY);
   }

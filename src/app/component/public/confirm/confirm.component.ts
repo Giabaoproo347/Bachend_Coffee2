@@ -60,6 +60,7 @@ export class ConfirmComponent implements OnInit {
     Total: 145000,
     Method: 'Ví Momo'
   }];
+  private userId: string;
 
   public ngOnInit(): void {
     this.cart = this.shoppingCartService.get();
@@ -98,14 +99,17 @@ export class ConfirmComponent implements OnInit {
         id: [''],
         code: Math.floor(Math.random() * 1000000) + 1000,
         name: this.currentUser.username,
-        address: ['Hà Nội'],
-        phone: ['0964908688'],
+        address: this.currentUser.address,
+        phone: this.currentUser.phone,
         email: this.currentUser.email,
         total: [''],
         description: [''],
         method: ['Ship cod'],
         date: this.currentDate,
-        status: ['Đang chờ xử lý']
+        status: ['Đang chờ xử lý'],
+        user: {
+          id: this.tokenStorageService.getUser().id
+        }
       });
 
 
@@ -121,7 +125,7 @@ export class ConfirmComponent implements OnInit {
         description: [''],
         method: ['Ship cod'],
         date: this.currentDate,
-        status: ['Đang chờ xử lý']
+        status: ['Đang chờ xử lý'],
       });
     }
   }

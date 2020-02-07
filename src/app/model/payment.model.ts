@@ -11,6 +11,6 @@ export class Payment {
   description: string;
   date: string;
   method: string;
-  status = ['Đang chờ xử lý', 'Đang giao hàng', 'Giao hàng thành công'];
+  status = ['Đang chờ xử lý', 'Đang giao hàng', 'Giao hàng thành công', 'Hủy đơn hàng'];
   user: User;
 }
