@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Payment} from '../../model/payment.model';
 import {PaymentService} from '../../service/payment.service';
 import {TokenStorageService} from '../_services/token-storage.service';
@@ -11,53 +11,19 @@ import {map} from 'rxjs/operators';
 })
 export class PaymentListsComponent implements OnInit {
 
-  paymentListOrder: Payment[];
-  paymentListDone: Payment[];
-  paymentListProcessing: Payment[];
-  paymentListCancel: Payment[];
+  paymentList: Payment[] = [];
+  payment: Payment;
+  content: string;
+  searchString: string;
+
 
   constructor(private paymentService: PaymentService,
               private token: TokenStorageService) {
   }
 
   ngOnInit() {
-    this.updateList();
-  }
-
-  updateList() {
-    this.paymentService.findAllByUserId(this.token.getUser().id).pipe(
-      map(res => res.filter((book, i) => book.status === 'order'))
-    )
-      .subscribe(orderListOrder => {
-        this.paymentListOrder = orderListOrder;
-      }, error => {
-        console.log(error);
-      });
-
-    this.paymentService.findAllByUserId(this.token.getUser().id).pipe(
-      map(res => res.filter((book, i) => book.status === 'processing'))
-    )
-      .subscribe(orderListProcessing => {
-        this.paymentListProcessing = orderListProcessing;
-      }, error => {
-        console.log(error);
-      });
-
-    this.paymentService.findAllByUserId(this.token.getUser().id).pipe(
-      map(res => res.filter((book, i) => book.status === 'done'))
-    )
-      .subscribe(orderListDone => {
-        this.paymentListDone = orderListDone;
-      }, error => {
-        console.log(error);
-      });
-    this.paymentService.findAllByUserId(this.token.getUser().id).pipe(
-      map(res => res.filter((book, i) => book.status === 'cancel'))
-    )
-      .subscribe(orderListCancel => {
-        this.paymentListCancel = orderListCancel;
-      }, error => {
-        console.log(error);
-      });
+    const id = this.token.getUser().id;
+    this.paymentService.findAllByUserId(id).subscribe(next => this.paymentList = next);
+    console.log(this.paymentList);
   }
 }

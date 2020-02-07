@@ -1,28 +1,45 @@
-<h2>List</h2>
+<h2>Đơn hàng của bạn</h2>
+<form>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon">
+        <i class="glyphicon glyphicon-search"></i>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        name="searchString"
+        placeholder="Tìm kiếm theo trạng thái đơn hàng..."
+        [(ngModel)]="searchString"
+      />
+    </div>
+  </div>
+</form>
 
-<nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-item nav-link active" id="nav-order-tab" data-toggle="tab" href="#nav-order" role="tab"
-       aria-controls="nav-home" aria-selected="true">Order</a>
-    <a class="nav-item nav-link" id="nav-processing-tab" data-toggle="tab" href="#nav-processing" role="tab"
-       aria-controls="nav-profile" aria-selected="false">Processing</a>
-    <a class="nav-item nav-link" id="nav-done-tab" data-toggle="tab" href="#nav-done" role="tab"
-       aria-controls="nav-contact" aria-selected="false">Done</a>
-    <a class="nav-item nav-link" id="nav-cancel-tab" data-toggle="tab" href="#nav-cancel" role="tab"
-       aria-controls="nav-contact" aria-selected="false">Cancel</a>
-  </div>
-</nav>
-<div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="nav-order" role="tabpanel" aria-labelledby="nav-order-tab">
-    <app-user-payment-list [paymentList]="paymentListOrder" (updateList)="updateList()"></app-user-payment-list>
-  </div>
-  <div class="tab-pane fade" id="nav-processing" role="tabpanel" aria-labelledby="nav-processing-tab">
-    <app-user-payment-list [paymentList]="paymentListProcessing" (updateList)="updateList()"></app-user-payment-list>
-  </div>
-  <div class="tab-pane fade" id="nav-done" role="tabpanel" aria-labelledby="nav-done-tab">
-    <app-user-payment-list [paymentList]="paymentListDone" (updateList)="updateList()"></app-user-payment-list>
-  </div>
-  <div class="tab-pane fade" id="nav-cancel" role="tabpanel" aria-labelledby="nav-cancel-tab">
-    <app-user-payment-list [paymentList]="paymentListCancel" (updateList)="updateList()"></app-user-payment-list>
-  </div>
-</div>
+
+<table class="table table-hover border">
+  <thead>
+  <tr>
+    <th>Mã đơn hàng</th>
+    <th>Điện thoại</th>
+    <th>Tổng hóa đơn</th>
+    <th>Mô tả</th>
+    <th>Trạng thái</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let payment of paymentList | filter: 'status' : searchString">
+    <td>{{ payment.code }}</td>
+    <td>{{ payment.phone }}</td>
+    <td>{{ payment.total | currency:'VND'}}</td>
+    <td>{{ payment.description }}</td>
+    <td>{{ payment.status }}</td>
+    <td><a [routerLink]="['/payment-edit',payment.id]">Edit</a></td>
+    <td><a [routerLink]="['/payment-delete',payment.id]">Delete</a></td>
+  </tr>
+</table>
+
+
+
+

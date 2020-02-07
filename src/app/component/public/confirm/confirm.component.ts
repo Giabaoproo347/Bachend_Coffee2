@@ -60,6 +60,7 @@ export class ConfirmComponent implements OnInit {
     Total: 145000,
     Method: 'Ví Momo'
   }];
+  private userId: string;
 
   public ngOnInit(): void {
     this.cart = this.shoppingCartService.get();
@@ -105,7 +106,10 @@ export class ConfirmComponent implements OnInit {
         description: [''],
         method: ['Ship cod'],
         date: this.currentDate,
-        status: ['Đang chờ xử lý']
+        status: ['Đang chờ xử lý'],
+        user: {
+          id: this.tokenStorageService.getUser().id
+        }
       });
 
 
@@ -121,7 +125,7 @@ export class ConfirmComponent implements OnInit {
         description: [''],
         method: ['Ship cod'],
         date: this.currentDate,
-        status: ['Đang chờ xử lý']
+        status: ['Đang chờ xử lý'],
       });
     }
   }

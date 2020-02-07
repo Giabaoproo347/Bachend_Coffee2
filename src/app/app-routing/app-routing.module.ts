@@ -56,6 +56,7 @@ import {ChangePasswordComponent} from '../user/change-password/change-password.c
 import {ChangeProfileComponent} from '../user/change-profile/change-profile.component';
 import {UserPaymentListComponent} from '../user/user-payment-list/user-payment-list.component';
 import {PaymentListByUserComponent} from '../component/public/payment-list-by-user/payment-list-by-user.component';
+import {PaymentListsComponent} from '../user/payment-lists/payment-lists.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -106,8 +107,9 @@ const routes: Routes = [
   {path: 'home', component: HomepageComponent},
   {path: 'change-password', component: ChangePasswordComponent},
   {path: 'change-profile', component: ChangeProfileComponent},
-  {path: 'payment-list-by-user', component: PaymentListByUserComponent},
-  {path: 'user-payment-list', component: UserPaymentListComponent},
+  {path: 'payment-list-by-user', component: PaymentListsComponent},
+  // {path: 'payment-list-by-user', component: PaymentListByUserComponent},
+  // {path: 'user-payment-list', component: UserPaymentListComponent},
 
   {
     path: 'checkout',
