@@ -1,12 +1,12 @@
 <div class="col-8 offset-2" *ngIf="currentUser; else loggedOut">
   <header class="jumbotron">
     <h3>
-      <strong>{{ currentUser.username }}</strong> Profile
+     Thông tin cá nhân
     </h3>
   </header>
   <img id="profile-img"
-       src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-       class="profile-img-card"/>
+       src="https://previews.123rf.com/images/solargaria/solargaria1709/solargaria170900008/85425363-user-icon-male-with-beard-icon-hipster-flat-icon-avatar-of-man-with-beard-flat-internet-icon-in-roun.jpg"
+       class="profile-img-card" style="height: 300px"/>
   <table class="table">
     <tr>
       <td><strong>Name:</strong></td>
@@ -24,30 +24,10 @@
       <td><strong>Phone:</strong></td>
       <td>{{currentUser.phone}}</td>
     </tr>
-<!--    <tr>-->
-<!--      <td><strong>Token:</strong></td>-->
-<!--      <td>-->
-<!--        {{ currentUser.accessToken.substring(0, 20) }} ...-->
-<!--        {{ currentUser.accessToken.substr(currentUser.accessToken.length - 20) }}-->
-<!--      </td>-->
-<!--    </tr>-->
-
-    <tr>
-      <td>
-        <strong>Roles:</strong>
-      </td>
-      <td>
-        <ul>
-          <li *ngFor="let role of currentUser.roles">
-            {{ role }}
-          </li>
-        </ul>
-      </td>
-    </tr>
   </table>
+  <button class="btn btn-primary btn-block" routerLink="/payment-list-by-user">Đơn hàng của bạn</button>
   <button class="btn btn-primary btn-block" routerLink="/change-profile">Cập nhật thông tin</button>
   <button class="btn btn-primary btn-block" routerLink="/change-password">Đổi mật khẩu</button>
-  <button class="btn btn-primary btn-block" routerLink="/payment-list-by-user">Don hang</button>
 </div>
 
 <ng-template #loggedOut>
