@@ -42,7 +42,6 @@ import {ShoppingCartComponent} from '../component/public/shopping-cart/shopping-
 import {HomepageComponent} from '../component/public/homepage/homepage.component';
 import {FindByCategoryComponent} from '../component/public/find-by-category/find-by-category.component';
 import {FindByPromotionComponent} from '../component/public/find-by-promotion/find-by-promotion.component';
-import {PageNotFoundComponent} from '../component/public/page-not-found/page-not-found.component';
 import {AboutUsComponent} from '../component/public/about-us/about-us.component';
 import {BlogComponent} from '../component/public/blog/blog.component';
 import {UserListComponent} from '../component/admin/user/user-list/user-list.component';
@@ -54,10 +53,9 @@ import {DiscountComponent} from '../component/public/discount/discount.component
 import {PaymentDeleteComponent} from '../component/admin/payment/payment-delete/payment-delete.component';
 import {ChangePasswordComponent} from '../user/change-password/change-password.component';
 import {ChangeProfileComponent} from '../user/change-profile/change-profile.component';
-import {UserPaymentListComponent} from '../user/user-payment-list/user-payment-list.component';
-import {PaymentListByUserComponent} from '../component/public/payment-list-by-user/payment-list-by-user.component';
 import {PaymentListsComponent} from '../user/payment-lists/payment-lists.component';
 import {PaymentEditByUserComponent} from '../component/admin/payment-edit-by-user/payment-edit-by-user.component';
+import {TopHotComponent} from '../component/public/top-hot/top-hot.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -67,6 +65,7 @@ const routes: Routes = [
   {path: 'mod', component: BoardModeratorComponent},
   {path: 'admin', component: BoardAdminComponent},
   {path: 'categories-list', component: CategoriesListComponent},
+  {path: 'top-hot', component: TopHotComponent},
   {path: 'categories-create', component: CategoriesCreateComponent},
   {path: 'categories-edit/:id', component: CategoriesEditComponent},
   {path: 'categories-delete/:id', component: CategoriesDeleteComponent},
