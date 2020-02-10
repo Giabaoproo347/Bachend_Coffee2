@@ -211,4 +211,8 @@ export class ProductDetailComponent implements OnInit {
     );
   }
 
+  addLike() {
+    console.log(this.product.id);
+    this.product.like += 1;
+  }
 }

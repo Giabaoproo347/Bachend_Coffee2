@@ -86,4 +86,7 @@ export class ProductService {
     return this.http.post<Product[]>(this.url + '/search-product-by-name', nameProduct);
   }
 
+  addLike(product: Product): Observable<any> {
+    return this.http.put(this.url + '/like/' + product.id, product);
+  }
 }

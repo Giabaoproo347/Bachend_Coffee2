@@ -1,236 +1,255 @@
-<div class="container-fluid ">
-  <div class="row p-3">
+<div class="container-fluid" style="background: url('http://hinhnenpowerpointdep.com/uploads/images/bo-hinh-nen-powerpoint-phong-cach-van-go-doc-dao-1484730967-5.jpg')">
+  <br/>
+  <div class="container" style="background: white">
+    <div class="row">
+      <div class="col-md-4 mt-3" *ngIf="product">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active ml-1 mt-2">
+              <img [src]="product.image" style="height: 444px" alt="First slide" >
+            </div>
 
+            <div class="carousel-item ml-1 mt-2">
+              <img [src]="product.image2" style="height: 444px" alt="Second slide">
+            </div>
+            <div class="carousel-item ml-1 mt-2">
+              <img [src]="product.image3" style="height: 444px" alt="Third slide">
+            </div>
+          </div>
 
-    <div class="col-md-4" *ngIf="product">
-      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active ml-5 mt-2">
-            <img [src]="product.image" style="height: 444px" alt="First slide">
-          </div>
-          <div class="carousel-item ml-5 mt-2">
-            <img [src]="product.image2" style="height: 444px" alt="Second slide">
-          </div>
-          <div class="carousel-item ml-5 mt-2">
-            <img [src]="product.image3" style="height: 444px" alt="Third slide">
-          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
       </div>
-    </div>
 
-    <div class="col-md-4" style="margin-left: 30px">
-      <h3 class="text-primary p-2 m-2">{{product.name}}</h3>
-      <hr width="100%" size="5px" align="left" class="text-primary"/>
-      <h5 class="text-danger">{{product.price | currency: 'VND'}}</h5>
-      <h6 class="text-primary">Đặc tính:</h6>
-      <span class="text-secondary">{{product.description}}</span>
-      <br/><br/>
-      <h6>
-        Giỏ hàng của bạn đang có
-        <mark class="text-danger">{{itemCount}} sản phẩm</mark>
-        <!--        <span class="text-danger">{{(cart | async).grossTotal | currency:'VND':true}}</span>-->
-      </h6>
+      <div class="col-md-4 mt-3" style="margin-left: 5px">
+        <h4 style="font-family: 'Adobe Caslon Pro'"> {{product.name}} </h4>
 
-      <p>
-        <button type="button"
-                class="btn btn-outline-primary "
-                (click)="addProductToCart(product, 1)">Thêm sản phẩm này
-        </button>
-        <!--        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
-                  Comment
-                </button>-->
-        <button type="button"
-                class="btn btn-outline-danger ml-2"
-                *ngIf="productInCart(product) | async"
-                (click)="removeProductFromCart(product, 1)">Xóa sản phẩm này
-        </button>
-        <button type="button" class="btn btn-outline-info ml-2" *ngIf="productInCart(product) | async"
-                routerLink="/checkout">
-          Giỏ hàng
-        </button>
-      </p>
-      <hr width="100%" size="5px" align="center" class="text-primary"/>
-      <h6>Hãy ghé thăm fanpage của chúng tôi ở đây bạn nhé!</h6>
-      <span><a class="text-primary m-3" href="http://www.facebook.com/nguyenkhacgia.bao" target="_blank"><i
-        class="fa fa-facebook-square fa-3x"></i></a></span>
-      <span><a class="text-info m-3" href="https://twitter.com/TheCoffeeBean" target="_blank"><i
-        class="fa fa-twitter-square  fa-3x"></i></a></span>
-      <span><a class="text-primary m-3"><i class="fa fa-envelope-square fa-3x" target="_blank"></i></a></span>
-      <span><a class="text-danger m-3" href="https://www.coffeebean.com/" target="_blank"><i
-        class="fa fa-google-plus-square fa-3x"></i></a></span>
-    </div>
+        <span class="card-title text-center">Số lượt thích ({{product.like}})</span>
+        <span *ngIf="product.like > 50" class="text-warning">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+        </span>
 
+        <span *ngIf="product.like > 29 && product.like < 49" class="text-warning">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+        </span>
 
-    <div class="container mt-3">
-      <h4>Bình luận</h4>
-      <div *ngFor="let comment of listCommenter , index as i" class="media mb-4">
-        <div class="media-body">
-          <div *ngIf="iEdit ; else other4">
-            <label class="text-success text font-weight-bold">{{username}}<h6 class="text-secondary">{{comment.date}}
-              (edited)</h6></label>
-          </div>
-          <ng-template #other4>
-            <label class="text-success font-weight-bold font">{{username}}<h6
-              class="text-secondary">{{comment.date}}</h6></label>
-          </ng-template>
-          <p>
-            <b>{{comment.content}}</b>
-          </p>
-          <div class="text-left">
-            <!--              edit/delete-->
-            <a #closeModalRef *ngIf="tokenJWT" [attr.data-target]="'#collapseExample' + i" aria-expanded="false"
-               class="btn btn-info a-btn-slide-text mr-2" data-toggle="collapse">
-              <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>
-              <span><strong>Cập nhật</strong></span>
-            </a>
-            <a (click)="getIdComment1(comment.id)" *ngIf="tokenJWT" class="btn btn-danger a-btn-slide-text"
-               data-target="#exampleModalCenter"
-               data-toggle="modal">
-              <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>
-              <span><strong>Xóa</strong></span>
-            </a>
-            <div #closeModalRef [id]="'collapseExample'+i" class="collapse">
-              <form>
-                <div class="card card-body">
+        <span *ngIf="product.like > 14 && product.like < 30" class="text-warning">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+        </span>
+
+        <span *ngIf="product.like > 5 && product.like < 15" class="text-warning">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+        </span>
+
+        <span *ngIf="product.like > 0 && product.like < 6" class="text-warning">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+        </span>
+
+        <button (click)="addLike()" class="btn btn-primary" style="margin-left: 50px">Yêu thích</button>
+
+        <hr width="100%" size="5px" align="left" class="text-primary"/>
+        <h5 class="text-danger">{{product.price | currency: 'VND'}}</h5>
+        <h6 class="text-primary">Đặc tính:</h6>
+        <span class="text-secondary">{{product.description}}</span>
+        <br/>
+        <hr width="100%" size="5px" align="left" class="text-primary"/>
+
+        <p>
+          <button type="button"
+                  class="btn btn-outline-primary "
+                  (click)="addProductToCart(product, 1)">Thêm sản phẩm này
+          </button>
+          <button type="button"
+                  class="btn btn-outline-danger ml-2"
+                  *ngIf="productInCart(product) | async"
+                  (click)="removeProductFromCart(product, 1)">Xóa sản phẩm này
+          </button>
+        </p>
+        <hr width="100%" size="5px" align="center" class="text-primary"/>
+        <h6>Hãy ghé thăm fanpage của chúng tôi ở đây bạn nhé!</h6>
+        <span><a class="text-primary m-3" href="http://www.facebook.com/nguyenkhacgia.bao" target="_blank"><i
+          class="fa fa-facebook-square fa-3x"></i></a></span>
+        <span><a class="text-info m-3" href="https://twitter.com/TheCoffeeBean" target="_blank"><i
+          class="fa fa-twitter-square  fa-3x"></i></a></span>
+        <span><a class="text-primary m-3"><i class="fa fa-envelope-square fa-3x" target="_blank"></i></a></span>
+        <span><a class="text-danger m-3" href="https://www.coffeebean.com/" target="_blank"><i
+          class="fa fa-google-plus-square fa-3x"></i></a></span>
+      </div>
+
+      <div class="col-md-3 mt-3">
+        <table>
+          <tr>
+            <td>The Coffee Bean</td>
+          </tr>
+
+          <tr>
+            <td>Cam kết chĩnh hãng 100%</td>
+          </tr>
+
+          <tr>
+            <td>Hoàn tiền nếu phát hiện hàng giả</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="container" style="margin-left: 20px">
+        <h4 style="margin-top: 20px">Bình luận</h4>
+        <div *ngFor="let comment of listCommenter , index as i" class="media mb-4">
+          <div class="media-body">
+            <div *ngIf="iEdit ; else other4">
+              <label class="text-success text font-weight-bold">{{username}}<h6 class="text-secondary">{{comment.date}}
+                (edited)</h6></label>
+            </div>
+            <ng-template #other4>
+              <label class="text-success font-weight-bold font">{{username}}<h6
+                class="text-secondary">{{comment.date}}</h6></label>
+            </ng-template>
+            <p>
+              <span>{{comment.content}}</span>
+            </p>
+            <div class="text-left">
+
+              <a #closeModalRef *ngIf="tokenJWT" [attr.data-target]="'#collapseExample' + i" aria-expanded="false"
+                 class="text-primary mr-2" data-toggle="collapse">
+                <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>
+                <span>Cập nhật</span>
+              </a>
+              <a (click)="getIdComment1(comment.id)" *ngIf="tokenJWT" class="text-primary ml-2"
+                 data-target="#exampleModalCenter"
+                 data-toggle="modal">
+                <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>
+                <span>Xóa</span>
+              </a>
+              <div #closeModalRef [id]="'collapseExample'+i" class="collapse">
+                <form>
+                  <div class="card card-body">
                   <textarea [formControl]="contentUpdate" [value]="comment.content" contenteditable="true"
                             rows="3"></textarea>
-                  <br/>
-                  <div class="text-right">
-                    <button (click)="closeForm1(closeModalRef)" class="btn btn-outline-secondary">Close</button>&nbsp;&nbsp;
-                    <button (click)="updateCommenter1(comment.id,closeModalRef)" class="btn btn-outline-primary">
-                      Cập nhật
-                    </button>
+                    <br/>
+                    <div class="text-right">
+                      <button (click)="closeForm1(closeModalRef)" class="btn btn-outline-secondary">Close</button>&nbsp;&nbsp;
+                      <button (click)="updateCommenter1(comment.id,closeModalRef)" class="btn btn-outline-primary">
+                        Cập nhật
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
+            <hr>
           </div>
-          <hr>
+        </div>
+      </div>
+
+
+      <div class="col-md-9 mt-3 mb-3">
+        <div>
+          <div class="card-body">
+            <form [formGroup]="formCommenterCreate">
+              <div class="form-group">
+              <textarea class="form-control border-primary" formControlName="contentInput" id="comment"
+                        placeholder="Nhập bình luận của bạn..." rows="3" style="margin-left: 0px"></textarea>
+              </div>
+              <div>
+                <div *ngIf="this.tokenJWT ; else other" class="text-center text-justify">
+                  <button (click)="createCommenter()" class="btn btn-outline-success col-md-2 offset-10" type="submit">
+                    Bình luận
+                  </button>
+                </div>
+                <ng-template #other>
+                  <div class="text-center text-secondary">
+                    <h6>You need login before can be comment. <a [routerLink]="'/login'">Login!</a></h6>
+                  </div>
+                </ng-template>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
 
-    <div class="col-md-9 mt-3 mb-3">
-      <div>
-        <h5 class="ml-2 text-info"><strong><label for="comment">Bình luận về sản phẩm này !</label></strong></h5>
-        <div class="card-body">
+  <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" role="dialog"
+       tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Comment in here</h5>
+          <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
           <form [formGroup]="formCommenterCreate">
-            <div class="form-group">
-              <textarea class="form-control border-primary" formControlName="contentInput" id="comment"
-                        placeholder="Nhập bình luận của bạn..." rows="3"></textarea>
+            <div *ngIf="this.tokenJWT" class="form-group">
+              <textarea class="form-control" formControlName="contentInput" rows="3"></textarea>
             </div>
             <div>
-              <div *ngIf="this.tokenJWT ; else other" class="text-center text-justify">
-                <button (click)="createCommenter()" class="btn btn-outline-success col-md-2 offset-10" type="submit">
-                  Bình luận
-                </button>
-              </div>
               <ng-template #other>
                 <div class="text-center text-secondary">
-                  <h6>You need login before can be comment. <a [routerLink]="'/login'">Login!</a></h6>
+                  <h6>Bạn cần đăng nhập để có thể bình luận sản phẩm này! <a [routerLink]="'/login'"
+                                                                             data-dismiss="modal">Đăng
+                    nhập!</a>
+                  </h6>
                 </div>
               </ng-template>
             </div>
           </form>
         </div>
-      </div>
-    </div>
-
-
-    <!--    <div class="col-md-3 m-2 p-2">-->
-    <!--      <div class="text-body align-text-bottom">-->
-    <!--        <h4 align="center" class="text-primary mb-2">SẢN PHẨM LIÊN QUAN</h4>-->
-    <!--        <div *ngFor="let p of products | async">-->
-    <!--          <div class="row mb-3 mt-3">-->
-    <!--            <div class="col-md-3 ">-->
-    <!--              <img [src]="p.image" style="height: 125px" routerLink="/product-detail/{{p.id}}">-->
-    <!--            </div>-->
-
-    <!--            <div class="col-md-7 ml-3">-->
-    <!--              <h5 class="text-info" routerLink="/product-detail/{{p.id}}">{{p.name}}</h5>-->
-    <!--              <h6 class="text-danger">{{p.price | currency: 'VND'}}</h6>-->
-    <!--            </div>-->
-
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </div>-->
-  </div>
-</div>
-<!------------ Single Comment ------------->
-
-<!-- /.row -->
-
-<!-----------Comment modal-------------->
-
-<!-- Modal -->
-<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" role="dialog"
-     tabindex="-1">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Comment in here</h5>
-        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="formCommenterCreate">
-          <div *ngIf="this.tokenJWT" class="form-group">
-            <textarea class="form-control" formControlName="contentInput" rows="3"></textarea>
+        <div class="modal-footer">
+          <button #closeModalRef2 class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+          <div *ngIf="this.tokenJWT ; else other" class="text-center text-justify">
+            <button (click)="createCommenter()" class="btn btn-outline-success" data-dismiss="modal" type="submit">
+              Submit
+            </button>
           </div>
-          <div>
-            <ng-template #other>
-              <div class="text-center text-secondary">
-                <h6>Bạn cần đăng nhập để có thể bình luận sản phẩm này! <a [routerLink]="'/login'" data-dismiss="modal">Đăng
-                  nhập!</a>
-                </h6>
-              </div>
-            </ng-template>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button #closeModalRef2 class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
-        <div *ngIf="this.tokenJWT ; else other" class="text-center text-justify">
-          <button (click)="createCommenter()" class="btn btn-outline-success" data-dismiss="modal" type="submit">
-            Submit
-          </button>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<!------------Modal------------>
-<div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="exampleModalCenter"
-     role="dialog"
-     tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-danger" id="exampleModalCenterTitle">Delete Comment!</h5>
-        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body text-dark text-center">
-        <h5>Are you sure ?</h5>
-      </div>
-      <div class="modal-footer">
-        <button #closeModalRef2 class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
-        <button (click)="deleteComment1(closeModalRef2)" class="btn btn-danger" type="button">Accept</button>
+  <!------------Modal------------>
+  <div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="exampleModalCenter"
+       role="dialog"
+       tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-danger" id="exampleModalCenterTitle">Delete Comment!</h5>
+          <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-dark text-center">
+          <h5>Are you sure ?</h5>
+        </div>
+        <div class="modal-footer">
+          <button #closeModalRef2 class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+          <button (click)="deleteComment1(closeModalRef2)" class="btn btn-danger" type="button">Accept</button>
+        </div>
       </div>
     </div>
   </div>
+  <br/>
 </div>
 
