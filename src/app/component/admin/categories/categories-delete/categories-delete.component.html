@@ -1,8 +1,8 @@
-<h2>Categories Delete</h2>
+<h2>Xóa danh mục sản phẩm</h2>
 <div class="col-6 offset-3" *ngIf="categories">
   <table class="table">
     <tr>
-      <td>Name:</td>
+      <td>Tên danh mục:</td>
       <td>{{categories.name}}</td>
     </tr>
   </table>
@@ -19,11 +19,13 @@
           </button>
         </div>
         <div class="modal-body">
-          Are you sure delete this categories ?
+          Bạn có chắc chắn muốn xóa không ?
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="deleteCategories(categories.id)" data-dismiss="modal">Save changes</button>
+          <button class="btn btn-secondary" data-dismiss="modal" type="button">Quay lại</button>
+          <button (click)="deleteCategories(categories.id)" class="btn btn-primary" data-dismiss="modal" type="button">
+            Có
+          </button>
         </div>
       </div>
     </div>
