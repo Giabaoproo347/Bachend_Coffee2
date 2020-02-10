@@ -3,7 +3,7 @@ import {Observable, Observer} from 'rxjs';
 import {Product} from '../../../model/product.model';
 import {ProductService} from '../../../service/product.service';
 import {ShoppingCartService} from '../../../service/shopping-cart.service';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -14,8 +14,10 @@ import {ActivatedRoute} from '@angular/router';
 export class StoreComponent implements OnInit {
   public products: Observable<Product[]>;
   public product: Product;
-  productForm: FormGroup;
+  productList: Product[] = [];
   like: number;
+  searchString: string;
+  private content: any;
 
   public constructor(private productsService: ProductService,
                      private shoppingCartService: ShoppingCartService,
@@ -45,6 +47,12 @@ export class StoreComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.products = this.productsService.getProductList();
+    // this.products = this.productsService.getProductList();
+    this.productsService.getProductList().subscribe(next => {
+        this.productList = next;
+        console.log(this.productList);
+      }, err =>
+        (this.content = this.content = JSON.parse(err.error).message)
+    );
   }
 }
