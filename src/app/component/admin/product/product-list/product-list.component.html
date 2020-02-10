@@ -1,32 +1,31 @@
 <div class="container">
   <div class="center">
     <form [formGroup]="productForm" class="form-inline ml-auto">
-      <input type="text" [(ngModel)]="nameProduct" (keydown)="searchProductByName()" class="form-control mr-sm-2" formControlName="name" name="name" placeholder="Tìm kiếm theo tên hoặc thành phần...">
+      <input type="text" [(ngModel)]="nameProduct" (keydown)="searchProductByName()" class="form-control mr-sm-2"
+             formControlName="name" name="name" placeholder="Tìm kiếm theo tên hoặc thành phần...">
       <button (click)="searchProductByName()" type="submit" class="btn btn-dark">Search</button>
     </form>
   </div>
 </div>
-<h2>Product list</h2>
-<p><a routerLink="/product-create">Create new product</a></p>
+<h2>Danh sách sản phẩm</h2>
+<p><a routerLink="/product-create">Tạo mới 1 sản phẩm</a></p>
 <table class="table table-hover border">
   <thead>
   <tr>
     <th>Id</th>
-    <th>Name</th>
-    <th>Price</th>
-    <!--    <th>Description</th>-->
-    <th>Image</th>
-    <th>Edit</th>
-    <th>Delete</th>
+    <th>Tên</th>
+    <th>Giá</th>
+    <th>Hình ảnh</th>
+    <th>Cập nhật</th>
+    <th>Xóa</th>
   </tr>
   </thead>
   <tr *ngFor="let product of productList">
     <td><a [routerLink]="['/product-detail',product.id]">{{product.id}}</a></td>
     <td><a [routerLink]="['/product-detail',product.id]">{{product.name}}</a></td>
     <td>{{product.price}}</td>
-    <!--    <td>{{product.description}}</td>-->
     <td><a><img [src]="product.image" style="height: 100px"></a></td>
-    <td><a [routerLink]="['/product-edit',product.id]">Edit</a></td>
-    <td><a [routerLink]="['/product-delete',product.id]">Delete</a></td>
+    <td><a [routerLink]="['/product-edit',product.id]">Cập nhật</a></td>
+    <td><a [routerLink]="['/product-delete',product.id]">Xóa</a></td>
   </tr>
 </table>
