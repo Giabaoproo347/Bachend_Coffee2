@@ -34,7 +34,12 @@ export class ProductDetailComponent implements OnInit {
   formCommenterCreate = new FormGroup({
     contentInput: new FormControl('')
   });
+  formProductCreate = new FormGroup({
+    likeInput: new FormControl('')
+  });
   contentUpdate = new FormControl();
+  likeUpdate = new FormControl();
+  private productForm: FormGroup;
 
   constructor(
     private productService: ProductService,
@@ -58,6 +63,9 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit() {
     if (this.tokenStorageService.getUser()) {
+      this.productForm = this.fb.group({
+        like: ['']
+      });
       this.getAllCommentThisProduct();
       const user = this.tokenStorageService.getUser();
       this.username = user.username;
@@ -179,7 +187,6 @@ export class ProductDetailComponent implements OnInit {
       return this.closeForm(closeModalRef);
     }
     const commenter: Commenter = {
-      /*id: commenterId ,*/
       content: this.contentUpdate.value
     };
     this.commenterService.editComment(commenter).subscribe(
@@ -204,4 +211,8 @@ export class ProductDetailComponent implements OnInit {
     );
   }
 
+  addLike() {
+    console.log(this.product.id);
+    this.product.like += 1;
+  }
 }

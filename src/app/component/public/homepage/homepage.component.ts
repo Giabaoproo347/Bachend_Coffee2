@@ -12,6 +12,7 @@ export class HomepageComponent implements OnInit {
 
   productList: Product[] = [];
   content: string;
+  productSlice = this.productList.slice(1, 8);
 
   constructor(private productService: ProductService, private app: AppComponent) {
   }

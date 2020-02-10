@@ -156,7 +156,7 @@ import {SortByLike} from './model/sort';
     PaymentListsComponent,
     PaymentEditByUserComponent,
     TopHotComponent,
-    SortByLike
+    SortByLike,
   ],
   imports: [
     BrowserModule,

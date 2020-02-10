@@ -3,6 +3,8 @@ import {Observable, Observer} from 'rxjs';
 import {Product} from '../../../model/product.model';
 import {ProductService} from '../../../service/product.service';
 import {ShoppingCartService} from '../../../service/shopping-cart.service';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -11,10 +13,16 @@ import {ShoppingCartService} from '../../../service/shopping-cart.service';
 })
 export class StoreComponent implements OnInit {
   public products: Observable<Product[]>;
+  public product: Product;
+  productForm: FormGroup;
+  like: number;
 
   public constructor(private productsService: ProductService,
-                     private shoppingCartService: ShoppingCartService) {
+                     private shoppingCartService: ShoppingCartService,
+                     private route: ActivatedRoute,
+                     private fb: FormBuilder) {
   }
+
 
   public addProductToCart(product: Product): void {
     this.shoppingCartService.addItem(product, 1);

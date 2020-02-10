@@ -22,6 +22,7 @@ export class ProductService {
     return this.http.get<Product[]>(this.url + '/top-hot');
   }
 
+
   getProductListByCategory(id: number): Observable<any[]> {
     return this.http.get<any[]>(this.url + '/categories/' + id);
   }
@@ -44,7 +45,7 @@ export class ProductService {
       image: product.image,
       image2: product.image2,
       image3: product.image3,
-      productPicture: product.productPicture,
+      like: product.like,
       promotion: product.promotion,
       category: product.categories,
     });
@@ -58,18 +59,23 @@ export class ProductService {
       image: product.image,
       image2: product.image2,
       image3: product.image3,
-      bookPicture: product.productPicture,
+      like: product.like,
       promotion: product.promotion,
       category: product.categories,
     });
   }
 
+  editProduct2(product): Observable<any> {
+    return this.http.put(this.url + '/' + product.id, product);
+  }
+
+
   deleteProduct(id: number): Observable<any> {
     return this.http.delete(this.url + '/' + id);
   }
 
-  public editProduct1(product: Product): Observable<any> {
-    return this.http.put(`${this.url}/${product.id}`, product);
+  createProduct1(product: Product): Observable<Product> {
+    return this.http.post<Product>(this.url, product);
   }
 
   public deleteProduct1(id: number): Observable<any> {
@@ -80,4 +86,7 @@ export class ProductService {
     return this.http.post<Product[]>(this.url + '/search-product-by-name', nameProduct);
   }
 
+  addLike(product: Product): Observable<any> {
+    return this.http.put(this.url + '/like/' + product.id, product);
+  }
 }

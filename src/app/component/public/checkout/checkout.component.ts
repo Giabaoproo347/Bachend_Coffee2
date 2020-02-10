@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
-import {Observable, Subscription} from 'rxjs';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Observable, Observer, Subscription} from 'rxjs';
 import {CartItem} from '../../../model/cart-item.model';
 import {Product} from '../../../model/product.model';
 import {OrderDetail} from '../../../model/orderDetail.model';
@@ -22,6 +22,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   public cart: Observable<ShoppingCart>;
   public cartItems: ICartItemWithProduct[];
   public itemCount: number;
+  public product: Product;
 
   private products: Product[];
   private cartSubscription: Subscription;
@@ -31,9 +32,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
                      private shoppingCartService: ShoppingCartService) {
   }
 
-  public emptyCart(): void {
-    this.shoppingCartService.empty();
-  }
 
   public setOrderDetail(option: OrderDetail): void {
     this.shoppingCartService.setOrderDetail(option);
@@ -56,6 +54,26 @@ export class CheckoutComponent implements OnInit, OnDestroy {
             };
           });
       });
+    });
+  }
+
+  public removeProductFromCart(product: Product): void {
+    this.shoppingCartService.addItem(product, -1);
+  }
+
+  public emptyCart(): void {
+    this.shoppingCartService.empty();
+  }
+
+  public productInCart(product: Product): boolean {
+    return Observable.create((obs: Observer<boolean>) => {
+      const sub = this.shoppingCartService
+        .get()
+        .subscribe((cart) => {
+          obs.next(cart.items.some((i) => i.productId === product.id));
+          obs.complete();
+        });
+      sub.unsubscribe();
     });
   }
 
