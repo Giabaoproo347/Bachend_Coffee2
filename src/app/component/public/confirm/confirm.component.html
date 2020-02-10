@@ -56,12 +56,13 @@
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group mt-3">
                 <div class="form-row">
                   <div class="col">
-                    <input [ngModel]="(cart| async).grossTotal" class="form-control" disabled
+                    <label class="text-info">Số tiền thanh toán</label>
+                    <input [ngModel]="(cart| async).grossTotal | currency: 'VND'" class="form-control" disabled
                            formControlName="total"
-                           type="hidden">
+                           type="text">
                   </div>
                 </div>
               </div>
@@ -78,8 +79,8 @@
               <div class="form-group">
                 <div class="form-row">
                   <div class="col">
-                    <label class="text-info">Chọn phương thức thanh toán</label>
-                    <select formControlName="method">
+                    <label class="text-info mr-3">Chọn phương thức thanh toán</label>
+                    <select formControlName="method" style="width: 415px">
                       <option *ngFor="let methods of method">{{methods}}</option>
                     </select>
                   </div>
