@@ -7,22 +7,23 @@
 
           <img src="https://espressoandthecity.files.wordpress.com/2011/09/9502coffee_bean.jpg" height="200px"/></div>
         <div class="col-12 form-input">
-          <form class="form-control1"   *ngIf="!isLoggedIn"  name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+          <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()" *ngIf="!isLoggedIn" class="form-control1"
+                name="form" novalidate>
             <div class="form-group">
-              <i class="fa fa-user searchIcon1" ></i>
+              <i class="fa fa-user searchIcon1"></i>
               <input type="email" class="form-control search1" name="username"
                      [(ngModel)]="form.username" required #username="ngModel"
-                     placeholder="enter the email">
-              <div class="alert alert-danger"  role="alert" *ngIf="f.submitted && username.invalid">
+                     placeholder="Nhập email của bạn">
+              <div *ngIf="f.submitted && username.invalid" class="alert alert-danger" role="alert">
                 Tài khoản không được để trống
               </div>
             </div>
 
             <div class="form-group">
               <i class="fa fa-unlock-alt searchIcon2"></i>
-              <input type="password" class="form-control search2"  name="password"
+              <input class="form-control search2" name="password" placeholder="Nhập mật khẩu của bạn"
                      [(ngModel)]="form.password" required minlength="6" #password="ngModel"
-                     placeholder="enter the password" >
+                     type="password">
               <div class="alert alert-danger" role="alert" *ngIf="f.submitted && password.invalid">
                 <div *ngIf="password.errors.required">Mật khẩu không được để trống</div>
                 <div *ngIf="password.errors.minlength(6)">
@@ -70,16 +71,16 @@
               <i class="fa fa-user searchIcon1"></i>
               <input type="email" class="form-control search1" name="username"
                      [(ngModel)]="form.username" required #username="ngModel"
-                     placeholder="enter the email">
-              <div class="alert alert-danger"  role="alert" *ngIf="f.submitted && username.invalid">
+                     placeholder="Nhập email của bạn">
+              <div *ngIf="f.submitted && username.invalid" class="alert alert-danger" role="alert">
                 Tài khoản không được để trống
               </div>
             </div>
             <div class="form-group">
               <i class="fa fa-unlock-alt searchIcon2"></i>
-              <input type="password" class="form-control search2"  name="password"
+              <input class="form-control search2" name="password" placeholder="Nhập mật khẩu của bạn"
                      [(ngModel)]="form.password" required minlength="6" #password="ngModel"
-                     placeholder="enter the password" >
+                     type="password">
               <div class="alert alert-danger" role="alert" *ngIf="f.submitted && password.invalid">
                 <div *ngIf="password.errors.required">Mật khẩu không được để trống</div>
                 <div *ngIf="password.errors.minlength(6)">
@@ -111,30 +112,33 @@
       </div>
     </div>
   </div>
-</div><div class="modal-backdrop">
+</div>
+<div class="modal-backdrop">
 
   <div class="modal-dialog text-center">
     <div class="col-sm-9 main-section">
       <div class="modal-content">
         <div class="col-12 user-img">
-          <img src="https://png.pngtree.com/png-clipart/20190924/original/pngtree-vector-user-young-boy-avatar-icon-png-image_4827810.jpg">
+          <img
+            src="https://png.pngtree.com/png-clipart/20190924/original/pngtree-vector-user-young-boy-avatar-icon-png-image_4827810.jpg">
         </div>
         <div class="col-12 form-input">
-          <form class="form-control1"   *ngIf="!isLoggedIn"  name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+          <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()" *ngIf="!isLoggedIn" class="form-control1"
+                name="form" novalidate>
             <div class="form-group">
-              <i class="fa fa-user searchIcon1" ></i>
+              <i class="fa fa-user searchIcon1"></i>
               <input type="email" class="form-control search1" name="username"
                      [(ngModel)]="form.username" required #username="ngModel"
-                     placeholder="enter the email">
-              <div class="alert alert-danger"  role="alert" *ngIf="f.submitted && username.invalid">
+                     placeholder="Nhập email của bạn">
+              <div *ngIf="f.submitted && username.invalid" class="alert alert-danger" role="alert">
                 Tài khoản không được để trống
               </div>
             </div>
             <div class="form-group">
               <i class="fa fa-unlock-alt searchIcon2"></i>
-              <input type="password" class="form-control search2"  name="password"
+              <input class="form-control search2" name="password" placeholder="Nhập mật khẩu của bạn"
                      [(ngModel)]="form.password" required minlength="6" #password="ngModel"
-                     placeholder="enter the password" >
+                     type="password">
               <div class="alert alert-danger" role="alert" *ngIf="f.submitted && password.invalid">
                 <div *ngIf="password.errors.required">Mật khẩu không được để trống</div>
                 <div *ngIf="password.errors.minlength(6)">
