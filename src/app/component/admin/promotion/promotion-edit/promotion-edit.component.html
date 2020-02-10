@@ -14,26 +14,26 @@
     (ngSubmit)="promotionForm.valid && onSubmit()"
   >
     <div class="form-group">
-      <label>Promotion name</label>
+      <label>Tên</label>
       <input type="text" class="form-control" formControlName="name">
       <div class="alert-danger" *ngIf="promotionForm.get('name').invalid && promotionForm.get('name').touched"
            style="color: red">
-        Promotion name must be at least 1 characters
+        Tối thiểu 3 ký tự
       </div>
     </div>
     <div class="form-group">
-      <label>Price</label>
+      <label>Giá</label>
       <input type="number" class="form-control" formControlName="price">
       <div class="alert-danger" *ngIf="promotionForm.get('price').invalid && promotionForm.get('price').touched"
            style="color: red">
-        Price is required
+        Không được để trống
       </div>
     </div>
     <div class="form-group">
-      <button class="btn btn-primary btn-block">Save</button>
+      <button class="btn btn-primary btn-block">Cập nhật</button>
     </div>
     <div class="form-group">
-      <button class="btn btn-primary btn-block">Cancel</button>
+      <button class="btn btn-primary btn-block">Quay lại</button>
     </div>
   </form>
 </div>

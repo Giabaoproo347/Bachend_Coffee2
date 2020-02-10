@@ -1,14 +1,14 @@
-<h2>Promotion detail</h2>
+<h2>Chi tiết khuyến mãi</h2>
 <div class="col-6 offset-3" *ngIf="promotion">
   <table class="table">
     <tr>
-      <td>Name:</td>
+      <td>Tên:</td>
       <td>{{ promotion.name }}</td>
     </tr>
     <tr>
-      <td>Price:</td>
+      <td>Giá:</td>
       <td>{{ promotion.price }}</td>
     </tr>
   </table>
-  <input class="btn btn-primary btn-block" value="Back to promotion list" routerLink="/promotion-list">
+  <input class="btn btn-primary btn-block" routerLink="/promotion-list" value="Quay lại">
 </div>

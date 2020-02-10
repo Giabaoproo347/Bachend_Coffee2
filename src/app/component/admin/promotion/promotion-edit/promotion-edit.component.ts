@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Promotion} from '../../../../model/promotion.model';
@@ -24,7 +24,7 @@ export class PromotionEditComponent implements OnInit {
 
   ngOnInit() {
     this.promotionForm = this.fb.group({
-      name: ['', [ Validators.required, Validators.minLength(1) ]],
+      name: ['', [Validators.required, Validators.minLength(3)]],
       price: ['', Validators.required]
     });
     const id = +this.route.snapshot.paramMap.get('id');

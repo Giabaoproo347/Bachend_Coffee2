@@ -1,18 +1,18 @@
-<h2>Promotion list</h2>
-<p><a routerLink="/promotion-create">Create new a promotion</a></p>
+<h2>Danh sách khuyến mãi</h2>
+<p><a routerLink="/promotion-create">Tạo mới khuyến mãi</a></p>
 <table class="table table-hover border">
   <thead>
   <tr>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Edit</th>
-    <th>Delete</th>
+    <th>Tên khuyến mãi</th>
+    <th>Giá</th>
+    <th>Cập nhật</th>
+    <th>Xóa</th>
   </tr>
   </thead>
   <tr *ngFor="let promotion of promotionList">
     <td><a [routerLink]="['/promotion-detail', promotion.id]">{{ promotion.name }}</a></td>
     <td>{{ promotion.price }}</td>
-    <td><a [routerLink]="['/promotion-edit',promotion.id]">Edit</a></td>
-    <td><a [routerLink]="['/promotion-delete',promotion.id]">Delete</a></td>
+    <td><a [routerLink]="['/promotion-edit',promotion.id]">Cập nhật</a></td>
+    <td><a [routerLink]="['/promotion-delete',promotion.id]">Xóa</a></td>
   </tr>
 </table>
