@@ -160,7 +160,7 @@ export class ProductDetailComponent implements OnInit {
         this.formCommenterCreate.reset();
       }, error => {
         console.log(error);
-      }
+      } 
     );
   }
 
@@ -203,5 +203,4 @@ export class ProductDetailComponent implements OnInit {
       }
     );
   }
-
 }
