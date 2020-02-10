@@ -1,20 +1,21 @@
-<h2>Promotion delete</h2>
+<h2>Xóa khuyến mãi</h2>
 <div class="col-6 offset-3" *ngIf="promotion">
   <table class="table">
     <tr>
-      <td>Name:</td>
+      <td>Tên:</td>
       <td>{{ promotion.name }}</td>
     </tr>
     <tr>
-      <td>Price:</td>
+      <td>Giá:</td>
       <td>{{ promotion.price }}</td>
     </tr>
   </table>
-  <input class="btn btn-primary btn-block" value="Delete promotion" data-toggle="modal" data-target="#exampleModal">
-  <input class="btn btn-primary btn-block" value="Cancel" routerLink="/promotion-list">
+  <input class="btn btn-primary btn-block" data-target="#exampleModal" data-toggle="modal" value="Xóa">
+  <input class="btn btn-primary btn-block" routerLink="/promotion-list" value="Quay lại">
 
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+       aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -24,11 +25,13 @@
           </button>
         </div>
         <div class="modal-body">
-          Are you sure delete this promotion?
+          Bạn có chắc chắn muốn xóa?
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="deletePromotion(promotion.id)" data-dismiss="modal">Save changes</button>
+          <button class="btn btn-secondary" data-dismiss="modal" type="button">Đóng</button>
+          <button (click)="deletePromotion(promotion.id)" class="btn btn-primary" data-dismiss="modal" type="button">
+            Xóa
+          </button>
         </div>
       </div>
     </div>

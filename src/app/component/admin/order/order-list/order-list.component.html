@@ -1,4 +1,4 @@
-<h2>Order List</h2>
+<h2>Danh sách đơn hàng</h2>
 <table class="table table-hover border">
   <thead>
   <tr>
@@ -11,11 +11,11 @@
   </tr>
   </thead>
   <tr *ngFor="let order of orderList">
-    <td><a [routerLink]="['/order-detail',order.id]">{{order.id}}</a> </td>
+    <td><a [routerLink]="['/order-detail',order.id]">{{order.id}}</a></td>
     <td>{{order.purchaseDate}}</td>
     <td>{{order.deliveryDate}}</td>
     <td>{{order.description}}</td>
-    <td><a [routerLink]="['/order-edit',order.id]">Edit</a></td>
-    <td><a [routerLink]="['/order-delete',order.id]">Delete</a></td>
+    <td><a [routerLink]="['/order-edit',order.id]">Cập nhật</a></td>
+    <td><a [routerLink]="['/order-delete',order.id]">Xóa</a></td>
   </tr>
 </table>

@@ -14,7 +14,7 @@
       <label>Username</label>
       <input type="text" class="form-control" formControlName="username"/>
       <div class="alert-danger" *ngIf="userForm.get('username').invalid && userForm.get('username').touched" style="color: aqua">
-        Username is required
+        Tối thiểu 3 ký tự
       </div>
     </div>
 
@@ -22,23 +22,23 @@
       <label>Email</label>
       <input type="text" class="form-control" formControlName="email"/>
       <div class="alert-danger" *ngIf="userForm.get('email').invalid && userForm.get('email').touched" style="color: aqua">
-        email is required
+        Không đúng định dạng email
       </div>
     </div>
 
     <div class="form-group">
-      <label>Phone</label>
+      <label>Điện thoại</label>
       <input type="text" class="form-control" formControlName="phone"/>
       <div class="alert-danger" *ngIf="userForm.get('phone').invalid && userForm.get('phone').touched" style="color: aqua">
-        phone is required
+        Không đúng định dạng điện thoại
       </div>
     </div>
 
     <div class="form-group">
-      <label>Address</label>
+      <label>Địa chỉ</label>
       <input type="text" class="form-control" formControlName="address"/>
       <div class="alert-danger" *ngIf="userForm.get('address').invalid && userForm.get('address').touched" style="color: aqua">
-        address is required
+        Tối thiểu 3 ký tự
       </div>
     </div>
 

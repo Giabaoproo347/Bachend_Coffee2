@@ -1,15 +1,15 @@
 <div class="col-6 offset-3">
-  <h2 class="text-center">Edit Product</h2>
+  <h2 class="text-center">Cập nhật sản phẩm</h2>
   <div *ngIf="message">
     <div class="alert alert-success">
       <strong>Success!</strong> You have edited a product
     </div>
     <div>
       <div class="form-group">
-        <input class="btn btn-primary btn-block" value="Edit new product" (click)="message = !message">
+        <input (click)="message = !message" class="btn btn-primary btn-block" value="Tạo mới sản phẩm">
       </div>
       <div class="form-group">
-        <input class="btn btn-primary btn-block" value="Back to product list" routerLink="/product-list">
+        <input class="btn btn-primary btn-block" routerLink="/product-list" value="QUay lại">
       </div>
     </div>
   </div>
@@ -21,58 +21,58 @@
     novalidate
   >
     <div class="form-group">
-      <label>Product name</label>
+      <label>Tên sản phẩm</label>
       <input type="text" class="form-control" formControlName="name"/>
       <div class="alert-danger" *ngIf="productForm.get('name').invalid && productForm.get('name').touched"
            style="color: red">
-        Product name must be at least 1 characters
+        Tối thiểu 3 ký tự
       </div>
     </div>
     <div class="form-group">
-      <label>Price</label>
+      <label>Giá</label>
       <input type="number" class="form-control" formControlName="price"/>
       <div class="alert-danger" *ngIf="productForm.get('price').invalid && productForm.get('price').touched"
            style="color: red">
-        Price is greater than or equal to zero
+        Không được để trống
       </div>
     </div>
     <div class="form-group">
-      <label>Description</label>
+      <label>Mô tả</label>
       <textarea class="form-control h-auto" formControlName="description"></textarea>
       <div class="alert-danger" *ngIf="productForm.get('description').invalid && productForm.get('description').touched"
            style="color: red">
-        Description is required
+        Không được để trống
       </div>
     </div>
     <div class="form-group">
-      <label>Image</label>
+      <label>Hình ảnh 1</label>
       <input type="text" class="form-control" formControlName="image"/>
       <div class="alert-danger" *ngIf="productForm.get('image').invalid && productForm.get('image').touched"
            style="color: red">
-        Image is not empty
+        Không được để trống
       </div>
     </div>
 
     <div class="form-group">
-      <label>Image 2</label>
+      <label>Hình ảnh 2</label>
       <input type="text" class="form-control" formControlName="image2"/>
       <div class="alert-danger" *ngIf="productForm.get('image2').invalid && productForm.get('image2').touched"
            style="color: red">
-        Image 2 is not empty
+        Không được để trống
       </div>
     </div>
 
     <div class="form-group">
-      <label>Image 3</label>
+      <label>Hình ảnh 3</label>
       <input type="text" class="form-control" formControlName="image3"/>
       <div class="alert-danger" *ngIf="productForm.get('image3').invalid && productForm.get('image3').touched"
            style="color: red">
-        Image 3 is not empty
+        Không được để trống
       </div>
     </div>
 
     <div class="form-group">
-      <label>Promotion</label>
+      <label>Khuyến mãi</label>
       <div *ngFor="let promotion1 of promotion">
         <p>{{promotion1.name}}</p>
       </div>
@@ -83,7 +83,7 @@
     </div>
 
     <div class="form-group">
-      <label>Category</label>
+      <label>Danh mục</label>
       <select class="form-control" (change)="addCategories(addCa.value)" #addCa>
         <option value="">None</option>
         <option *ngFor="let c of categoriesList" value="{{c.id}}">{{c.name}}</option>
@@ -91,10 +91,10 @@
     </div>
 
     <div class="form-group">
-      <button class="btn btn-primary btn-block">Save</button>
+      <button class="btn btn-primary btn-block">Cập nhật</button>
     </div>
     <div class="form-group">
-      <input class="btn btn-primary btn-block" value="Back to product list" routerLink="/product-list">
+      <input class="btn btn-primary btn-block" routerLink="/product-list" value="Quay lại">
     </div>
   </form>
 </div>

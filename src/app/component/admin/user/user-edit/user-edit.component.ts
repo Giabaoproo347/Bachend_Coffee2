@@ -1,12 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Categories} from '../../../../model/categories.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {CategoriesService} from '../../../../service/categories.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../../../model/user.model';
 import {UserService} from '../../../../user/_services/user.service';
-import {Order} from '../../../../model/order.model';
-import {OrderService} from '../../../../service/order.service';
 
 @Component({
   selector: 'app-user-edit',
@@ -27,10 +23,10 @@ export class UserEditComponent implements OnInit {
 
   ngOnInit() {
     this.userForm = this.fb.group({
-      username: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      address: ['', [Validators.required]]
+      username: ['', [Validators.required, Validators.minLength(1)]],
+      phone: ['', [Validators.required, Validators.pattern('(09|03)+([0-9]{8})\\b')]],
+      email: ['', [Validators.required, Validators.pattern('[^@]+@[^\\.]+\\..+')]],
+      address: ['', [Validators.required, Validators.minLength(3)]]
     });
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);

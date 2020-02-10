@@ -1,14 +1,14 @@
 <div class="col-6 offset-3">
-  <h3>Create a new promotion</h3>
+  <h3>Tạo mới khuyến mãi</h3>
   <div *ngIf="message">
     <div class="alert alert-success">
       <strong>Success!</strong> You have created a new promotion
     </div>
     <div class="form-group">
-      <input class="btn btn-primary btn-block" value="create new promotion" (click)="message = !message">
+      <input (click)="message = !message" class="btn btn-primary btn-block" value="Tạo mới khuyến mãi">
     </div>
     <div class="form-group">
-      <input class="btn btn-primary btn-block" value="back to promotion list" routerLink="/promotion-list">
+      <input class="btn btn-primary btn-block" routerLink="/promotion-list" value="Quay lại">
     </div>
   </div>
   <form
@@ -18,26 +18,26 @@
     (ngSubmit)="promotionForm.valid && onSubmit()"
   >
     <div class="form-group">
-      <label>Promotion name</label>
+      <label> Tên </label>
       <input type="text" class="form-control" formControlName="name">
       <div class="alert-danger" *ngIf="promotionForm.get('name').invalid && promotionForm.get('name').touched"
            style="color: red">
-        Promotion name must be at least 1 characters
+        Tối thiểu 3 ký tự
       </div>
     </div>
     <div class="form-group">
-      <label>Price</label>
+      <label>Giá</label>
       <input type="number" class="form-control" formControlName="price">
       <div class="alert-danger" *ngIf="promotionForm.get('price').invalid && promotionForm.get('price').touched"
            style="color: red">
-        Price is required
+        Không được để trống
       </div>
     </div>
     <div class="form-group">
-      <button class="btn btn-primary btn-block">Create</button>
+      <button class="btn btn-primary btn-block">Tạo mới</button>
     </div>
     <div class="form-group">
-      <input class="btn btn-primary btn-block" value="Cancel" routerLink="/promotion-list">
+      <input class="btn btn-primary btn-block" routerLink="/promotion-list" value="Quay lại">
     </div>
   </form>
 </div>

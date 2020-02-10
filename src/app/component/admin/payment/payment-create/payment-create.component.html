@@ -1,5 +1,5 @@
 <div class="col-6 offset-3">
-  <h3>Create a new payment</h3>
+  <h3>Tạo mới thanh toán</h3>
   <div *ngIf="message">
     <div class="alert alert-success">
       <strong>Success!</strong> You have created a new payment
@@ -37,6 +37,7 @@
       <label>Điện thoại</label>
       <input type="text" class="form-control" formControlName="phone">
       <div class="alert-danger" *ngIf="paymentForm.get('phone').invalid && paymentForm.get('phone').touched"
+           pattern="(09|03)+([0-9]{8})\b"
            style="color: red">
         Định dạng số điện thoại không đúng
       </div>
@@ -45,6 +46,7 @@
       <label>Email</label>
       <input type="text" class="form-control" formControlName="email">
       <div class="alert-danger" *ngIf="paymentForm.get('email').invalid && paymentForm.get('email').touched"
+           pattern="[^@]+@[^\.]+\..+"
            style="color: red">
         Định dạng email không đúng
       </div>
