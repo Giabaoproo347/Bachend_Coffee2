@@ -42,6 +42,7 @@
                   <label class="text-info">Số điện thoại (*)</label>
                   <input class="form-control" formControlName="phone" placeholder="Số điện thoại" type="text">
                   <div *ngIf="paymentForm.get('phone').invalid && paymentForm.get('phone').touched" class="alert-danger"
+                       pattern="(09|03)+([0-9]{8})\b"
                        style="color: red">
                     Định dạng số điện thoại không đúng
                   </div>
@@ -50,8 +51,9 @@
                   <label class="text-info">Email</label>
                   <input class="form-control" formControlName="email" placeholder="Email" type="text">
                   <div *ngIf="paymentForm.get('email').invalid && paymentForm.get('email').touched" class="alert-danger"
+                       pa
                        style="color: red">
-                    Định dạng email không đúng
+                    Email must be at least 1 characters
                   </div>
                 </div>
               </div>
@@ -213,7 +215,7 @@
                   <input class="form-control" formControlName="name" placeholder="Tên" type="text">
                   <div *ngIf="paymentForm.get('name').invalid && paymentForm.get('name').touched" class="alert-danger"
                        style="color: red">
-                    Tối thiểu 3 ký tự
+                    Name must be at least 1 characters
                   </div>
                 </div>
               </div>
@@ -227,7 +229,7 @@
                   <div *ngIf="paymentForm.get('address').invalid && paymentForm.get('address').touched"
                        class="alert-danger"
                        style="color: red">
-                    Tối thiểu 3 ký tự
+                    Address must be at least 1 characters
                   </div>
                 </div>
               </div>
@@ -240,7 +242,7 @@
                   <input class="form-control" formControlName="phone" placeholder="Số điện thoại" type="text">
                   <div *ngIf="paymentForm.get('phone').invalid && paymentForm.get('phone').touched" class="alert-danger"
                        style="color: red">
-                    Không đúng định dạng số điện thoại
+                    Phone must be at least 1 characters
                   </div>
                 </div>
                 <div class="col">
@@ -248,7 +250,7 @@
                   <input class="form-control" formControlName="email" placeholder="Email" type="text">
                   <div *ngIf="paymentForm.get('email').invalid && paymentForm.get('email').touched" class="alert-danger"
                        style="color: red">
-                    Email không đúng định dạng
+                    Email must be at least 1 characters
                   </div>
                 </div>
 
