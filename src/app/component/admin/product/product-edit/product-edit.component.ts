@@ -51,9 +51,6 @@ export class ProductEditComponent implements OnInit {
       categories: [''],
       promotion: ['']
     });
-    this.useFile = [];
-    this.previewUrl = [];
-    this.productPicture = [];
     this.promotion = [];
     this.categories = [];
     this.promotionService.getPromotionList().subscribe(next => this.promotionList = next);
@@ -66,9 +63,6 @@ export class ProductEditComponent implements OnInit {
         this.productForm.patchValue(product);
         this.promotion = next.promotion;
         this.categories = next.categories;
-        for (const picture of next.productPicture) {
-          this.previewUrl.push(picture.src);
-        }
       }, error => {
         console.log(error);
         this.product = null;
@@ -104,7 +98,6 @@ export class ProductEditComponent implements OnInit {
   }
 
   saveProduct() {
-    this.product.productPicture = this.productPicture;
     this.product.promotion = this.promotion;
     this.product.categories = this.categories;
     this.productService.editProduct(this.product).subscribe(next => {

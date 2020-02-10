@@ -18,74 +18,74 @@
     (ngSubmit)="paymentForm.valid && onSubmit()"
   >
     <div class="form-group">
-      <label>Payment name</label>
+      <label>Tên</label>
       <input type="text" class="form-control" formControlName="name">
       <div class="alert-danger" *ngIf="paymentForm.get('name').invalid && paymentForm.get('name').touched"
            style="color: red">
-        Payment name must be at least 1 characters
+        Tối thiểu 3 ký tự
       </div>
     </div>
     <div class="form-group">
-      <label>Payment address</label>
+      <label>Địa chỉ</label>
       <input type="text" class="form-control" formControlName="address">
       <div class="alert-danger" *ngIf="paymentForm.get('address').invalid && paymentForm.get('address').touched"
            style="color: red">
-        Payment address must be at least 1 characters
+        Tối thiểu 3 ký tự
       </div>
     </div>
     <div class="form-group">
-      <label>Payment phone</label>
+      <label>Điện thoại</label>
       <input type="text" class="form-control" formControlName="phone">
       <div class="alert-danger" *ngIf="paymentForm.get('phone').invalid && paymentForm.get('phone').touched"
            style="color: red">
-        Payment phone must be at least 1 characters
+        Định dạng số điện thoại không đúng
       </div>
     </div>
     <div class="form-group">
-      <label>Payment email</label>
+      <label>Email</label>
       <input type="text" class="form-control" formControlName="email">
       <div class="alert-danger" *ngIf="paymentForm.get('email').invalid && paymentForm.get('email').touched"
            style="color: red">
-        Payment email must be at least 1 characters
+        Định dạng email không đúng
       </div>
     </div>
     <div class="form-group">
-      <label>Payment total</label>
+      <label>Tổng hóa đơn</label>
       <input type="number" class="form-control" formControlName="total">
       <div class="alert-danger" *ngIf="paymentForm.get('total').invalid && paymentForm.get('total').touched"
            style="color: red">
-        Payment total must be at least 1 characters
+        Không được để trống
       </div>
     </div>
     <div class="form-group">
-      <label>Payment status</label>
+      <label>Tình trạng</label>
       <input type="text" class="form-control" formControlName="status">
       <div class="alert-danger" *ngIf="paymentForm.get('status').invalid && paymentForm.get('status').touched"
            style="color: red">
-        Payment status must be at least 1 characters
+        Không được để trống
       </div>
     </div>
     <div class="form-group">
-      <label>Payment description</label>
+      <label>Mô tả</label>
       <input type="text" class="form-control" formControlName="description">
       <div class="alert-danger" *ngIf="paymentForm.get('description').invalid && paymentForm.get('description').touched"
            style="color: red">
-        Payment description must be at least 1 characters
+        Không được để trống
       </div>
     </div>
     <div class="form-group">
-      <label>Date</label>
-      <input type="text" class="form-control" formControlName="date">
+      <label>Ngày</label>
+      <input type="date" class="form-control" formControlName="date">
       <div class="alert-danger" *ngIf="paymentForm.get('date').invalid && paymentForm.get('date').touched"
            style="color: red">
-        Payment is required
+        Không được để trống
       </div>
     </div>
     <div class="form-group">
-      <button class="btn btn-primary btn-block">Create</button>
+      <button class="btn btn-primary btn-block">Tạo mới</button>
     </div>
     <div class="form-group">
-      <input class="btn btn-primary btn-block" value="Cancel" routerLink="/payment-list">
+      <input class="btn btn-primary btn-block" value="Quay lại" routerLink="/payment-list">
     </div>
   </form>
 </div>

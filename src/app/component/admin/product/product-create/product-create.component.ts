@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {TokenStorageService} from '../../../../user/_services/token-storage.service';
@@ -46,7 +46,7 @@ export class ProductCreateComponent implements OnInit {
     this.app.setIsShow(true);
     this.productForm = this.fb.group({
       id: '',
-      name: ['', [Validators.required]],
+      name: ['', [Validators.required, Validators.minLength(3)]],
       price: ['', [Validators.required]],
       description: ['', [Validators.required]],
       image: ['', [Validators.required]],
@@ -68,15 +68,6 @@ export class ProductCreateComponent implements OnInit {
     if (this.productForm.valid) {
       const {value} = this.productForm;
       this.product = value;
-      for (const preview of this.previewUrl) {
-        this.productPictureService.createProductPicture(preview).subscribe(
-          next => {
-            this.productPicture.push({
-              id: next
-            });
-          }
-        );
-      }
     } else {
       console.log('error');
     }
@@ -93,7 +84,6 @@ export class ProductCreateComponent implements OnInit {
   }
 
   createProduct() {
-    this.product.productPicture = this.productPicture;
     this.product.promotion = this.promotion;
     this.product.categories = this.categories;
     this.productService.createProduct(this.product).subscribe(next => {

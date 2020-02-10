@@ -1,31 +1,139 @@
-<div class="container" *ngIf="currentUser; else loggedOut">
-  <header class="jumbotron">
-    <h3>
-      <strong>{{ currentUser.username }}</strong> Profile
-    </h3>
-  </header>
-  <p>
-    <strong>Token:</strong>
-    {{ currentUser.accessToken.substring(0, 20) }} ...
-    {{ currentUser.accessToken.substr(currentUser.accessToken.length - 20) }}
-  </p>
-  <p>
-    <strong>Email:</strong>
-    {{ currentUser.email }}
-  </p>
+<div *ngIf="isLoggedIn" class="container-fluid" style="background: rgba(234,245,255,0.68); padding-bottom: 30px">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9" style="margin-left: 220px">
+        <div class="cover">
+          <img src="https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2019/12/happy-new-year-1577783613.jpg"
+               width="700"/>
+        </div>
 
-  <p>
-    <strong>Phone:</strong>
-    {{ currentUser.phone }}
-  </p>
-  <strong>Roles:</strong>
-  <ul>
-    <li *ngFor="let role of currentUser.roles">
-      {{ role }}
-    </li>
-  </ul>
+        <div class="avatar">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR7SoiydkPRtUElU4J3AWrVXt2zqRi2LHwYh_CG0awSUnFHio-y">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="margin-left: 550px; margin-top: 130px">
+    <div class="row">
+      <h3 class="text-body text-capitalize">{{currentUser.username}} (Tạ Trần Bách)</h3>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row" style="margin-top: 40px; margin-left: 320px">
+
+      <div class="col-md-3">
+        <span class="text-primary font-weight-bold " routerLink="/payment-list-by-user">Đơn hàng của bạn</span>
+      </div>
+
+      <div class="col-md-3">
+        <span class="text-primary font-weight-bold " routerLink="/change-profile">Cập nhật thông tin</span>
+      </div>
+
+      <div class="col-md-3">
+        <span class="text-primary font-weight-bold " routerLink="/change-password">Đổi mật khẩu</span>
+      </div>
+    </div>
+  </div>
 </div>
 
-<ng-template #loggedOut>
-  Please login.
-</ng-template>
+<div *ngIf="isLoggedIn" class="container">
+  <table class="table table-bordered">
+    <tr>
+      <td><h3>Thông tin về bạn</h3></td>
+    </tr>
+
+    <tr>
+      <td>
+        <span><i aria-hidden="true" class="fa fa-home fa-1x"></i></span>
+        <span> Sống tại: <span class="font-weight-bold mb-2">{{currentUser.address}}</span> </span></td>
+    </tr>
+
+    <tr>
+      <td>
+        <span><i aria-hidden="true" class="fa fa-map-marker"></i></span>
+        <span> Đến từ: <span class="font-weight-bold mb-5">{{currentUser.address}}</span> </span></td>
+    </tr>
+
+    <tr>
+      <td>
+        <i aria-hidden="true" class="fa fa-mobile"></i>
+        <span> Điện thoại: <span class="font-weight-bold mb-5">{{currentUser.phone}}</span> </span></td>
+    </tr>
+
+    <tr>
+      <td>
+        <i aria-hidden="true" class="fa fa-envelope-o"></i>
+        <span> Email: <span class="font-weight-bold mb-5">{{currentUser.email}}</span> </span></td>
+    </tr>
+
+    <tr>
+      <td>
+        <ul>
+          <li *ngFor="let role of currentUser.roles">
+            {{ role }}
+          </li>
+        </ul>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <span class="text-primary" routerLink="/change-profile">Cập nhật thông tin</span>
+      </td>
+    </tr>
+
+  </table>
+</div>
+
+<div *ngIf="currentUser && showAdminBoard" class="container">
+  <table class="table table-bordered">
+    <tr>
+      <td><h3>Quản lý Admin</h3></td>
+    </tr>
+
+    <tr>
+      <td>
+        <i aria-hidden="true" class="fa fa-user mr-3"></i>
+        <span class="text-primary" routerLink="/user-list">Quản lý thành viên</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <i aria-hidden="true" class="fa fa-product-hunt mr-3"></i>
+        <span class="text-primary" routerLink="/product-list">Quản lý sản phẩm</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <i aria-hidden="true" class="fa fa-shopping-cart mr-3"></i>
+        <span class="text-primary" routerLink="/payment-list">Quản lý đơn hàng</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <i aria-hidden="true" class="fa fa-tachometer mr-3"></i>
+        <span class="text-primary" routerLink="/categories-list">Quản lý danh mục sản phẩm</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <i aria-hidden="true" class="fa fa-gift mr-3"></i>
+        <span class="text-primary" routerLink="/promotion-list">Quản lý danh mục khuyến mãi</span>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div *ngIf="!isLoggedIn">
+  <h4 class="text-primary text-center">Bạn chưa đăng nhập</h4>
+  <h5 class="text-center" style="font-size: 25px"> Mời bạn đăng nhập để xem profile cá nhân</h5>
+  <img src="https://f0.pngfuel.com/png/647/194/blue-and-red-opps-pop-art-png-clip-art.png"
+       style="height: 400px; margin-left: 500px">
+</div>

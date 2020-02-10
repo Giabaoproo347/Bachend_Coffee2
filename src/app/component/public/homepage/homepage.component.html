@@ -1,60 +1,151 @@
-<!--carousel: băng chuyền ảnh-->
 <div id="slides" class="carousel slide" data-ride="carousel">
   <ul class="carousel-indicators">
     <li data-target="#slides" data-slide-to="0" class="active"></li>
     <li data-target="#slides" data-slide-to="1"></li>
     <li data-target="#slides" data-slide-to="2"></li>
   </ul>
+
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="../../../../assets/images/slide0.png" height="460px"/>
+      <img src="../../../../assets/images/coffee-bean-cover-3-copy.png" width="1450"/>
       <div class="carousel-caption">
-        <button type="button" class="btn btn-outline-primary btn-lg">Đặt hàng</button>
+        <button class="btn btn-primary btn-lg" routerLink="/blog">Khám phá thêm</button>
       </div>
     </div>
+
     <div class="carousel-item">
-      <img src="../../../../assets/images/slide1.png" height="460px"/></div>
+      <img src="../../../../assets/images/coffee-bean-4-copy.png" width="1450"/></div>
     <div class="carousel-caption">
-      <button type="button" class="btn btn-outline-primary btn-lg">Đặt hàng</button>
+      <button class="btn btn-primary btn-lg" routerLink="/blog">Khám phá thêm</button>
     </div>
+
     <div class="carousel-item">
-      <img src="../../../../assets/images/slide2.png" height="460px"/>
+      <img src="../../../../assets/images/coffee-bean-cover-2-copy.png" width="1450"/>
       <div class="carousel-caption">
-        <button type="button" class="btn btn-outline-primary btn-lg">Đặt hàng</button>
+        <button class="btn btn-primary btn-lg" routerLink="/blog">Khám phá thêm</button>
       </div>
     </div>
   </div>
 </div>
-<div class="container-fluid" style=" background-color: aliceblue">
-  <div class="row p-3" style="margin-left: 100px;">
-    <div class="col-md-4">
-      <h3 class="text-info">GIAO HÀNG MIỄN PHÍ</h3>
-      <h6>Với các đơn hàng từ
-        <mark class="text-danger">100.000đ</mark>
-        trở lên
-        <br/>
-        <span class="text-info" style="margin-left: 100px"><i class="fa fa-truck fa-3x"></i></span>
-      </h6>
-    </div>
-    <div class="col-md-4">
-      <h3 class="text-info">PHỤC VỤ NHANH 24/7</h3>
-      <h6>
-        <mark class="text-danger">8h00 đến 22h30</mark>
-        các ngày trong tuần
-        <br/>
-        <span class="text-info" style="margin-left: 100px"><i class="fa fa-history fa-3x"></i></span>
-      </h6>
-    </div>
-    <div class="col-md-4">
-      <h3 class="text-info">ĐỒ UỐNG ĐA DẠNG</h3>
-      <h6>Dingtea, Gongcha, trà sữa,...</h6>
-      <span class="text-info" style="margin-left: 100px"><i class="fa fa-coffee fa-2x"></i></span>
+
+<marquee>
+  <div class="container-fluid" style=" background-color: aliceblue">
+    <div class="row" style="margin-left: 100px;">
+      <div class="col-md-4">
+        <h4 class="text-info ml-3">GIAO HÀNG MIỄN PHÍ
+        </h4>
+        <h6>Với các đơn hàng từ
+          <mark class="text-danger">100.000đ</mark>
+          trở lên
+        </h6>
+      </div>
+
+      <div class="col-md-4">
+        <h4 class="text-info">PHỤC VỤ NHANH 24/7
+        </h4>
+        <h6>
+          <mark class="text-danger">8h00 đến 22h30</mark>
+          các ngày trong tuần
+        </h6>
+      </div>
+
+      <div class="col-md-4">
+        <h4 class="text-info">ĐỒ UỐNG ĐA DẠNG
+        </h4>
+        <h6>Tocotoco, Dingtea, Dongtea,...</h6>
+      </div>
     </div>
   </div>
-</div>
+</marquee>
+
 <div>
+  <img routerLink="/discount" src="../../../../assets/images/coffee-bean-cover-2.png" width="1450"/>
+</div>
+
+
+<div class="container-fluid" style=" background-color: aliceblue">
   <marquee>
-    <h4 class="text-primary">Chào mừng quý khách ghé thăm website của chúng tôi </h4>
+    <h4 class="text-primary">Vì môi trường sau khi uống xong hãy vứt hộp đúng nơi quy định bạn nhé! </h4>
   </marquee>
 </div>
-<app-store></app-store>
+
+<app-top-hot></app-top-hot>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img routerLink="/store" src="../../../../assets/images/all-product-copy.png" width="1450"/>
+        <div class="carousel-caption">
+          <button class="btn btn-warning btn-lg" routerLink="/store" type="button">Xem tất cả</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img height="450" routerLink="/product-category/1" src="../../../../assets/images/cafe-viet.png" width="800"/>
+          <div class="carousel-caption">
+            <button class="btn btn-warning btn-lg" routerLink="/product-category/1" type="button">Cà phê Việt</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img height="450" routerLink="/product-category/2" src="../../../../assets/images/cafe-y-2.png"/>
+          <div class="carousel-caption">
+            <button class="btn btn-warning btn-lg" routerLink="/product-category/2" type="button">Cà phê Ý</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img height="450" routerLink="/product-category/24" src="../../../../assets/images/sinh-to.png" width="800"/>
+          <div class="carousel-caption">
+            <button class="btn btn-warning btn-lg" routerLink="/product-category/24" type="button">Sinh tố</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img height="450" routerLink="/product-category/23" src="../../../../assets/images/nuoc-ep-hoa-qua.png"
+               width="800"/>
+          <div class="carousel-caption">
+            <button class="btn btn-warning btn-lg" routerLink="/product-category/23">Nước ép trái cây</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <img src="../../../../assets/images/coffee-bean-cover.png" width="1450"/>
+  </div>
+</div>
+
+<div>
+  <img src="../../../../assets/images/coffe-bean-cover-foot.png" width="1450"/>
+</div>
+

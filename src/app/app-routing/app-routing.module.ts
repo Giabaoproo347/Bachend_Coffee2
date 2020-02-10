@@ -42,7 +42,6 @@ import {ShoppingCartComponent} from '../component/public/shopping-cart/shopping-
 import {HomepageComponent} from '../component/public/homepage/homepage.component';
 import {FindByCategoryComponent} from '../component/public/find-by-category/find-by-category.component';
 import {FindByPromotionComponent} from '../component/public/find-by-promotion/find-by-promotion.component';
-import {PageNotFoundComponent} from '../component/public/page-not-found/page-not-found.component';
 import {AboutUsComponent} from '../component/public/about-us/about-us.component';
 import {BlogComponent} from '../component/public/blog/blog.component';
 import {UserListComponent} from '../component/admin/user/user-list/user-list.component';
@@ -52,6 +51,11 @@ import {UserDeleteComponent} from '../component/admin/user/user-delete/user-dele
 import {UserDetailComponent} from '../component/admin/user/user-detail/user-detail.component';
 import {DiscountComponent} from '../component/public/discount/discount.component';
 import {PaymentDeleteComponent} from '../component/admin/payment/payment-delete/payment-delete.component';
+import {ChangePasswordComponent} from '../user/change-password/change-password.component';
+import {ChangeProfileComponent} from '../user/change-profile/change-profile.component';
+import {PaymentListsComponent} from '../user/payment-lists/payment-lists.component';
+import {PaymentEditByUserComponent} from '../component/admin/payment-edit-by-user/payment-edit-by-user.component';
+import {TopHotComponent} from '../component/public/top-hot/top-hot.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -61,6 +65,7 @@ const routes: Routes = [
   {path: 'mod', component: BoardModeratorComponent},
   {path: 'admin', component: BoardAdminComponent},
   {path: 'categories-list', component: CategoriesListComponent},
+  {path: 'top-hot', component: TopHotComponent},
   {path: 'categories-create', component: CategoriesCreateComponent},
   {path: 'categories-edit/:id', component: CategoriesEditComponent},
   {path: 'categories-delete/:id', component: CategoriesDeleteComponent},
@@ -78,6 +83,7 @@ const routes: Routes = [
   {path: 'payment-list', component: PaymentListComponent},
   {path: 'payment-create', component: PaymentCreateComponent},
   {path: 'payment-edit/:id', component: PaymentEditComponent},
+  {path: 'payment-edit-by-user/:id', component: PaymentEditByUserComponent},
   {path: 'payment-delete/:id', component: PaymentDeleteComponent},
   {path: 'payment-detail/:id', component: PaymentDetailComponent},
   {path: 'product-list', component: ProductListComponent},
@@ -100,6 +106,12 @@ const routes: Routes = [
   {path: 'contact', component: AboutUsComponent},
   {path: 'discount', component: DiscountComponent},
   {path: 'home', component: HomepageComponent},
+  {path: 'change-password', component: ChangePasswordComponent},
+  {path: 'change-profile', component: ChangeProfileComponent},
+  {path: 'payment-list-by-user', component: PaymentListsComponent},
+  // {path: 'payment-list-by-user', component: PaymentListByUserComponent},
+  // {path: 'user-payment-list', component: UserPaymentListComponent},
+
   {
     path: 'checkout',
     component: CheckoutComponent
@@ -121,7 +133,7 @@ const routes: Routes = [
   {path: 'aboutUs', component: AboutUsComponent},
   {path: 'blog', component: BlogComponent},
   {path: 'discount', component: DiscountComponent},
-  {path: '**', component: PageNotFoundComponent},
+  {path: '**', component: HomepageComponent},
 
 ];
 

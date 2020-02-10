@@ -1,7 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -50,15 +50,15 @@ import {PromotionCreateComponent} from './component/admin/promotion/promotion-cr
 import {ProductPictureEditComponent} from './component/admin/productPicture/product-picture-edit/product-picture-edit.component';
 import {ProductPictureListComponent} from './component/admin/productPicture/product-picture-list/product-picture-list.component';
 import {ProductPictureDeleteComponent} from './component/admin/productPicture/product-picture-delete/product-picture-delete.component';
-import { FooterComponent } from './component/public/footer/footer.component';
+import {FooterComponent} from './component/public/footer/footer.component';
 import {HeaderComponent} from './component/public/header/header.component';
-import { HomepageComponent } from './component/public/homepage/homepage.component';
-import { CheckoutComponent } from './component/public/checkout/checkout.component';
-import { ConfirmComponent } from './component/public/confirm/confirm.component';
-import { FindByCategoryComponent } from './component/public/find-by-category/find-by-category.component';
-import { FindByPromotionComponent } from './component/public/find-by-promotion/find-by-promotion.component';
-import { ShoppingCartComponent } from './component/public/shopping-cart/shopping-cart.component';
-import { StoreComponent } from './component/public/store/store.component';
+import {HomepageComponent} from './component/public/homepage/homepage.component';
+import {CheckoutComponent} from './component/public/checkout/checkout.component';
+import {ConfirmComponent} from './component/public/confirm/confirm.component';
+import {FindByCategoryComponent} from './component/public/find-by-category/find-by-category.component';
+import {FindByPromotionComponent} from './component/public/find-by-promotion/find-by-promotion.component';
+import {ShoppingCartComponent} from './component/public/shopping-cart/shopping-cart.component';
+import {StoreComponent} from './component/public/store/store.component';
 import {ProductService} from './service/product.service';
 import {OrderDetailService} from './service/order-detail.service';
 import {StorageService} from './service/storage.service';
@@ -66,13 +66,22 @@ import {ShoppingCartService} from './service/shopping-cart.service';
 import {AboutUsComponent} from './component/public/about-us/about-us.component';
 import {BlogComponent} from './component/public/blog/blog.component';
 import {PageNotFoundComponent} from './component/public/page-not-found/page-not-found.component';
-import { UserCreateComponent } from './component/admin/user/user-create/user-create.component';
-import { UserEditComponent } from './component/admin/user/user-edit/user-edit.component';
-import { UserDeleteComponent } from './component/admin/user/user-delete/user-delete.component';
-import { UserDetailComponent } from './component/admin/user/user-detail/user-detail.component';
-import { UserListComponent } from './component/admin/user/user-list/user-list.component';
-import { DiscountComponent } from './component/public/discount/discount.component';
-import { BillPaymentComponent } from './component/public/bill-payment/bill-payment.component';
+import {UserCreateComponent} from './component/admin/user/user-create/user-create.component';
+import {UserEditComponent} from './component/admin/user/user-edit/user-edit.component';
+import {UserDeleteComponent} from './component/admin/user/user-delete/user-delete.component';
+import {UserDetailComponent} from './component/admin/user/user-detail/user-detail.component';
+import {UserListComponent} from './component/admin/user/user-list/user-list.component';
+import {DiscountComponent} from './component/public/discount/discount.component';
+import {BillPaymentComponent} from './component/public/bill-payment/bill-payment.component';
+import {FilterByStatusPipe} from './model/filter';
+import {ChangePasswordComponent} from './user/change-password/change-password.component';
+import {ChangeProfileComponent} from './user/change-profile/change-profile.component';
+import {PaymentListByUserComponent} from './component/public/payment-list-by-user/payment-list-by-user.component';
+import {UserPaymentListComponent} from './user/user-payment-list/user-payment-list.component';
+import {PaymentListsComponent} from './user/payment-lists/payment-lists.component';
+import {PaymentEditByUserComponent} from './component/admin/payment-edit-by-user/payment-edit-by-user.component';
+import {TopHotComponent} from './component/public/top-hot/top-hot.component';
+import {SortByLike} from './model/sort';
 
 @NgModule({
   declarations: [
@@ -137,7 +146,17 @@ import { BillPaymentComponent } from './component/public/bill-payment/bill-payme
     UserDetailComponent,
     UserListComponent,
     DiscountComponent,
-    BillPaymentComponent
+    BillPaymentComponent,
+    FilterByStatusPipe,
+    SortByLike,
+    ChangePasswordComponent,
+    ChangeProfileComponent,
+    PaymentListByUserComponent,
+    UserPaymentListComponent,
+    PaymentListsComponent,
+    PaymentEditByUserComponent,
+    TopHotComponent,
+    SortByLike,
   ],
   imports: [
     BrowserModule,

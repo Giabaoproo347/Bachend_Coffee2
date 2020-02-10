@@ -29,22 +29,22 @@ export class UserService {
   }
 
   getUserList(): Observable<any[]> {
-    return this.http.get<any[]>(API_URL + 'auth');
+    return this.http.get<any[]>(API_URL + 'user');
   }
 
   getUserById(id: number): Observable<any> {
-    return this.http.get<any>(API_URL + 'auth/' + id);
+    return this.http.get<any>(API_URL + 'user/' + id);
   }
 
   createUser(user): Observable<any> {
-    return this.http.post(API_URL + 'auth', user);
+    return this.http.post(API_URL + 'user', user);
   }
 
   editUser(user): Observable<any> {
-    return this.http.put(API_URL + 'auth/' + user.id, user);
+    return this.http.put(API_URL + 'user/' + user.id, user);
   }
 
   deleteUser(id: number): Observable<any> {
-    return this.http.delete(API_URL + 'auth/' + id);
+    return this.http.delete(API_URL + 'user/' + id);
   }
 }
