@@ -25,7 +25,7 @@ export class OrderDetailCreateComponent implements OnInit {
   ngOnInit() {
     this.orderDetailForm = this.fb.group({
       id: '',
-      name: ['', [Validators.required]],
+      name: ['', [Validators.required, Validators.minLength(1)]],
       salePrice: ['', [Validators.required]],
       quantity: ['', [Validators.required]],
       description: ['', [Validators.required]]

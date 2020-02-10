@@ -1,18 +1,18 @@
-<h2>Order detail list</h2>
-<p><a routerLink="/orderDetail-create">Create new order detail</a></p>
+<h2>Danh sách chi tiết đơn hàng</h2>
+<p><a routerLink="/orderDetail-create">Tạo mới chi tiết đơn hàng</a></p>
 <table class="table table-hover border">
   <thead>
   <tr>
-    <th>Sale Price</th>
-    <th>Quantity</th>
-    <th>Edit</th>
-    <th>Delete</th>
+    <th>Giá</th>
+    <th>Số lượng</th>
+    <th>Cập nhật</th>
+    <th>Xóa</th>
   </tr>
   </thead>
   <tr *ngFor="let orderDetail of orderDetailList">
     <td>{{ orderDetail.salePrice }}</td>
     <td>{{ orderDetail.quantity }}</td>
-    <td><a [routerLink]="['/orderDetail-edit',orderDetail.id]">Edit</a></td>
-    <td><a [routerLink]="['/orderDetail-delete',orderDetail.id]">Delete</a></td>
+    <td><a [routerLink]="['/orderDetail-edit',orderDetail.id]">Cập nhật</a></td>
+    <td><a [routerLink]="['/orderDetail-delete',orderDetail.id]">Xóa</a></td>
   </tr>
 </table>
