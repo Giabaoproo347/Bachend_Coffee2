@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ShoppingCartService} from '../../../service/shopping-cart.service';
 import {Observable, Subscription} from 'rxjs';
 import {ShoppingCart} from '../../../model/shopping-cart.model';
@@ -9,8 +9,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TokenStorageService} from '../../../user/_services/token-storage.service';
 import {PaymentService} from '../../../service/payment.service';
 import {Payment} from '../../../model/payment.model';
-import {AppComponent} from '../../../app.component';
-import {User} from '../../../model/user.model';
 import {UserService} from '../../../user/_services/user.service';
 import {ActivatedRoute} from '@angular/router';
 import {ExcelService} from '../../../service/excel.service';
@@ -117,9 +115,9 @@ export class ConfirmComponent implements OnInit {
       this.paymentForm = this.fb.group({
         id: [''],
         code: Math.floor(Math.random() * 1000000) + 1000,
-        name: ['', [Validators.required, Validators.minLength(1)]],
-        address: ['', [Validators.required, Validators.minLength(1)]],
-        phone: ['', [Validators.required, Validators.minLength(1)]],
+        name: ['', [Validators.required, Validators.minLength(3)]],
+        address: ['', [Validators.required, Validators.minLength(3)]],
+        phone: ['', [Validators.required]],
         email: [''],
         total: [''],
         description: [''],
