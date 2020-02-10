@@ -19,36 +19,36 @@
 
 
     <div class="form-group">
-      <label>Purchase date</label>
-      <input type="text" class="form-control" formControlName="purchaseDate">
+      <label>Ngày đặt</label>
+      <input type="date" class="form-control" formControlName="purchaseDate">
       <div class="alert-danger" *ngIf="orderForm.get('purchaseDate').invalid && orderForm.get('purchaseDate').touched"
            style="color: red">
-        Purchase date is required
+        Không được để trống
       </div>
     </div>
 
     <div class="form-group">
-      <label>Delivery date</label>
-      <input type="text" class="form-control" formControlName="deliveryDate">
+      <label>Ngày giao</label>
+      <input type="date" class="form-control" formControlName="deliveryDate">
       <div class="alert-danger" *ngIf="orderForm.get('deliveryDate').invalid && orderForm.get('deliveryDate').touched"
            style="color: red">
-        Delivery is required
+        Không được để trống
       </div>
     </div>
 
     <div class="form-group">
-      <label>Description</label>
+      <label>Mô tả</label>
       <input type="text" class="form-control" formControlName="description">
       <div class="alert-danger" *ngIf="orderForm.get('description').invalid && orderForm.get('description').touched"
            style="color: red">
-        Description is required
+        Không được để trống
       </div>
     </div>
     <div class="form-group">
-      <button class="btn btn-primary btn-block">Create</button>
+      <button class="btn btn-primary btn-block">Tạo</button>
     </div>
     <div class="form-group">
-      <input class="btn btn-primary btn-block" value="Cancel" routerLink="/orderDetail-list">
+      <input class="btn btn-primary btn-block" value="Hủy" routerLink="/order-list">
     </div>
   </form>
 </div>

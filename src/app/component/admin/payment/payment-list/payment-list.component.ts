@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Payment} from '../../../../model/payment.model';
 import {PaymentService} from '../../../../service/payment.service';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-payment-list',
@@ -10,7 +11,9 @@ import {PaymentService} from '../../../../service/payment.service';
 export class PaymentListComponent implements OnInit {
 
   paymentList: Payment[] = [];
+  payment: Payment;
   content: string;
+  searchString: string;
 
   constructor(private paymentService: PaymentService) {
   }
@@ -23,5 +26,4 @@ export class PaymentListComponent implements OnInit {
         (this.content = this.content = JSON.parse(err.error).message)
     );
   }
-
 }

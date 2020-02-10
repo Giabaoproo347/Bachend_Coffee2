@@ -1,0 +1,44 @@
+<table class="table table-hover border">
+  <thead>
+  <tr class="table-bordered">
+    <th>Mã hóa đơn</th>
+    <th>Tổng hóa đơn</th>
+    <th>Ngày đặt hàng</th>
+    <th>Trạng thái đơn hàng</th>
+    <th>Hủy</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let payment of paymentList" class="table-bordered">
+    <td *ngIf="payment.status != 'normal'">{{ payment.id }}</td>
+    <td *ngIf="payment.status != 'normal'">{{payment.total}}</td>
+    <td *ngIf="payment.status != 'normal'">{{payment.date}}</td>
+    <td *ngIf="payment.status != 'normal'">{{payment.status}}</td>
+    <td *ngIf="payment.status!='normal'">
+      <div *ngIf="payment.status=='order'">
+        <input class="btn btn-info btn-block" data-toggle="modal" [attr.data-target]="'#deleteOrder' + payment.id"
+               value="Cancel">
+
+        <div [id]="'deleteOrder'+ payment.id" class="modal" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Little Bean </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Bạn có chắc chắn muốn xóa đơn hàng?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Quay lại</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="changeToCancel(payment.id)">Xóa
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>

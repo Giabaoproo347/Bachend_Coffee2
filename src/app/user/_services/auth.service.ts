@@ -32,4 +32,29 @@ export class AuthService {
       address: user.address
     }, httpOptions);
   }
+
+  checkPassword(credentials): Observable<any> {
+    console.log(credentials);
+    return this.http.post(AUTH_API + 'check-password', {
+      username: credentials.username,
+      password: credentials.password
+    }, httpOptions);
+  }
+
+  changePassword(credentials): Observable<any> {
+    console.log(credentials);
+    return this.http.post(AUTH_API + 'change-password', {
+      username: credentials.username,
+      password: credentials.password
+    }, httpOptions);
+  }
+  changeProfile(user): Observable<any> {
+    return this.http.post(AUTH_API + 'change-profile', {
+      username: user.username,
+      email: user.email,
+      password: user.password,
+      phone: user.phone,
+      address: user.address
+    }, httpOptions);
+  }
 }

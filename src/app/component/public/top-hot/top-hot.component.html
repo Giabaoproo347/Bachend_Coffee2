@@ -1,0 +1,60 @@
+<div class="container-fluid"
+     style="background: url('https://img.anhdep24.net/images/2017/12/06/0590773cd1a7ce2104c08de511686b45.jpg')">
+  <div>
+    <h1 class="text-warning text-center mt-3 mb-5">
+      Top sản phẩm hot nhất
+    </h1>
+  </div>
+
+  <div class="row">
+    <div *ngFor="let product of productList | sort:'like'" class="col-md-3 mt-2 mb-4">
+      <div *ngIf="product.like != 0" class="card" style="width: 18rem;">
+        <img [src]="product.image" alt="Card image cap"
+             class="card-img-top"
+             routerLink="/product-detail/{{product.id}}" style="height: 300px">
+        <div class="card-body">
+          <h4 class="card-title text-center text-danger">{{product.name}}</h4>
+          <p class="card-text text-center text-info">{{product.price | currency: 'VND': true}}</p>
+          <span class="card-title text-center">Số lượt thích ({{product.like}})</span>
+          <div *ngIf="product.like > 50" class="text-warning">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+          </div>
+
+          <div *ngIf="product.like > 40 && product.like < 50" class="text-warning">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+          </div>
+
+          <div *ngIf="product.like > 20 && product.like < 40" class="text-warning">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+          </div>
+
+          <div *ngIf="product.like > 5 && product.like < 20" class="text-warning">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+          </div>
+
+          <p>
+            <button (click)="addProductToCart(product, 1)"
+                    class="btn btn-outline-primary"
+                    type="button">Thêm vào giỏ
+            </button>
+            <button (click)="removeProductFromCart(product, 1)"
+                    *ngIf="productInCart(product) | async" class="btn btn-outline-danger ml-3"
+                    style="width: 105px"
+                    type="button">Xóa
+            </button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

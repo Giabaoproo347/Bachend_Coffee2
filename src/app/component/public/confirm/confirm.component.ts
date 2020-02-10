@@ -11,11 +11,12 @@ import {PaymentService} from '../../../service/payment.service';
 import {Payment} from '../../../model/payment.model';
 import {AppComponent} from '../../../app.component';
 import {User} from '../../../model/user.model';
-<<<<<<< HEAD
-=======
+
 import {UserService} from '../../../user/_services/user.service';
 import {ActivatedRoute} from '@angular/router';
->>>>>>> master
+
+import {ExcelService} from '../../../service/excel.service';
+
 
 interface ICartItemWithProduct extends CartItem {
   product: Product;
@@ -27,6 +28,18 @@ interface ICartItemWithProduct extends CartItem {
   templateUrl: './confirm.component.html'
 })
 export class ConfirmComponent implements OnInit {
+
+
+  public constructor(private shoppingCartService: ShoppingCartService,
+                     private productsService: ProductService,
+                     private tokenStorageService: TokenStorageService,
+                     private paymentService: PaymentService,
+                     private fb: FormBuilder,
+                     private route: ActivatedRoute,
+                     private userService: UserService,
+                     private excelService: ExcelService
+  ) {
+  }
   public cart: Observable<ShoppingCart>;
   public cartItems: ICartItemWithProduct[];
   public itemCount: number;
@@ -37,16 +50,27 @@ export class ConfirmComponent implements OnInit {
   payment: Payment;
   method = ['Ship cod', 'Ví Momo', 'Vietcombank', 'Zalo Pay', 'Viettel Pay', 'VNQR pay'];
   currentDate = new Date();
-<<<<<<< HEAD
+
   currentUser: User | any;
   address: any[] = ['Vĩnh Phúc', 'Hà Nội', 'Bắc Ninh', 'Tuyên Quang', 'Bắc Ninh', 'Cao Bằng'];
-=======
+
   currentUser = this.tokenStorageService.getUser();
 
->>>>>>> master
+
 
   private products: Product[];
   private cartSubscription: Subscription;
+
+
+  data: any = [{
+    Code: '954346',
+    Phone: '0946098688',
+    Address: 'Hà Nội',
+    Email: 'tabach123@gmail.com',
+    Total: 145000,
+    Method: 'Ví Momo'
+  }];
+  private userId: string;
 
 
   public constructor(private shoppingCartService: ShoppingCartService,
@@ -54,14 +78,14 @@ export class ConfirmComponent implements OnInit {
                      private tokenStorageService: TokenStorageService,
                      private paymentService: PaymentService,
                      private fb: FormBuilder,
-<<<<<<< HEAD
+
                      private app: AppComponent
-=======
+
                      private route: ActivatedRoute,
                      private userService: UserService
->>>>>>> master
   ) {
   }
+
 
   public ngOnInit(): void {
     this.cart = this.shoppingCartService.get();
@@ -80,7 +104,7 @@ export class ConfirmComponent implements OnInit {
           });
       });
     });
-<<<<<<< HEAD
+
     if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
       this.currentUser = this.tokenStorageService.getUser();
@@ -89,7 +113,6 @@ export class ConfirmComponent implements OnInit {
         name: this.currentUser.username,
         address: this.currentUser.address,
         phone: this.currentUser.phone,
-=======
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);
     this.paymentService.getPayment(id).subscribe(
@@ -107,25 +130,33 @@ export class ConfirmComponent implements OnInit {
     if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
       this.paymentForm = this.fb.group({
-        id: [''] ,
-        code: Math.floor(Math.random() * 1000000) + 1000 ,
+        id: [''],
+        code: Math.floor(Math.random() * 1000000) + 1000,
         name: this.currentUser.username,
+
+        address: this.currentUser.address,
+        phone: this.currentUser.phone,
+
         address: ['Hà Nội'],
         phone: ['0964908688'],
->>>>>>> master
+
+
         email: this.currentUser.email,
         total: [''],
         description: [''],
         method: ['Ship cod'],
         date: this.currentDate,
-        status: ['Đang chờ xử lý']
+        status: ['Đang chờ xử lý'],
+        user: {
+          id: this.tokenStorageService.getUser().id
+        }
       });
 
 
     } else {
       this.paymentForm = this.fb.group({
-        id: [''] ,
-        code: Math.floor(Math.random() * 1000000) + 1000 ,
+        id: [''],
+        code: Math.floor(Math.random() * 1000000) + 1000,
         name: ['', [Validators.required, Validators.minLength(1)]],
         address: ['', [Validators.required, Validators.minLength(1)]],
         phone: ['', [Validators.required, Validators.minLength(1)]],
@@ -134,7 +165,7 @@ export class ConfirmComponent implements OnInit {
         description: [''],
         method: ['Ship cod'],
         date: this.currentDate,
-        status: ['Đang chờ xử lý']
+        status: ['Đang chờ xử lý'],
       });
     }
   }
@@ -155,4 +186,9 @@ export class ConfirmComponent implements OnInit {
     this.shoppingCartService.empty();
     this.isSuccess = true;
   }
+
+  exportAsXLSX(): void {
+    this.excelService.exportAsExcelFile(this.data, 'Đơn hàng');
+  }
+
 }

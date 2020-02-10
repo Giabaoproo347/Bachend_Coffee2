@@ -1,23 +1,27 @@
-<div class="container">
-  <h3 class="text-capitalize text-primary text-center p-1 mt-3" *ngIf="promotion">Danh mục combo:
-    <mark class="text-danger">{{promotion.name}}</mark>
-  </h3>
-  <h4 class="text-capitalize text-primary text-center p-3 mb-3" *ngIf="promotion">Giá combo:
-    <mark class="text-danger">{{promotion.price | currency: 'VND'}}</mark>
-  </h4>
-  <div class="row">
-    <div class="col-md-3 mb-5" *ngFor="let product of productListPromotion, index as i">
-      <div class="card" *ngIf="i<48">
-        <img class="card-img-top" routerLink="/product-detail/{{product.id}}"
-             [src]="product.image"
-             alt="Card image cap" style="height: 360px">
-        <div class="card-body">
-          <h5 class="card-title text-center text-danger">{{product.name}}</h5>
-          <!--          <p class="card-text text-center text-info">{{product.price | currency: 'VND': true}}</p>-->
+<div class="container-fluid"
+     style="background: url('http://hinhnenpowerpointdep.com/uploads/images/bo-hinh-nen-powerpoint-phong-cach-van-go-doc-dao-1484730971-11.jpg')">
+  <br/>
+  <br/>
+  <div class="container" style="background: white">
+    <h3 class="text-danger text-center mt-3">{{promotion.name}}</h3>
+    <h4 class="text-capitalize text-primary text-center mb-2" *ngIf="promotion">
+      {{promotion.price | currency: 'VND'}}
+    </h4>
+    <div class="row">
+      <div class="col-md-3 mb-5" *ngFor="let product of productListPromotion, index as i">
+        <div class="card" *ngIf="i<48">
+          <img class="card-img-top" routerLink="/product-detail/{{product.id}}"
+               [src]="product.image"
+               alt="Card image cap" style="height: 360px">
+          <div class="card-body">
+            <h5 class="card-title text-center text-danger">{{product.name}}</h5>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <br/><br/><br/>
 </div>
+
 
 

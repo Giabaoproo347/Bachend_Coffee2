@@ -1,0 +1,45 @@
+<h2>Đơn hàng của bạn</h2>
+<form>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon">
+        <i class="glyphicon glyphicon-search"></i>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        name="searchString"
+        placeholder="Tìm kiếm theo trạng thái đơn hàng..."
+        [(ngModel)]="searchString"
+      />
+    </div>
+  </div>
+</form>
+
+
+<table class="table table-hover border">
+  <thead>
+  <tr class="text-primary" align="center">
+    <th>Mã đơn hàng</th>
+    <th>Điện thoại</th>
+    <th>Tổng hóa đơn</th>
+    <th>Mô tả</th>
+    <th>Trạng thái</th>
+<!--    <th>Hủy</th>-->
+  </tr>
+  </thead>
+  <tr *ngFor="let payment of paymentList | filter: 'status' : searchString" align="center">
+    <td>{{ payment.code }}</td>
+    <td>{{ payment.phone }}</td>
+    <td>{{ payment.total | currency:'VND'}}</td>
+    <td>{{ payment.description }}</td>
+    <td>{{ payment.status }}</td>
+    <td *ngIf="payment.status == 'Đang chờ xử lý'"><a class="btn btn-danger" [routerLink]="['/payment-edit-by-user',payment.id]">Hủy đơn hàng</a></td>
+    <td *ngIf="payment.status == 'Hủy đơn hàng'" class="text-danger">Đơn hàng đã bị hủy</td>
+    <td *ngIf="payment.status == 'Giao hàng thành công'" class="text-success">Đơn hàng đã được giao</td>
+  </tr>
+</table>
+
+
+
+

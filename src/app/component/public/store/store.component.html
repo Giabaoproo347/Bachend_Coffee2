@@ -1,9 +1,14 @@
-<div class="container">
-  <div class="text-info text-md-center">
-    <app-shopping-cart></app-shopping-cart>
+<div class="container-fluid"
+     style="background: url('https://img.anhdep24.net/images/2017/12/06/0590773cd1a7ce2104c08de511686b45.jpg') ">
+
+  <div>
+    <h1 class="text-warning text-center mt-5 mb-5">
+      Tất cả sản phẩm
+    </h1>
   </div>
+
   <div class="row">
-    <div class="col-md-4 mb-5" *ngFor="let product of products | async">
+    <div *ngFor="let product of products | async" class="col-md-3 mt-2 mb-4">
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" routerLink="/product-detail/{{product.id}}"
              [src]="product.image"
