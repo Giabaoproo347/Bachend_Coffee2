@@ -93,15 +93,20 @@
         <li class="nav-item"><a routerLink="/aboutUs" class="nav-link">Giới thiệu</a></li>
         <li class="nav-item"><a routerLink="/discount" class="nav-link">Khuyến mãi</a></li>
         <li class="nav-item"><a routerLink="/blog" class="nav-link">Tin tức</a></li>
-<!--        <li class="nav-item"><a href="http://localhost:4200/discount" class="nav-link">Khuyến mãi</a></li>-->
-        <li class="nav-item row">
-          <input type="text" class="search ml-3 " id="search" style="height: 30px">
-        </li>
         <li class="nav-item">
           <i routerLink="/checkout" class="fa ml-4 mt-1" style="font-size:36px" ma>&#xf07a;</i>
           <span class='badge badge-warning ' id='lblCartCount'> {{itemCount}} </span>
         </li>
       </ul>
+
+      <div>
+        <marquee>
+          <span
+            style="font-size: 16px; color:rgba(30,32,255,0.68)"> Vui lòng gọi hotline 19006068 để được hỗ trợ </span>
+        </marquee>
+      </div>
+
+
       <ul class="navbar-nav" style="margin-left: 200px" *ngIf="!isLoggedIn">
         <li class="nav-item">
           <a routerLink="/register" class="nav-link">Đăng ký</a>
