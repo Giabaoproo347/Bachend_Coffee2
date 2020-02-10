@@ -1,41 +1,4 @@
-<!--<div class="col-8 offset-2" *ngIf="currentUser; else loggedOut">-->
-<!--  <header class="jumbotron">-->
-<!--    <h3>-->
-<!--     Thông tin cá nhân-->
-<!--    </h3>-->
-<!--  </header>-->
-<!--  <img id="profile-img"-->
-<!--       src="https://previews.123rf.com/images/solargaria/solargaria1709/solargaria170900008/85425363-user-icon-male-with-beard-icon-hipster-flat-icon-avatar-of-man-with-beard-flat-internet-icon-in-roun.jpg"-->
-<!--       class="profile-img-card" style="height: 300px"/>-->
-<!--  <table class="table">-->
-<!--    <tr>-->
-<!--      <td><strong>Name:</strong></td>-->
-<!--      <td>{{currentUser.username}}</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <td><strong>Email:</strong></td>-->
-<!--      <td>{{currentUser.email}}</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <td><strong>Address:</strong></td>-->
-<!--      <td>{{currentUser.address}}</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <td><strong>Phone:</strong></td>-->
-<!--      <td>{{currentUser.phone}}</td>-->
-<!--    </tr>-->
-<!--  </table>-->
-<!--  <button class="btn btn-primary btn-block" routerLink="/payment-list-by-user">Đơn hàng của bạn</button>-->
-<!--  <button class="btn btn-primary btn-block" routerLink="/change-profile">Cập nhật thông tin</button>-->
-<!--  <button class="btn btn-primary btn-block" routerLink="/change-password">Đổi mật khẩu</button>-->
-<!--</div>-->
-
-<!--<ng-template #loggedOut>-->
-<!--  Please login.-->
-<!--</ng-template>-->
-
-
-<div class="container-fluid" style="background: rgba(234,245,255,0.68); padding-bottom: 30px">
+<div *ngIf="isLoggedIn" class="container-fluid" style="background: rgba(234,245,255,0.68); padding-bottom: 30px">
   <div class="container">
     <div class="row">
       <div class="col-md-9" style="margin-left: 220px">
@@ -76,7 +39,7 @@
   </div>
 </div>
 
-<div class="container">
+<div *ngIf="isLoggedIn" class="container">
   <table class="table table-bordered">
     <tr>
       <td><h3>Thông tin về bạn</h3></td>
@@ -102,9 +65,75 @@
 
     <tr>
       <td>
+        <i aria-hidden="true" class="fa fa-envelope-o"></i>
+        <span> Email: <span class="font-weight-bold mb-5">{{currentUser.email}}</span> </span></td>
+    </tr>
+
+    <tr>
+      <td>
+        <ul>
+          <li *ngFor="let role of currentUser.roles">
+            {{ role }}
+          </li>
+        </ul>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
         <span class="text-primary" routerLink="/change-profile">Cập nhật thông tin</span>
       </td>
     </tr>
 
   </table>
+</div>
+
+<div *ngIf="currentUser && showAdminBoard" class="container">
+  <table class="table table-bordered">
+    <tr>
+      <td><h3>Quản lý Admin</h3></td>
+    </tr>
+
+    <tr>
+      <td>
+        <i aria-hidden="true" class="fa fa-user mr-3"></i>
+        <span class="text-primary" routerLink="/user-list">Quản lý thành viên</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <i aria-hidden="true" class="fa fa-product-hunt mr-3"></i>
+        <span class="text-primary" routerLink="/product-list">Quản lý sản phẩm</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <i aria-hidden="true" class="fa fa-shopping-cart mr-3"></i>
+        <span class="text-primary" routerLink="/payment-list">Quản lý đơn hàng</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <i aria-hidden="true" class="fa fa-tachometer mr-3"></i>
+        <span class="text-primary" routerLink="/categories-list">Quản lý danh mục sản phẩm</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <i aria-hidden="true" class="fa fa-gift mr-3"></i>
+        <span class="text-primary" routerLink="/promotion-list">Quản lý danh mục khuyến mãi</span>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div *ngIf="!isLoggedIn">
+  <h4 class="text-primary text-center">Bạn chưa đăng nhập</h4>
+  <h5 class="text-center" style="font-size: 25px"> Mời bạn đăng nhập để xem profile cá nhân</h5>
+  <img src="https://f0.pngfuel.com/png/647/194/blue-and-red-opps-pop-art-png-clip-art.png"
+       style="height: 400px; margin-left: 500px">
 </div>

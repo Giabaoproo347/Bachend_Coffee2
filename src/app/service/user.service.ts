@@ -23,6 +23,10 @@ export class UserService {
     return this.http.post(this.url, user);
   }
 
+  editUser(user): Observable<any> {
+    return this.http.put(this.url + '/' + user.id, user);
+  }
+
 
   deleteUser(id: number): Observable<any> {
     return this.http.delete(this.url + '/' + id);
