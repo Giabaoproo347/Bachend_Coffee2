@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Categories} from '../../../../model/categories.model';
-import {CategoriesService} from '../../../../service/categories.service';
 import {Router} from '@angular/router';
 import {User} from '../../../../model/user.model';
 import {UserService} from '../../../../user/_services/user.service';
@@ -25,10 +23,10 @@ export class UserCreateComponent implements OnInit {
   ngOnInit() {
     this.userForm = this.fb.group({
       id: '',
-      username: ['', [Validators.required, Validators.minLength(1)]],
-      email: ['', [Validators.required, Validators.minLength(1)]],
-      phone: ['', [Validators.required, Validators.minLength(1)]],
-      address: ['', [Validators.required, Validators.minLength(1)]],
+      username: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.pattern('[^@]+@[^\\.]+\\..+')]],
+      phone: ['', [Validators.required, Validators.pattern('(09|03)+([0-9]{8})\\b')]],
+      address: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 

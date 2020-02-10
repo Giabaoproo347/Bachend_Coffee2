@@ -1,5 +1,5 @@
 <div class="col-6 offset-3">
-  <h3 class="text-center">Create a new user</h3>
+  <h3 class="text-center">Tạo mới người dùng</h3>
   <div *ngIf="message">
     <div class="alert alert-success">
       <strong>Success!</strong> You have created a new user
@@ -23,15 +23,15 @@
       <label>Username</label>
       <input type="text" class="form-control" formControlName="username"/>
       <div class="alert-danger" *ngIf="userForm.get('username').invalid && userForm.get('username').touched" style="color: aqua">
-        Username must be ay least 1 characters
+        Tối thieer 3 ký tự
       </div>
     </div>
 
     <div class="form-group">
-      <label>Phone</label>
+      <label>Điện thoại</label>
       <input type="text" class="form-control" formControlName="phone"/>
       <div class="alert-danger" *ngIf="userForm.get('phone').invalid && userForm.get('phone').touched" style="color: aqua">
-        Phone must be ay least 1 characters
+        Không đúng định dạng số điện thoại
       </div>
     </div>
 
@@ -39,22 +39,22 @@
       <label>Email</label>
       <input type="text" class="form-control" formControlName="email"/>
       <div class="alert-danger" *ngIf="userForm.get('email').invalid && userForm.get('email').touched" style="color: aqua">
-        Email must be ay least 1 characters
+        Không đúng định dạng email
       </div>
     </div>
 
     <div class="form-group">
-      <label>Address</label>
+      <label>Địa chỉ</label>
       <input type="text" class="form-control" formControlName="address"/>
       <div class="alert-danger" *ngIf="userForm.get('address').invalid && userForm.get('address').touched" style="color: aqua">
-        Address must be ay least 1 characters
+        Không được để trống
       </div>
     </div>
     <div class="form-group">
-      <button class="btn btn-primary btn-block">Create</button>
+      <button class="btn btn-primary btn-block">Tạo mới</button>
     </div>
     <div class="form-group">
-      <input class="btn btn-primary btn-block" value="Cancel" routerLink="/user-list">
+      <input class="btn btn-primary btn-block" routerLink="/user-list" value="Quay lại">
     </div>
   </form>
 </div>
