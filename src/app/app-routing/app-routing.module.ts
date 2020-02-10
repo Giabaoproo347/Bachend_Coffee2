@@ -49,6 +49,7 @@ import {UserCreateComponent} from '../component/admin/user/user-create/user-crea
 import {UserEditComponent} from '../component/admin/user/user-edit/user-edit.component';
 import {UserDeleteComponent} from '../component/admin/user/user-delete/user-delete.component';
 import {UserDetailComponent} from '../component/admin/user/user-detail/user-detail.component';
+
 import {DiscountComponent} from '../component/public/discount/discount.component';
 import {PaymentDeleteComponent} from '../component/admin/payment/payment-delete/payment-delete.component';
 import {ChangePasswordComponent} from '../user/change-password/change-password.component';
@@ -103,8 +104,10 @@ const routes: Routes = [
   {path: 'user-edit/:id', component: UserEditComponent},
   {path: 'user-delete/:id', component: UserDeleteComponent},
   {path: 'user-detail/:id', component: UserDetailComponent},
+
   {path: 'contact', component: AboutUsComponent},
   {path: 'discount', component: DiscountComponent},
+
   {path: 'home', component: HomepageComponent},
   {path: 'change-password', component: ChangePasswordComponent},
   {path: 'change-profile', component: ChangeProfileComponent},

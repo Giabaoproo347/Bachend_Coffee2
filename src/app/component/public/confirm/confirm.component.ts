@@ -11,9 +11,12 @@ import {PaymentService} from '../../../service/payment.service';
 import {Payment} from '../../../model/payment.model';
 import {AppComponent} from '../../../app.component';
 import {User} from '../../../model/user.model';
+
 import {UserService} from '../../../user/_services/user.service';
 import {ActivatedRoute} from '@angular/router';
+
 import {ExcelService} from '../../../service/excel.service';
+
 
 interface ICartItemWithProduct extends CartItem {
   product: Product;
@@ -42,15 +45,22 @@ export class ConfirmComponent implements OnInit {
   public itemCount: number;
   public isSuccess = false;
   paymentForm: FormGroup;
+  userForm: FormGroup;
   isLoggedIn = false;
   payment: Payment;
   method = ['Ship cod', 'Ví Momo', 'Vietcombank', 'Zalo Pay', 'Viettel Pay', 'VNQR pay'];
   currentDate = new Date();
+
+  currentUser: User | any;
+  address: any[] = ['Vĩnh Phúc', 'Hà Nội', 'Bắc Ninh', 'Tuyên Quang', 'Bắc Ninh', 'Cao Bằng'];
+
   currentUser = this.tokenStorageService.getUser();
+
 
 
   private products: Product[];
   private cartSubscription: Subscription;
+
 
   data: any = [{
     Code: '954346',
@@ -61,6 +71,21 @@ export class ConfirmComponent implements OnInit {
     Method: 'Ví Momo'
   }];
   private userId: string;
+
+
+  public constructor(private shoppingCartService: ShoppingCartService,
+                     private productsService: ProductService,
+                     private tokenStorageService: TokenStorageService,
+                     private paymentService: PaymentService,
+                     private fb: FormBuilder,
+
+                     private app: AppComponent
+
+                     private route: ActivatedRoute,
+                     private userService: UserService
+  ) {
+  }
+
 
   public ngOnInit(): void {
     this.cart = this.shoppingCartService.get();
@@ -79,6 +104,15 @@ export class ConfirmComponent implements OnInit {
           });
       });
     });
+
+    if (this.tokenStorageService.getToken()) {
+      this.isLoggedIn = true;
+      this.currentUser = this.tokenStorageService.getUser();
+      this.paymentForm = this.fb.group({
+        id: [''],
+        name: this.currentUser.username,
+        address: this.currentUser.address,
+        phone: this.currentUser.phone,
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);
     this.paymentService.getPayment(id).subscribe(
@@ -99,8 +133,14 @@ export class ConfirmComponent implements OnInit {
         id: [''],
         code: Math.floor(Math.random() * 1000000) + 1000,
         name: this.currentUser.username,
+
         address: this.currentUser.address,
         phone: this.currentUser.phone,
+
+        address: ['Hà Nội'],
+        phone: ['0964908688'],
+
+
         email: this.currentUser.email,
         total: [''],
         description: [''],

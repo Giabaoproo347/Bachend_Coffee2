@@ -82,6 +82,13 @@ import {PaymentListsComponent} from './user/payment-lists/payment-lists.componen
 import {PaymentEditByUserComponent} from './component/admin/payment-edit-by-user/payment-edit-by-user.component';
 import {TopHotComponent} from './component/public/top-hot/top-hot.component';
 import {SortByLike} from './model/sort';
+import { UserCreateComponent } from './component/admin/user/user-create/user-create.component';
+import { UserEditComponent } from './component/admin/user/user-edit/user-edit.component';
+import { UserDeleteComponent } from './component/admin/user/user-delete/user-delete.component';
+import { UserDetailComponent } from './component/admin/user/user-detail/user-detail.component';
+import { UserListComponent } from './component/admin/user/user-list/user-list.component';
+import { DiscountComponent } from './component/public/discount/discount.component';
+import { BillPaymentComponent } from './component/public/bill-payment/bill-payment.component';
 
 @NgModule({
   declarations: [
@@ -145,6 +152,7 @@ import {SortByLike} from './model/sort';
     UserDeleteComponent,
     UserDetailComponent,
     UserListComponent,
+    DiscountComponent
     DiscountComponent,
     BillPaymentComponent,
     FilterByStatusPipe,
@@ -157,6 +165,7 @@ import {SortByLike} from './model/sort';
     PaymentEditByUserComponent,
     TopHotComponent,
     SortByLike,
+    BillPaymentComponent
   ],
   imports: [
     BrowserModule,

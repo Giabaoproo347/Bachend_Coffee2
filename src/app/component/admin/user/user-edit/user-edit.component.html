@@ -1,4 +1,17 @@
 <div class="col-6 offset-3">
+<<<<<<< HEAD
+  <h3 class="text-center">Edit user</h3>
+  <div *ngIf="message">
+    <div class="alert alert-success">
+      <strong>Success!</strong> You have edit a user
+    </div>
+    <div>
+      <div class="form-group">
+        <input class="btn btn-primary btn-block" value="Edit new categories" (click)="message = !message">
+      </div>
+      <div class="form-group">
+        <input class="btn btn-primary btn-block" value="Back to categories list" routerLink="/user-list">
+=======
   <div *ngIf="message">
     <div class="alert alert-success">
       <strong>Success!</strong> You have edit user
@@ -6,6 +19,7 @@
     <div>
       <div class="form-group">
         <input class="btn btn-primary btn-block" value="Back to user list" routerLink="/user-list">
+>>>>>>> master
       </div>
     </div>
   </div>
@@ -14,7 +28,11 @@
       <label>Username</label>
       <input type="text" class="form-control" formControlName="username"/>
       <div class="alert-danger" *ngIf="userForm.get('username').invalid && userForm.get('username').touched" style="color: aqua">
+<<<<<<< HEAD
+         Username must be at least 1 characters
+=======
         Username is required
+>>>>>>> master
       </div>
     </div>
 
@@ -22,7 +40,11 @@
       <label>Email</label>
       <input type="text" class="form-control" formControlName="email"/>
       <div class="alert-danger" *ngIf="userForm.get('email').invalid && userForm.get('email').touched" style="color: aqua">
+<<<<<<< HEAD
+        Email must be at least 1 characters
+=======
         email is required
+>>>>>>> master
       </div>
     </div>
 
@@ -30,7 +52,11 @@
       <label>Phone</label>
       <input type="text" class="form-control" formControlName="phone"/>
       <div class="alert-danger" *ngIf="userForm.get('phone').invalid && userForm.get('phone').touched" style="color: aqua">
+<<<<<<< HEAD
+        Phone must be at least 1 characters
+=======
         phone is required
+>>>>>>> master
       </div>
     </div>
 
@@ -38,6 +64,17 @@
       <label>Address</label>
       <input type="text" class="form-control" formControlName="address"/>
       <div class="alert-danger" *ngIf="userForm.get('address').invalid && userForm.get('address').touched" style="color: aqua">
+<<<<<<< HEAD
+        Phone must be at least 1 characters
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary btn-block">Save</button>
+    </div>
+    <div class="form-group">
+      <input type="button" class="btn btn-primary btn-block" value="Cancel" routerLink="/user-list">
+    </div>
+=======
         address is required
       </div>
     </div>
@@ -47,5 +84,6 @@
     </div><div class="form-group">
     <input class="btn btn-primary btn-block" value="Cancel" href="localhost:4200/user-list">
   </div>
+>>>>>>> master
   </form>
 </div>
