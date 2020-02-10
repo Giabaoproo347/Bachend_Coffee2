@@ -1,16 +1,16 @@
-<h2>Payment delete</h2>
+<h2>Xóa thanh toán</h2>
 <div class="col-6 offset-3" *ngIf="payment">
   <table class="table">
     <tr>
-      <td>Name:</td>
+      <td>Tên:</td>
       <td>{{ payment.name }}</td>
     </tr>
     <tr>
-      <td>Address:</td>
+      <td>Địa chỉ:</td>
       <td>{{ payment.address }}</td>
     </tr>
     <tr>
-      <td>Phone:</td>
+      <td>Điện thoại:</td>
       <td>{{ payment.phone }}</td>
     </tr>
     <tr>
@@ -18,19 +18,19 @@
       <td>{{ payment.email }}</td>
     </tr>
     <tr>
-      <td>Total:</td>
+      <td>Thanh toán:</td>
       <td>{{ payment.total }}</td>
     </tr>
     <tr>
-      <td>Status:</td>
+      <td>Trạng thái đơn:</td>
       <td>{{ payment.status }}</td>
     </tr>
     <tr>
-      <td>Date:</td>
+      <td>Ngày:</td>
       <td>{{ payment.date }}</td>
     </tr>
     <tr>
-      <td>Description:</td>
+      <td>Mô tả:</td>
       <td>{{ payment.description }}</td>
     </tr>
   </table>
@@ -48,11 +48,12 @@
           </button>
         </div>
         <div class="modal-body">
-          Are you sure delete this payment?
+          Bạn có chắc chắn muốn xóa không?
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="deletePayment(payment.id)" data-dismiss="modal">Save changes</button>
+          <button class="btn btn-secondary" data-dismiss="modal" type="button">Quay lại</button>
+          <button (click)="deletePayment(payment.id)" class="btn btn-primary" data-dismiss="modal" type="button">Xóa
+          </button>
         </div>
       </div>
     </div>

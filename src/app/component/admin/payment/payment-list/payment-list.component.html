@@ -1,7 +1,4 @@
-<h2>Payment list</h2>
-<p><a routerLink="/payment-create">Create new a payment</a></p>
-
-
+<h2>Danh sách thanh toán</h2>
 <form>
   <div class="form-group">
     <div class="input-group">
@@ -41,10 +38,10 @@
     <td>{{ payment.description }}</td>
     <td>{{ payment.status }}</td>
     <td *ngIf="payment.status !== 'Giao hàng thành công' &&  payment.status !== 'Hủy đơn hàng'"><a
-      [routerLink]="['/payment-edit',payment.id]">Edit</a></td>
+      [routerLink]="['/payment-edit',payment.id]">Cập nhật</a></td>
     <td *ngIf="payment.status == 'Giao hàng thành công'"><a class="text-success">Đơn hàng đã được giao</a></td>
     <td *ngIf="payment.status == 'Hủy đơn hàng'"><a class="text-danger">Đã hủy đơn hàng</a></td>
-    <td><a [routerLink]="['/payment-delete',payment.id]">Delete</a></td>
+    <td><a [routerLink]="['/payment-delete',payment.id]">Xóa</a></td>
   </tr>
 </table>
 
