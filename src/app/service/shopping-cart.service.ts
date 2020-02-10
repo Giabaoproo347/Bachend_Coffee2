@@ -8,8 +8,6 @@ import {OrderDetail} from '../model/orderDetail.model';
 import {ProductService} from './product.service';
 import {OrderDetailService} from './order-detail.service';
 import {CartItem} from '../model/cart-item.model';
-import {Promotion} from '../model/promotion.model';
-import {PromotionService} from './promotion.service';
 
 const CART_KEY = 'cart';
 
@@ -25,7 +23,6 @@ export class ShoppingCartService {
   public constructor(private storageService: StorageService,
                      private productService: ProductService,
                      private orderDetailService: OrderDetailService,
-                     private promotionService: PromotionService,
                      private router: Router) {
     this.storage = this.storageService.get();
 

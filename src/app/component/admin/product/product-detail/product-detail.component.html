@@ -68,6 +68,7 @@
         class="fa fa-google-plus-square fa-3x"></i></a></span>
     </div>
 
+
     <div class="container mt-3">
       <h4>Bình luận</h4>
       <div *ngFor="let comment of listCommenter , index as i" class="media mb-4">
@@ -96,7 +97,7 @@
               <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>
               <span><strong>Xóa</strong></span>
             </a>
-            <div [id]="'collapseExample'+i" class="collapse">
+            <div #closeModalRef [id]="'collapseExample'+i" class="collapse">
               <form>
                 <div class="card card-body">
                   <textarea [formControl]="contentUpdate" [value]="comment.content" contenteditable="true"
