@@ -23,7 +23,7 @@
   <tr *ngFor="let product of productList">
     <td><a [routerLink]="['/product-detail',product.id]">{{product.id}}</a></td>
     <td><a [routerLink]="['/product-detail',product.id]">{{product.name}}</a></td>
-    <td>{{product.price}}</td>
+    <td>{{product.price | currency: 'VND'}}</td>
     <td><a><img [src]="product.image" style="height: 100px"></a></td>
     <td><a [routerLink]="['/product-edit',product.id]">Cập nhật</a></td>
     <td><a [routerLink]="['/product-delete',product.id]">Xóa</a></td>

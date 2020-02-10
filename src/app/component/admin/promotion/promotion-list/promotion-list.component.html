@@ -11,7 +11,7 @@
   </thead>
   <tr *ngFor="let promotion of promotionList">
     <td><a [routerLink]="['/promotion-detail', promotion.id]">{{ promotion.name }}</a></td>
-    <td>{{ promotion.price }}</td>
+    <td>{{ promotion.price | currency: 'VND' }}</td>
     <td><a [routerLink]="['/promotion-edit',promotion.id]">Cập nhật</a></td>
     <td><a [routerLink]="['/promotion-delete',promotion.id]">Xóa</a></td>
   </tr>
