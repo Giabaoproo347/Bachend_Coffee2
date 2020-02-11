@@ -94,7 +94,7 @@
         <li class="nav-item"><a routerLink="/discount" class="nav-link">Khuyến mãi</a></li>
         <li class="nav-item"><a routerLink="/blog" class="nav-link">Tin tức</a></li>
         <li class="nav-item">
-          <i routerLink="/checkout" class="fa ml-4 mt-1" style="font-size:36px" ma>&#xf07a;</i>
+          <i class="fa ml-4 mt-1" ma routerLink="/cart" style="font-size:36px">&#xf07a;</i>
           <span class='badge badge-warning ' id='lblCartCount'> {{itemCount}} </span>
         </li>
       </ul>
@@ -102,7 +102,12 @@
       <div>
         <marquee>
           <span
-            style="font-size: 16px; color:rgba(30,32,255,0.68)"> Vui lòng gọi hotline 19006068 để được hỗ trợ </span>
+            style="font-size: 17px; color:rgba(30,32,255,0.68)">
+            <i aria-hidden="true" class="fa fa-phone"></i>
+            <i aria-hidden="true" class="fa fa-phone"></i>
+            <i aria-hidden="true" class="fa fa-phone"></i>
+             Hotline 19006068 để được hỗ trợ
+          </span>
         </marquee>
       </div>
 
@@ -118,10 +123,26 @@
 
       <form action="" class="ml-auto">
         <ul class="nav navbar-nav" *ngIf="isLoggedIn">
-          <li class="nav-item ml-2"><a routerLink="/profile" class="nav-link">{{username}}</a></li>
-          <li class="nav-item ml-2"><a class="nav-link" (click)="logout()">Logout</a></li>
+
+
+          <div class="btn-group">
+            <button aria-expanded="false" aria-haspopup="true" class="btn dropdown-toggle" data-toggle="dropdown"
+                    style="font-size: 20px" type="button">
+              {{username}}
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" routerLink="/profile">Thông tin cá nhân</a>
+              <a class="dropdown-item" routerLink="/payment-list-by-user">Đơn hàng</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" routerLink="/change-profile">Cập nhật thông tin</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" routerLink="/change-password">Đổi mật khẩu</a>
+            </div>
+          </div>
+          <li class="nav-item ml-2"><a (click)="logout()" class="nav-link">Đăng xuất</a></li>
         </ul>
       </form>
+
 
     </div>
   </div>

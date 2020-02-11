@@ -18,6 +18,7 @@ export class StoreComponent implements OnInit {
   like: number;
   searchString: string;
   private content: any;
+  isAdded: boolean;
 
   public constructor(private productsService: ProductService,
                      private shoppingCartService: ShoppingCartService,
@@ -28,6 +29,7 @@ export class StoreComponent implements OnInit {
 
   public addProductToCart(product: Product): void {
     this.shoppingCartService.addItem(product, 1);
+    this.isAdded = true;
   }
 
   public removeProductFromCart(product: Product): void {
@@ -47,7 +49,6 @@ export class StoreComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    // this.products = this.productsService.getProductList();
     this.productsService.getProductList().subscribe(next => {
         this.productList = next;
         console.log(this.productList);

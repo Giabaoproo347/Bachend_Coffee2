@@ -113,7 +113,7 @@ const routes: Routes = [
   // {path: 'user-payment-list', component: UserPaymentListComponent},
 
   {
-    path: 'checkout',
+    path: 'cart',
     component: CheckoutComponent
   }, {
     path: 'confirmed',
