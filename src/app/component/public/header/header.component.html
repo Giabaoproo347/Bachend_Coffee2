@@ -118,10 +118,26 @@
 
       <form action="" class="ml-auto">
         <ul class="nav navbar-nav" *ngIf="isLoggedIn">
-          <li class="nav-item ml-2"><a routerLink="/profile" class="nav-link">{{username}}</a></li>
-          <li class="nav-item ml-2"><a class="nav-link" (click)="logout()">Logout</a></li>
+
+
+          <div class="btn-group">
+            <button aria-expanded="false" aria-haspopup="true" class="btn dropdown-toggle" data-toggle="dropdown"
+                    style="font-size: 20px" type="button">
+              {{username}}
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" routerLink="/profile">Thông tin cá nhân</a>
+              <a class="dropdown-item" routerLink="/payment-list-by-user">Đơn hàng</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" routerLink="/change-profile">Cập nhật thông tin</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" routerLink="/change-password">Đổi mật khẩu</a>
+            </div>
+          </div>
+          <li class="nav-item ml-2"><a (click)="logout()" class="nav-link">Đăng xuất</a></li>
         </ul>
       </form>
+
 
     </div>
   </div>
