@@ -39,6 +39,8 @@
           <p>
             <button type="button"
                     class="btn btn-outline-primary"
+                    data-target="#addToCart"
+                    data-toggle="modal"
                     (click)="addProductToCart(product, 1)">Thêm vào giỏ
             </button>
             <button type="button"
@@ -48,6 +50,32 @@
             </button>
           </p>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="modal fade" id="addToCart">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Thêm sản phẩm thành công</h4>
+          <button class="close" data-dismiss="modal" type="button">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          Bạn đã thêm sản phẩm vào trong giỏ hàng thành công
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-dismiss="modal" type="button">Quay lại</button>
+        </div>
+
       </div>
     </div>
   </div>
