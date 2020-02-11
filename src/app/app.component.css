@@ -1,0 +1,9 @@
+.top {
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  font-size: 25px;
+  text-align: center;
+  outline: none;
+  border-radius: 50%;
+}

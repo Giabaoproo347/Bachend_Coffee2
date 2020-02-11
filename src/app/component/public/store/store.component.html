@@ -28,7 +28,9 @@
   </div>
 
   <div class="row">
-    <div *ngFor="let product of productList | filter: 'name' : searchString" class="col-md-3 mt-2 mb-4">
+    <div
+      *ngFor="let product of productList | filter: 'name' : searchString |paginate : {itemsPerPage: 8, currentPage: p}"
+      class="col-md-3 mt-2 mb-4">
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" routerLink="/product-detail/{{product.id}}"
              [src]="product.image"
@@ -77,6 +79,15 @@
         </div>
 
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row m-3">
+    <div class="col-md-8"></div>
+    <div class="col-md-4">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
   </div>
 </div>
