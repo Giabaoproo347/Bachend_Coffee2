@@ -1,24 +1,24 @@
-<h2>Categories List</h2>
-<p><a routerLink="/user-create">Create new user</a></p>
+<h2>Danh sách thành viên</h2>
+<p><a routerLink="/user-create">Tạo mới</a></p>
 <table class="table table-hover border">
   <thead>
   <tr>
     <th>Id</th>
     <th>Username</th>
     <th>Email</th>
-    <th>Phone</th>
-    <th>Address</th>
-    <th>Edit</th>
-    <th>Delete</th>
+    <th>Điện thoại</th>
+    <th>Địa chỉ</th>
+    <th>Cập nhật</th>
+    <th>Xóa</th>
   </tr>
   </thead>
   <tr *ngFor="let user of userList">
-    <td><a [routerLink]="['/user-detail',user.id]">{{user.id}}</a> </td>
-    <td><a [routerLink]="['/user-detail',user.id]">{{user.username}}</a> </td>
-    <td><a [routerLink]="['/user-detail',user.id]">{{user.email}}</a> </td>
-    <td><a [routerLink]="['/user-detail',user.id]">{{user.phone}}</a> </td>
-    <td><a [routerLink]="['/user-detail',user.id]">{{user.address}}</a> </td>
-    <td><a [routerLink]="['/user-edit',user.id]">Edit</a> </td>
-    <td><a [routerLink]="['/user-delete',user.id]">Delete</a> </td>
+    <td><a [routerLink]="['/user-detail',user.id]">{{user.id}}</a></td>
+    <td><a [routerLink]="['/user-detail',user.id]">{{user.username}}</a></td>
+    <td><a [routerLink]="['/user-detail',user.id]">{{user.email}}</a></td>
+    <td><a [routerLink]="['/user-detail',user.id]">{{user.phone}}</a></td>
+    <td><a [routerLink]="['/user-detail',user.id]">{{user.address}}</a></td>
+    <td><a [routerLink]="['/user-edit',user.id]">Cập nhật</a></td>
+    <td><a [routerLink]="['/user-delete',user.id]">Xóa</a></td>
   </tr>
 </table>

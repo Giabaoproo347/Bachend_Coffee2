@@ -1,14 +1,13 @@
-<h2>Order detail delete</h2>
-<h3 class="text-center">Delete order detail</h3>
+<h2>Xóa chi tiết đơn hàng</h2>
 <div class="col-6 offset-3" *ngIf="orderDetail">
   <table class="table">
     <tr>
-      <td>Sale price:</td>
+      <td>Giá:</td>
       <td>{{ orderDetail.salePrice }}</td>
     </tr>
 
     <tr>
-      <td>Quantity:</td>
+      <td>Số lượng:</td>
       <td>{{ orderDetail.quantity }}</td>
     </tr>
 
@@ -27,11 +26,13 @@
           </button>
         </div>
         <div class="modal-body">
-          Are you sure delete this order detail?
+          Bạn có chắc chắn muốn xóa không?
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="deleteOrderDetail(orderDetail.id)" data-dismiss="modal">Save changes</button>
+          <button class="btn btn-secondary" data-dismiss="modal" type="button">Quay lại</button>
+          <button (click)="deleteOrderDetail(orderDetail.id)" class="btn btn-primary" data-dismiss="modal"
+                  type="button">Xóa
+          </button>
         </div>
       </div>
     </div>

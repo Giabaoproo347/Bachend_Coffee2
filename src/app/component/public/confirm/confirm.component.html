@@ -1,11 +1,14 @@
 <div *ngIf="!isLoggedIn">
-  <div class="container-fluid" style="background: rgba(255,242,229,0.68)">
+  <div class="container-fluid p-4"
+       style="background:url('https://cdn.vatgia.vn/pictures/fullsize/2013/12/13/eud1386918423.jpg') ">
     <div class="container border" style="background: white">
       <div class="row">
         <div class="col-md-7 p-2">
           <hr align="center" color="red" size="5px" width="100%"/>
           <div><h3 class="text-primary">THÔNG TIN THANH TOÁN</h3></div>
+
           <form (ngSubmit)="paymentForm.valid && clickToPay()" [formGroup]="paymentForm" name="form">
+
             <div class="form-group">
               <div class="form-row">
                 <div class="col">
@@ -13,7 +16,7 @@
                   <input class="form-control" formControlName="name" placeholder="Tên" type="text">
                   <div *ngIf="paymentForm.get('name').invalid && paymentForm.get('name').touched" class="alert-danger"
                        style="color: red">
-                    Name must be at least 1 characters
+                    Tối thiểu 3 ký tự
                   </div>
                 </div>
               </div>
@@ -27,7 +30,7 @@
                   <div *ngIf="paymentForm.get('address').invalid && paymentForm.get('address').touched"
                        class="alert-danger"
                        style="color: red">
-                    Address must be at least 1 characters
+                    Tối thiểu 3 ký tự
                   </div>
                 </div>
               </div>
@@ -40,7 +43,7 @@
                   <input class="form-control" formControlName="phone" placeholder="Số điện thoại" type="text">
                   <div *ngIf="paymentForm.get('phone').invalid && paymentForm.get('phone').touched" class="alert-danger"
                        style="color: red">
-                    Phone must be at least 1 characters
+                    Định dạng số điện thoại không đúng
                   </div>
                 </div>
                 <div class="col">
@@ -48,17 +51,26 @@
                   <input class="form-control" formControlName="email" placeholder="Email" type="text">
                   <div *ngIf="paymentForm.get('email').invalid && paymentForm.get('email').touched" class="alert-danger"
                        style="color: red">
-                    Email must be at least 1 characters
+                    Định dạng email không đúng
                   </div>
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group mt-3">
                 <div class="form-row">
                   <div class="col">
-                    <label class="text-info mt-3">Tổng hóa đơn:</label>
-                    <input [ngModel]="(cart| async).grossTotal | currency: 'VND'" class="form-control" disabled
+                    <input [ngModel]="(cart| async).grossTotal" class="form-control" disabled
                            formControlName="total"
+                           type="hidden">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group mt-3">
+                <div class="form-row">
+                  <div class="col">
+                    <label class="text-info">Số tiền thanh toán</label>
+                    <input [value]="(cart| async).grossTotal | currency: 'VND'" class="form-control" disabled
                            type="text">
                   </div>
                 </div>
@@ -72,30 +84,29 @@
                 </div>
               </div>
 
+
               <div class="form-group">
                 <div class="form-row">
                   <div class="col">
-                    <label class="text-info">Chọn phương thức thanh toán: </label>
-                    <select class="ml-3" formControlName="method" style="width: 250px">
+                    <label class="text-info">Chọn phương thức thanh toán</label>
+                    <select formControlName="method" style="width: 430px">
                       <option *ngFor="let methods of method">{{methods}}</option>
                     </select>
                   </div>
                 </div>
               </div>
-            </div>
 
+            </div>
             <br/>
             <hr align="center" color="red" size="5px" width="100%"/>
-
             <div><h3 class="text-primary">THÔNG TIN BỔ SUNG</h3></div>
             <div class="form-group">
               <div class="form-row">
                 <div class="col">
                   <label class="text-info">Chi tiết thông tin</label>
                   <textarea class="form-control"
-                            formControlName="description"
                             placeholder="Ghi chú về địa chỉ giao hàng, ví dụ: thời gian hãy chỉ dẫn địa điểm giao hàng chi tiết hơn"
-                            style="height: 200px"></textarea>
+                            formControlName="description" style="height: 200px"></textarea>
                 </div>
               </div>
             </div>
@@ -169,22 +180,31 @@
                 <td class="text-center">{{item.quantity}}</td>
                 <td class="text-center">{{item.totalCost | currency: 'VND'}}</td>
               </tr>
+
+              <tr class="col-md-12">
+                <td class="text-danger font-weight-bold">Tổng hóa đơn</td>
+                <td class="text-danger font-weight-bold"></td>
+                <td class="text-danger font-weight-bold"></td>
+                <td class="text-success font-weight-bold">{{(cart | async).grossTotal | currency:'VND':true}}</td>
+              </tr>
             </table>
           </div>
+
+          <span class="text-secondary m-1 p-1 float-right">Đơn hàng của bạn sẽ được gửi đi trong 15 phút</span>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-
-<div class="container-fluid" style="background: rgba(255,242,229,0.68)">
-  <div *ngIf="isLoggedIn">
+<div *ngIf="isLoggedIn">
+  <div class="container-fluid p-4"
+       style="background: url('https://cdn.vatgia.vn/pictures/fullsize/2013/12/13/eud1386918423.jpg')">
     <div class="container" style="background: white">
       <div class="row">
-        <div class="col-md-7 p-2">
+        <div class="col-md-7" style="margin-top: 10px">
           <hr align="center" color="red" size="5px" width="100%"/>
-          <div><h3 class="text-primary">THÔNG TIN THANH TOÁN</h3></div>
+          <div><h3 class="text-primary">THÔNG TIN CHI TIẾT</h3></div>
           <form (ngSubmit)="paymentForm.valid && clickToPay()" [formGroup]="paymentForm" name="form">
             <div class="form-group">
               <div class="form-row">
@@ -193,7 +213,7 @@
                   <input class="form-control" formControlName="name" placeholder="Tên" type="text">
                   <div *ngIf="paymentForm.get('name').invalid && paymentForm.get('name').touched" class="alert-danger"
                        style="color: red">
-                    Name must be at least 1 characters
+                    Tối thiểu 3 ký tự
                   </div>
                 </div>
               </div>
@@ -207,7 +227,7 @@
                   <div *ngIf="paymentForm.get('address').invalid && paymentForm.get('address').touched"
                        class="alert-danger"
                        style="color: red">
-                    Address must be at least 1 characters
+                    Tối thiểu 3 ký tự
                   </div>
                 </div>
               </div>
@@ -220,7 +240,7 @@
                   <input class="form-control" formControlName="phone" placeholder="Số điện thoại" type="text">
                   <div *ngIf="paymentForm.get('phone').invalid && paymentForm.get('phone').touched" class="alert-danger"
                        style="color: red">
-                    Phone must be at least 1 characters
+                    Không đúng định dạng số điện thoại
                   </div>
                 </div>
                 <div class="col">
@@ -228,17 +248,27 @@
                   <input class="form-control" formControlName="email" placeholder="Email" type="text">
                   <div *ngIf="paymentForm.get('email').invalid && paymentForm.get('email').touched" class="alert-danger"
                        style="color: red">
-                    Email must be at least 1 characters
+                    Không đúng định dạng email
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="form-group mt-3">
+                <div class="form-row">
+                  <div class="col">
+                    <input [ngModel]="(cart| async).grossTotal" class="form-control" disabled
+                           formControlName="total"
+                           type="hidden">
                   </div>
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group mt-3">
                 <div class="form-row">
                   <div class="col">
-                    <label class="text-info mt-3">Tổng hóa đơn:</label>
-                    <input [ngModel]="(cart| async).grossTotal | currency: 'VND'" class="form-control" disabled
-                           formControlName="total"
+                    <label class="text-info">Số tiền thanh toán</label>
+                    <input [value]="(cart| async).grossTotal | currency: 'VND'" class="form-control" disabled
                            type="text">
                   </div>
                 </div>
@@ -255,47 +285,46 @@
               <div class="form-group">
                 <div class="form-row">
                   <div class="col">
-                    <label class="text-info">Chọn phương thức thanh toán: </label>
-                    <select class="ml-3" formControlName="method" style="width: 250px">
+                    <label class="text-info mr-2">Chọn phương thức thanh toán</label>
+                    <select formControlName="method" style="width: 418px">
                       <option *ngFor="let methods of method">{{methods}}</option>
                     </select>
                   </div>
                 </div>
               </div>
-            </div>
 
+            </div>
             <br/>
             <hr align="center" color="red" size="5px" width="100%"/>
-
             <div><h3 class="text-primary">THÔNG TIN BỔ SUNG</h3></div>
             <div class="form-group">
               <div class="form-row">
                 <div class="col">
                   <label class="text-info">Chi tiết thông tin</label>
                   <textarea class="form-control"
-                            formControlName="description"
                             placeholder="Ghi chú về địa chỉ giao hàng, ví dụ: thời gian hãy chỉ dẫn địa điểm giao hàng chi tiết hơn"
-                            style="height: 200px"></textarea>
+                            formControlName="description" style="height: 200px"></textarea>
                 </div>
               </div>
             </div>
-            <button class="btn btn-primary btn-block" data-target="#exampleModal2" data-toggle="modal">Đặt hàng</button>
-            <input class="btn btn-primary btn-block" routerLink="/home" value="Quay lại">
+            <button class="btn btn-primary btn-block" data-target="#exampleModalLogin" data-toggle="modal">Đặt hàng
+            </button>
+            <input class="btn btn-primary btn-block mb-3" routerLink="/home" value="Quay lại">
           </form>
 
-          <div aria-hidden="true" aria-labelledby="exampleModalLabel2" class="modal fade" id="exampleModal2"
+          <div aria-hidden="true" aria-labelledby="exampleModalLabelLogin" class="modal fade" id="exampleModalLogin"
                role="dialog"
                tabindex="-1">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel2">Đặt hàng thành công </h5>
+                  <h5 class="modal-title" id="exampleModalLabelLogin">Đặt hàng thành công </h5>
                 </div>
                 <div class="modal-body">
-                  Đặt hàng thành công
+                  Cảm ơn bạn đã mua hàng
                   <div class="modal-body">
                     <label>Mã đơn hàng: </label>
-                    <h5>{{' ' + payment.code}}</h5>
+                    <h5>{{ ' ' + payment.code}}</h5>
                   </div>
                   <div class="modal-body">
                     <label>Điện thoại: </label>
@@ -331,10 +360,9 @@
           </div>
         </div>
 
-
-        <div class="col-md-5 p-2" style="margin-top: 15px">
+        <div class="col-md-5" style="margin-top: 25px; margin-bottom: 100px">
           <div class="border border-danger ">
-            <div><h3 CLASS="text-success text-center m-2">ĐƠN HÀNG CỦA BẠN</h3></div>
+            <div><h3 CLASS="text-primary text-center m-2">ĐƠN HÀNG CỦA BẠN</h3></div>
             <table class="table border-bottom">
               <tr>
                 <td class="text-primary font-weight-bold text-center">Sản phẩm</td>
@@ -349,8 +377,11 @@
                 <td class="text-center">{{item.quantity}}</td>
                 <td class="text-center">{{item.totalCost | currency: 'VND'}}</td>
               </tr>
+
             </table>
           </div>
+
+          <span class="text-secondary m-1 p-1 float-right">Đơn hàng của bạn sẽ được gửi đi trong 15 phút</span>
         </div>
       </div>
     </div>

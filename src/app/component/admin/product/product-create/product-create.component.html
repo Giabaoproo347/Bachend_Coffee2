@@ -1,5 +1,5 @@
 <div class="col-6 offset-3">
-  <h2 class="text-center">Create new product</h2>
+  <h2 class="text-center">Tạo mới sản phẩm</h2>
   <div *ngIf="message">
     <div class="alert alert-success">
       <strong>Success!</strong> You have created a new product
@@ -45,34 +45,34 @@
       </div>
     </div>
     <div class="form-group">
-      <label>Image</label>
+      <label>Hình ảnh 1</label>
       <input type="text" class="form-control" formControlName="image"/>
       <div class="alert-danger" *ngIf="productForm.get('image').invalid && productForm.get('image').touched"
            style="color: red">
-        Image is not empty
+        Không được để trống
       </div>
     </div>
 
     <div class="form-group">
-      <label>Image 2</label>
+      <label>Hình ảnh 2</label>
       <input type="text" class="form-control" formControlName="image2"/>
       <div class="alert-danger" *ngIf="productForm.get('image2').invalid && productForm.get('image2').touched"
            style="color: red">
-        Image 2 is not empty
+        Không được để trống
       </div>
     </div>
 
     <div class="form-group">
-      <label>Image 3</label>
+      <label>Hình ảnh 3</label>
       <input type="text" class="form-control" formControlName="image3"/>
       <div class="alert-danger" *ngIf="productForm.get('image3').invalid && productForm.get('image3').touched"
            style="color: red">
-        Image 3 is not empty
+        Không được để trống
       </div>
     </div>
 
     <div class="form-group">
-      <label>Promotion</label>
+      <label>Khuyến mãi</label>
       <div *ngFor="let promotion1 of promotion">
         <p>{{promotion1.name}}</p>
       </div>
@@ -84,29 +84,18 @@
 
 
     <div class="form-group">
-      <label>Categories</label>
+      <label>Danh mục sản phẩm</label>
       <select class="form-control" (change)="addCategories(addCa.value)" #addCa>
         <option value="">None</option>
         <option *ngFor="let c of categoriesList" value="{{c.id}}">{{c.name}}</option>
       </select>
     </div>
 
-    <!--    <div class="form-group">-->
-    <!--      <label>Picture</label>-->
-    <!--      <input type="file" class="form-control" accept="image/*" (change)="onSelectFile($event)" multiple>-->
-    <!--    </div>-->
-    <!--    <div class="form-group" style="height: 100px">-->
-    <!--      <div class="image-preview" *ngIf="previewUrl">-->
-    <!--        <div class="float-left" *ngFor="let preview of previewUrl">-->
-    <!--          <img [src]="preview" height="100"/><span>x</span>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </div>-->
     <div class="form-group">
-      <button class="btn btn-primary btn-block">Create</button>
+      <button class="btn btn-primary btn-block">Tạo</button>
     </div>
     <div class="form-group">
-      <input class="btn btn-primary btn-block" value="Back to book list" routerLink="/book-list">
+      <input class="btn btn-primary btn-block" routerLink="/product-list" value="Quay lại danh mục sản phẩm">
     </div>
   </form>
 </div>

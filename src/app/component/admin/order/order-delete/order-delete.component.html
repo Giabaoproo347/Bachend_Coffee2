@@ -1,16 +1,16 @@
-<h2>Order delete</h2>
+<h2>Xóa đơn hàng</h2>
 <div class="col-6 offset-3" *ngIf="order">
   <table class="table">
     <tr>
-      <td>Purchase date:</td>
+      <td>Ngày đặt:</td>
       <td>{{order.purchaseDate}}</td>
     </tr>
     <tr>
-      <td>Delivery date</td>
+      <td>Ngày giao hàng</td>
       <td>{{order.deliveryDate}}</td>
     </tr>
     <tr>
-      <td>Description</td>
+      <td>Mô tả chi tiết</td>
       <td>{{order.description}}</td>
     </tr>
   </table>
@@ -27,11 +27,12 @@
           </button>
         </div>
         <div class="modal-body">
-          Are you sure delete order?
+          Bạn có chắc chắn muốn xóa không?
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn  btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="deleteOrder(order.id)" data-dismiss="modal">Save changes</button>
+          <button class="btn  btn-secondary" data-dismiss="modal" type="button">Quay lại</button>
+          <button (click)="deleteOrder(order.id)" class="btn btn-primary" data-dismiss="modal" type="button">Xóa
+          </button>
         </div>
       </div>
     </div>
