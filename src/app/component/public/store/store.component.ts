@@ -19,6 +19,7 @@ export class StoreComponent implements OnInit {
   searchString: string;
   private content: any;
   isAdded: boolean;
+  p = 1;
 
   public constructor(private productsService: ProductService,
                      private shoppingCartService: ShoppingCartService,

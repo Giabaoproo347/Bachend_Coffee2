@@ -82,6 +82,7 @@ import {PaymentListsComponent} from './user/payment-lists/payment-lists.componen
 import {PaymentEditByUserComponent} from './component/admin/payment-edit-by-user/payment-edit-by-user.component';
 import {TopHotComponent} from './component/public/top-hot/top-hot.component';
 import {SortByLike} from './model/sort';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -164,7 +165,8 @@ import {SortByLike} from './model/sort';
     RouterModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [authInterceptorProviders,
     ProductService,

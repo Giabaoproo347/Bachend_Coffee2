@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 import {TokenStorageService} from './user/_services/token-storage.service';
 
 @Component({
@@ -13,7 +13,11 @@ export class AppComponent {
   showModeratorBoard = false;
   username: string;
   isShow = false;
-  constructor(private tokenStorageService: TokenStorageService) { }
+  private isShowBt = false;
+  private topPosToStartShowing = 200;
+
+  constructor(private tokenStorageService: TokenStorageService) {
+  }
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit() {
@@ -29,8 +33,28 @@ export class AppComponent {
       this.username = user.username;
     }
   }
+
   setIsShow(isShow: boolean) {
     this.isShow = isShow;
+  }
+
+  @HostListener('window:scroll')
+  checkScroll() {
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    if (scrollPosition >= this.topPosToStartShowing) {
+      this.isShowBt = true;
+    } else {
+      this.isShowBt = false;
+    }
+  }
+
+  // TODO: Cross browsing
+  gotoTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 
   logout() {
