@@ -6,10 +6,10 @@
     </div>
     <div>
       <div class="form-group">
-        <input class="btn btn-primary btn-block" value="Create new product" (click)="message = !message">
+        <input (click)="message = !message" class="btn btn-primary btn-block" value="Tạo mới sản phẩm">
       </div>
       <div class="form-group">
-        <input class="btn btn-primary btn-block" value="Back to product list" routerLink="/product-list">
+        <input class="btn btn-primary btn-block" routerLink="/product-list" value="Quay lại">
       </div>
     </div>
   </div>

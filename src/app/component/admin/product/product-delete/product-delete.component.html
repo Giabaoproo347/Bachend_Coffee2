@@ -9,26 +9,7 @@
       <td>Giá:</td>
       <td>{{product.price}}</td>
     </tr>
-    <tr>
-      <td>Mô tả:</td>
-      <td>{{product.description}}</td>
-    </tr>
-    <tr>
-      <td>Hình ảnh:</td>
-      <td>{{product.image}}</td>
-    </tr>
-    <tr>
-      <td>Khuyến mãi:</td>
-      <td>
-        <div *ngFor="let promotion1 of product.promotion">{{promotion1.name}}</div>
-      </td>
-    </tr>
-    <tr>
-      <td>Danh mục:</td>
-      <td>
-        <div *ngFor="let categories1 of product.categories">{{categories1.name}}</div>
-      </td>
-    </tr>
+
   </table>
   <input class="btn btn-primary btn-block" data-target="#exampleModal" data-toggle="modal" value="Xóa sản phẩm">
   <input class="btn btn-primary btn-block" routerLink="/product-list" value="Quay lại">
